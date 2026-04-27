@@ -1,4 +1,4 @@
-const coachScenarios = [
+export const scenarios = [
   {
     id: 'scn-001',
     category: 'Get Paid Faster',
@@ -19,7 +19,11 @@ const coachScenarios = [
   - Call payer 3 business days later and log the reference number.
   - Hold patient billing until the payer response date is known.`,
     whyItMatters: 'This turns a denied claim into a controlled recovery process with patient trust, cash timing, and payer follow-up managed together.',
-    tags: ['progressive', 'crown denial', 'appeal', 'D2740', 'cash flow']
+    tags: ['progressive', 'crown denial', 'appeal', 'D2740', 'cash flow'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-002',
@@ -43,7 +47,12 @@ const coachScenarios = [
   - Track dollars corrected, not calls made.
   - Review the top 10 claims with the owner next Tuesday.`,
     whyItMatters: 'A/R drops faster when the practice attacks root causes in batches instead of mistaking activity for progress.',
-    tags: ['diagnostic', 'accounts receivable', 'COB', 'billing workflow']
+    tags: ['diagnostic', 'accounts receivable', 'COB', 'billing workflow'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-003',
@@ -65,7 +74,12 @@ const coachScenarios = [
   - Call the patient back by 4 PM with either appeal steps or payment options.
   - Add downgrade language to all posterior composite estimates by Friday.`,
     whyItMatters: 'The best billing conversations protect the relationship while still moving the balance toward resolution.',
-    tags: ['diagnostic', 'EOB', 'patient billing', 'downgrade', 'collections']
+    tags: ['diagnostic', 'EOB', 'patient billing', 'downgrade', 'collections'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-004',
@@ -91,7 +105,12 @@ const coachScenarios = [
   - Yellow needs coordinator review.
   - Red needs written estimate language before treatment.`,
     whyItMatters: 'This gives the team permission to collect confidently without pretending every estimate is perfect.',
-    tags: ['decision', 'same-day collections', 'financial policy', 'checkout']
+    tags: ['decision', 'same-day collections', 'financial policy', 'checkout'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-005',
@@ -118,7 +137,11 @@ const coachScenarios = [
   - Schedule a benefits review call with the patient for 7 business days later.
   - If denied, appeal on progression and symptoms, not preference.`,
     whyItMatters: 'A strong pre-D keeps the clinical recommendation moving while reducing the chance that benefits confusion kills the case.',
-    tags: ['progressive', 'pre-determination', 'grafting', 'perio', 'documentation']
+    tags: ['progressive', 'pre-determination', 'grafting', 'perio', 'documentation'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-006',
@@ -141,7 +164,11 @@ const coachScenarios = [
   - Calibrate hygiene language tomorrow morning.
   - Audit 10 SRP charts for bleeding, pocketing, radiographs, and diagnosis notes.`,
     whyItMatters: 'Patients say yes when the team leads with diagnosis, not benefit design.',
-    tags: ['progressive', 'SRP', 'case acceptance', 'hygiene', 'patient communication']
+    tags: ['progressive', 'SRP', 'case acceptance', 'hygiene', 'patient communication'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-007',
@@ -164,7 +191,11 @@ const coachScenarios = [
   3. Offer financing by phase, not as one giant number.
   4. Call within 24 hours, not next week.`,
     whyItMatters: 'Large cases stall when the practice sells the treatment but does not coach the decision architecture.',
-    tags: ['diagnostic', 'large case', 'sequencing', 'financing', 'case acceptance']
+    tags: ['diagnostic', 'large case', 'sequencing', 'financing', 'case acceptance'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-008',
@@ -185,7 +216,12 @@ const coachScenarios = [
   - Track whether financing was introduced before or after the fee.
   - Review results in the first manager meeting next month.`,
     whyItMatters: 'The timing of the money conversation changes whether financing feels normal or embarrassing.',
-    tags: ['decision', 'financing', 'case acceptance', 'payment options']
+    tags: ['decision', 'financing', 'case acceptance', 'payment options'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-009',
@@ -207,7 +243,12 @@ const coachScenarios = [
   - Review two payment paths.
   - Reserve the appointment before the patient leaves.`,
     whyItMatters: 'High-trust clinical framing helps patients stop treating insurance as the clinical authority.',
-    tags: ['progressive', 'crown acceptance', 'insurance objection', 'patient script']
+    tags: ['progressive', 'crown acceptance', 'insurance objection', 'patient script'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-010',
@@ -231,7 +272,12 @@ const coachScenarios = [
   - Calibrate hygienists on one standard explanation.
   - Track D4910 acceptance for 60 days.`,
     whyItMatters: 'Perio maintenance acceptance is usually a communication and calibration issue before it is an insurance issue.',
-    tags: ['diagnostic', 'perio maintenance', 'hygiene', 'case acceptance']
+    tags: ['diagnostic', 'perio maintenance', 'hygiene', 'case acceptance'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-011',
@@ -255,7 +301,12 @@ const coachScenarios = [
   - Text only after calls.
   - Track production recovered.`,
     whyItMatters: 'Schedule recovery should protect production quality, not just make the calendar look full.',
-    tags: ['progressive', 'schedule hole', 'cancellation recovery', 'production']
+    tags: ['progressive', 'schedule hole', 'cancellation recovery', 'production'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-012',
@@ -279,7 +330,12 @@ const coachScenarios = [
   - Delay Friday expansion for 30 days.
   - Measure recovered production and no-show reduction first.`,
     whyItMatters: 'Expanding hours before fixing utilization can turn a scheduling problem into a payroll problem.',
-    tags: ['decision', 'schedule utilization', 'hours expansion', 'owner-level']
+    tags: ['decision', 'schedule utilization', 'hours expansion', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-013',
@@ -302,7 +358,12 @@ const coachScenarios = [
   - Pilot exam windows for 5 clinical days.
   - Debrief with hygienists and assistants next Friday.`,
     whyItMatters: 'Doctor flow improves when the practice manages transitions as seriously as appointments.',
-    tags: ['diagnostic', 'doctor flow', 'hygiene exams', 'schedule template']
+    tags: ['diagnostic', 'doctor flow', 'hygiene exams', 'schedule template'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-014',
@@ -327,7 +388,11 @@ const coachScenarios = [
   - Train front desk on the four triage questions.
   - Track planned production displaced by emergency visits.`,
     whyItMatters: 'Emergency access should be reliable without letting emergencies run the whole practice.',
-    tags: ['progressive', 'emergency scheduling', 'triage', 'production stability']
+    tags: ['progressive', 'emergency scheduling', 'triage', 'production stability'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-015',
@@ -354,7 +419,12 @@ const coachScenarios = [
   - Build the risk list for next Monday today.
   - Fill two backup candidates per hygiene column.`,
     whyItMatters: 'No-show control gets better when the team stops treating every appointment as equally likely to keep.',
-    tags: ['diagnostic', 'no-shows', 'hygiene schedule', 'confirmation']
+    tags: ['diagnostic', 'no-shows', 'hygiene schedule', 'confirmation'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-016',
@@ -376,7 +446,12 @@ const coachScenarios = [
   - Score appointment offer within 90 seconds.
   - Pause budget increase until kept rate improves.`,
     whyItMatters: 'Growth that does not convert into kept, profitable visits is just expensive noise.',
-    tags: ['diagnostic', 'new patients', 'call conversion', 'marketing ROI', 'owner-level']
+    tags: ['diagnostic', 'new patients', 'call conversion', 'marketing ROI', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-017',
@@ -400,7 +475,12 @@ const coachScenarios = [
   - Build 3 message tracks.
   - Fill next week's six hygiene openings before adding ad budget.`,
     whyItMatters: 'Owner-level growth means choosing the highest-return demand source, not automatically buying more leads.',
-    tags: ['decision', 'recall reactivation', 'ad spend', 'growth strategy', 'owner-level']
+    tags: ['decision', 'recall reactivation', 'ad spend', 'growth strategy', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-018',
@@ -425,7 +505,12 @@ const coachScenarios = [
   - Recode the last 20 consults by objection.
   - Stop using thinking about it as a category.`,
     whyItMatters: 'High-value consults need coached follow-up, not generic reminder messages.',
-    tags: ['progressive', 'implant consult', 'lead nurturing', 'case conversion']
+    tags: ['progressive', 'implant consult', 'lead nurturing', 'case conversion'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-019',
@@ -447,7 +532,12 @@ const coachScenarios = [
   - Require member vs non-member comparison before checkout.
   - Track offer rate and enrollment rate separately.`,
     whyItMatters: 'Membership growth depends on making the option visible before the patient feels surprised by fees.',
-    tags: ['diagnostic', 'membership plan', 'uninsured patients', 'growth']
+    tags: ['diagnostic', 'membership plan', 'uninsured patients', 'growth'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-020',
@@ -472,7 +562,12 @@ const coachScenarios = [
   - Launch a 30-day referral ask.
   - Compare results to the last whitening campaign before repeating discounts.`,
     whyItMatters: 'Owner-level marketing protects brand and margin while still creating demand.',
-    tags: ['owner-level', 'referrals', 'marketing strategy', 'new patients']
+    tags: ['owner-level', 'referrals', 'marketing strategy', 'new patients'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-021',
@@ -499,7 +594,11 @@ const coachScenarios = [
   - Create one laminated setup map per procedure.
   - Sign off competencies, not days employed.`,
     whyItMatters: 'Training gets faster when standards are visible and measurable.',
-    tags: ['progressive', 'assistant onboarding', 'turnover', 'training']
+    tags: ['progressive', 'assistant onboarding', 'turnover', 'training'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-022',
@@ -522,7 +621,12 @@ const coachScenarios = [
   - Offer support if there is a schedule barrier.
   - Review punctuality next Friday.`,
     whyItMatters: 'Strong culture is kind enough to be clear and clear enough to be fair.',
-    tags: ['decision', 'coaching script', 'hygiene team', 'accountability']
+    tags: ['decision', 'coaching script', 'hygiene team', 'accountability'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-023',
@@ -545,7 +649,12 @@ const coachScenarios = [
   - Review completion before close.
   - Remove topics that do not require action.`,
     whyItMatters: 'Meetings improve the practice only when they convert concern into assigned work.',
-    tags: ['diagnostic', 'huddle', 'accountability', 'team systems']
+    tags: ['diagnostic', 'huddle', 'accountability', 'team systems'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-024',
@@ -567,7 +676,12 @@ const coachScenarios = [
   - Measure missed calls, checkout time, and patient wait time.
   - Revisit hiring only after role data is clean.`,
     whyItMatters: 'Hiring into unclear work often makes the confusion more expensive.',
-    tags: ['decision', 'front desk', 'role clarity', 'staffing']
+    tags: ['decision', 'front desk', 'role clarity', 'staffing'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-025',
@@ -593,7 +707,12 @@ const coachScenarios = [
   - Fix call answer and checkout flow first.
   - Add demand after operations can catch it.`,
     whyItMatters: 'Growth is healthier when the team can deliver the experience being marketed.',
-    tags: ['owner-level', 'team capacity', 'growth readiness', 'operations']
+    tags: ['owner-level', 'team capacity', 'growth readiness', 'operations'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-026',
@@ -615,7 +734,12 @@ const coachScenarios = [
   - Review weekly dollars, not just percentages.
   - Expect improvement in 45-60 days, not instantly.`,
     whyItMatters: 'Profitability work improves when the owner sees operational causes behind financial ratios.',
-    tags: ['diagnostic', 'overhead', 'profitability', 'owner-level']
+    tags: ['diagnostic', 'overhead', 'profitability', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-027',
@@ -639,7 +763,12 @@ const coachScenarios = [
   - Review claims over 60 by payer.
   - Do not increase provider days until collection gap is explained.`,
     whyItMatters: 'Production growth that does not convert to cash can hide payer drag, billing delay, or discount leakage.',
-    tags: ['progressive', 'production vs collections', 'profitability', 'cash flow']
+    tags: ['progressive', 'production vs collections', 'profitability', 'cash flow'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-028',
@@ -664,7 +793,12 @@ const coachScenarios = [
   - Have CPA review timing.
   - Decide after implementation owner is confirmed.`,
     whyItMatters: 'Equipment should be bought for predictable operating return, not just tax timing or excitement.',
-    tags: ['decision', 'equipment purchase', 'cash flow', 'owner-level']
+    tags: ['decision', 'equipment purchase', 'cash flow', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-029',
@@ -687,7 +821,12 @@ const coachScenarios = [
   - Compare allowed fee to break-even.
   - Build renegotiation packet for the top 2 plans.`,
     whyItMatters: 'Profit improves faster when fee strategy follows the codes causing the largest actual dollar loss.',
-    tags: ['diagnostic', 'CDT analysis', 'write-offs', 'profitability']
+    tags: ['diagnostic', 'CDT analysis', 'write-offs', 'profitability'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-030',
@@ -711,7 +850,12 @@ const coachScenarios = [
   - Review monthly on the 10th, not at emotional month-end.
   - Tie bonus distributions to collected cash, not gross production.`,
     whyItMatters: 'Owner pay becomes calmer when it is governed by cash rules instead of hope and timing luck.',
-    tags: ['owner-level', 'distributions', 'cash reserve', 'profitability']
+    tags: ['owner-level', 'distributions', 'cash reserve', 'profitability'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-031',
@@ -733,7 +877,12 @@ const coachScenarios = [
   3. Stop accepting new patients from this plan if fees do not improve by deadline.
   4. Prepare patient transition messaging now.`,
     whyItMatters: 'PPO strategy should be decisive without being reckless.',
-    tags: ['decision', 'PPO', 'renegotiation', 'owner-level']
+    tags: ['decision', 'PPO', 'renegotiation', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-032',
@@ -757,7 +906,12 @@ const coachScenarios = [
   - Request fee schedules for each hidden network.
   - Decide whether removal is allowed by contract.`,
     whyItMatters: 'You cannot manage PPO drag if you cannot identify who is pricing the claim.',
-    tags: ['diagnostic', 'leased network', 'PPO', 'EOB audit']
+    tags: ['diagnostic', 'leased network', 'PPO', 'EOB audit'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-033',
@@ -783,7 +937,12 @@ const coachScenarios = [
   - Train phones before mailing.
   - Prepare estimate examples for top procedures.`,
     whyItMatters: 'A PPO exit can improve margin only if the practice preserves patient confidence during the transition.',
-    tags: ['progressive', 'PPO exit', 'patient retention', 'communication']
+    tags: ['progressive', 'PPO exit', 'patient retention', 'communication'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-034',
@@ -808,7 +967,12 @@ const coachScenarios = [
   - Train phone team to capture plan before promising participation.
   - Review payer mix every 2 weeks.`,
     whyItMatters: 'Growth strategy has to measure profitability, not just patient count.',
-    tags: ['owner-level', 'new patient mix', 'PPO drag', 'marketing ROI']
+    tags: ['owner-level', 'new patient mix', 'PPO drag', 'marketing ROI'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-035',
@@ -833,7 +997,12 @@ const coachScenarios = [
   - Compare all PPO hygiene fees to threshold.
   - Bring the bottom two plans to the owner meeting.`,
     whyItMatters: 'A full hygiene schedule can still lose strategic value if plans underpay the maintenance model.',
-    tags: ['decision', 'PPO hygiene', 'minimum fee', 'D4910']
+    tags: ['decision', 'PPO hygiene', 'minimum fee', 'D4910'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-036',
@@ -858,7 +1027,11 @@ const coachScenarios = [
   - Review autocomplete and attachment workflow.
   - Train team on double-check rule before sending estimates.`,
     whyItMatters: 'Compliance response is strongest when the practice contains, documents, and improves the process quickly.',
-    tags: ['progressive', 'HIPAA', 'wrong recipient', 'incident response']
+    tags: ['progressive', 'HIPAA', 'wrong recipient', 'incident response'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-037',
@@ -881,7 +1054,12 @@ const coachScenarios = [
 - What to do next:
   - Do not sync patient data until BAA and safeguards are reviewed.`,
     whyItMatters: 'Reminder tools can still handle PHI when they touch identifiable appointment data.',
-    tags: ['decision', 'BAA', 'vendor review', 'HIPAA']
+    tags: ['decision', 'BAA', 'vendor review', 'HIPAA'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-038',
@@ -906,7 +1084,11 @@ const coachScenarios = [
   - Review misses privately with each provider.
   - Add template prompts by Friday.`,
     whyItMatters: 'Consent quality matters most when treatment is urgent and memory later gets fuzzy.',
-    tags: ['diagnostic', 'informed consent', 'extractions', 'documentation']
+    tags: ['diagnostic', 'informed consent', 'extractions', 'documentation'],
+    roles: [
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-039',
@@ -930,7 +1112,12 @@ const coachScenarios = [
   - Write a texting policy.
   - Train front desk on privacy phrase: For privacy, I do not want to put those details in a text. Can I call you?`,
     whyItMatters: 'A simple texting boundary protects privacy without making the team afraid to communicate.',
-    tags: ['decision', 'texting', 'PHI', 'patient communication']
+    tags: ['decision', 'texting', 'PHI', 'patient communication'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-040',
@@ -955,7 +1142,12 @@ const coachScenarios = [
 - What to do next:
   - Delay new tool sync until access and BAA list are clean.`,
     whyItMatters: 'Technology creates leverage, but unmanaged access creates preventable compliance exposure.',
-    tags: ['owner-level', 'compliance strategy', 'software', 'BAA']
+    tags: ['owner-level', 'compliance strategy', 'software', 'BAA'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-041',
@@ -981,7 +1173,11 @@ const coachScenarios = [
   - Ask CPA how to treat mixed-purpose travel.
   - Write one note after the course summarizing business takeaways for the practice.`,
     whyItMatters: 'Owner expenses are easier to defend and classify when documentation is built before year-end cleanup.',
-    tags: ['progressive', 'CE travel', 'tax documentation', 'owner-level']
+    tags: ['progressive', 'CE travel', 'tax documentation', 'owner-level'],
+    roles: [
+      "owner",
+      "manager"
+    ]
   },
   {
     id: 'scn-042',
@@ -1005,7 +1201,12 @@ const coachScenarios = [
   - Batch doctor exams.
   - Recalculate room ROI after 60 days.`,
     whyItMatters: 'Expansion decisions should prove demand and flow before committing construction dollars.',
-    tags: ['decision', 'hygiene expansion', 'capacity planning', 'owner-level']
+    tags: ['decision', 'hygiene expansion', 'capacity planning', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-043',
@@ -1029,7 +1230,12 @@ const coachScenarios = [
   - Have attorney review final terms.
   - Put reporting cadence in writing.`,
     whyItMatters: 'Compensation design shapes behavior, trust, and cash flow from the first pay period.',
-    tags: ['owner-level', 'associate compensation', 'cash flow', 'decision']
+    tags: ['owner-level', 'associate compensation', 'cash flow', 'decision'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-044',
@@ -1054,7 +1260,12 @@ const coachScenarios = [
   - Train team on explanation language.
   - Monitor acceptance and complaints for 60 days.`,
     whyItMatters: 'Fee strategy works best when it connects pricing, payer reality, and patient communication.',
-    tags: ['diagnostic', 'fee update', 'UCR', 'owner-level']
+    tags: ['diagnostic', 'fee update', 'UCR', 'owner-level'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   },
   {
     id: 'scn-045',
@@ -1078,8 +1289,11 @@ const coachScenarios = [
   - Schedule debt review after next collection cycle.
   - Avoid making the decision from today's bank balance alone.`,
     whyItMatters: 'The best financial decision is not always the one that reduces debt fastest; sometimes it is the one that protects operating control.',
-    tags: ['owner-level', 'debt', 'cash reserve', 'decision']
+    tags: ['owner-level', 'debt', 'cash reserve', 'decision'],
+    roles: [
+      "owner",
+      "manager",
+      "frontdesk"
+    ]
   }
 ];
-
-export default coachScenarios;

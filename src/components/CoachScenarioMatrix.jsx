@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import coachScenarios from "../data/coachScenarios";
+import { useEffect, useMemo, useState } from "react";
+import { scenarios } from "../data/scenarios";
 
 const pageStyle = {
   maxWidth: "1120px",
@@ -54,9 +54,19 @@ function groupScenariosByCategory(scenarios) {
 }
 
 export default function CoachScenarioMatrix({ selectedRole = null }) {
+  const filteredScenarios = useMemo(() => {
+    if (!selectedRole) {
+      return scenarios;
+    }
+
+    return scenarios.filter((scenario) =>
+      scenario.roles?.includes(selectedRole),
+    );
+  }, [selectedRole]);
+
   const scenariosByCategory = useMemo(
-    () => groupScenariosByCategory(coachScenarios),
-    [],
+    () => groupScenariosByCategory(filteredScenarios),
+    [filteredScenarios],
   );
   const categories = useMemo(
     () => Object.keys(scenariosByCategory),
@@ -64,7 +74,10 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
   );
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0] || "");
-  const selectedScenarios = scenariosByCategory[selectedCategory] || [];
+  const activeCategory = categories.includes(selectedCategory)
+    ? selectedCategory
+    : categories[0] || "";
+  const selectedScenarios = scenariosByCategory[activeCategory] || [];
   const [selectedScenarioId, setSelectedScenarioId] = useState(
     selectedScenarios[0]?.id || "",
   );
@@ -73,6 +86,21 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
     selectedScenarios[0];
   const selectedRoleLabel = selectedRole ? roleLabels[selectedRole] : "";
+
+  useEffect(() => {
+    if (activeCategory !== selectedCategory) {
+      setSelectedCategory(activeCategory);
+      setSelectedScenarioId(selectedScenarios[0]?.id || "");
+      return;
+    }
+
+    if (
+      selectedScenarios.length &&
+      !selectedScenarios.some((scenario) => scenario.id === selectedScenarioId)
+    ) {
+      setSelectedScenarioId(selectedScenarios[0].id);
+    }
+  }, [activeCategory, selectedCategory, selectedScenarioId, selectedScenarios]);
 
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
@@ -84,7 +112,11 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
     return (
       <main style={pageStyle}>
         <h1>Coach Scenario Matrix</h1>
-        <p>No coach scenarios are available yet.</p>
+        <p>
+          {selectedRoleLabel
+            ? "No examples found for this role yet."
+            : "No coach scenarios are available yet."}
+        </p>
       </main>
     );
   }
@@ -146,7 +178,7 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
       </section>
 
       <section style={layoutStyle}>
-        <aside style={panelStyle} aria-label={`${selectedCategory} scenarios`}>
+        <aside style={panelStyle} aria-label={`${activeCategory} scenarios`}>
           <h2
             style={{
               margin: 0,
@@ -155,7 +187,7 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
               borderBottom: "1px solid #edf2f7",
             }}
           >
-            {selectedCategory}
+            {activeCategory}
           </h2>
           <div style={{ display: "grid", gap: "1px", background: "#edf2f7" }}>
             {selectedScenarios.map((scenario) => {
