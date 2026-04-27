@@ -36,6 +36,12 @@ const buttonResetStyle = {
   cursor: "pointer",
 };
 
+const roleLabels = {
+  owner: "Dentist Owner",
+  manager: "Office Manager",
+  frontdesk: "Front Desk / Treatment Coordinator",
+};
+
 function groupScenariosByCategory(scenarios) {
   return scenarios.reduce((groups, scenario) => {
     const category = scenario.category || "Uncategorized";
@@ -47,7 +53,7 @@ function groupScenariosByCategory(scenarios) {
   }, {});
 }
 
-export default function CoachScenarioMatrix() {
+export default function CoachScenarioMatrix({ selectedRole = null }) {
   const scenariosByCategory = useMemo(
     () => groupScenariosByCategory(coachScenarios),
     [],
@@ -66,6 +72,7 @@ export default function CoachScenarioMatrix() {
   const selectedScenario =
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
     selectedScenarios[0];
+  const selectedRoleLabel = selectedRole ? roleLabels[selectedRole] : "";
 
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
@@ -95,6 +102,21 @@ export default function CoachScenarioMatrix() {
           Choose a practice category, then select a scenario to preview how a
           coach can turn team context into a practical next step.
         </p>
+        {selectedRoleLabel && (
+          <p
+            style={{
+              display: "inline-flex",
+              margin: "12px 0 0",
+              borderRadius: "999px",
+              background: "#e0ecff",
+              color: "#1f5eff",
+              padding: "8px 12px",
+              fontWeight: 800,
+            }}
+          >
+            Showing examples for: {selectedRoleLabel}
+          </p>
+        )}
       </section>
 
       <section aria-label="Scenario categories" style={filterWrapStyle}>
