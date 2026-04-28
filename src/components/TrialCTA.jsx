@@ -18,7 +18,7 @@ export default function TrialCTA({
       <div className="trial-cta__inner">
         <div>
           <h2 id="trial-cta-title">
-            Try one workflow in your practice this week.
+            Pick one problem. Get a clear next step your team can use immediately.
           </h2>
           <p>
             Start a 15-day trial and see what your team can create with Smarter

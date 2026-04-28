@@ -216,11 +216,8 @@ export default function CoachScenarioMatrix({
   return (
     <main style={pageStyle}>
       <section>
-        <p style={{ margin: "0 0 8px", color: "#52606d", fontWeight: 700 }}>
-          SmarterPractice coach scenarios
-        </p>
         <h1 style={{ margin: 0, fontSize: "clamp(2rem, 6vw, 3.5rem)" }}>
-          See how practices solve real problems with Smarter Practice AI
+          See how your practice can handle real problems with Smarter Practice AI
         </h1>
         <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
           Structured recommendations based on your numbers, workflows, and
