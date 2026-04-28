@@ -60,30 +60,13 @@ function groupScenariosByCategory(scenarios) {
   }, {});
 }
 
-function getScenarioDifferentiators(scenario) {
-  const bullets = [
-    "Uses the actual practice context instead of a generic prompt.",
-  ];
-  const tags = scenario.tags || [];
-  const content = `${scenario.category} ${scenario.scenarioTitle} ${tags.join(
-    " ",
-  )}`;
-
-  if (/decision|owner-level|profit|PPO|cash|capacity|schedule/i.test(content)) {
-    bullets.push("Frames the tradeoffs, constraints, and decision path.");
-  } else if (/diagnostic|workflow|A\/R|billing|documentation/i.test(content)) {
-    bullets.push("Turns messy operations into a structured workflow.");
-  } else {
-    bullets.push("Organizes the next step around the team's real role.");
-  }
-
-  if (/patient|communication|case acceptance|scheduling|billing/i.test(content)) {
-    bullets.push("Keeps patient trust, timing, and follow-up in view.");
-  } else {
-    bullets.push("Connects the answer to practice goals and accountability.");
-  }
-
-  return bullets;
+function getRecommendedNextStep(scenario) {
+  return scenario.outputPreview
+    .replace(
+      /^(Coach response|Diagnostic read|Decision|Decision framework|Coaching plan|Recovery plan|Operating rule|Patient call plan|Pre-D packet|Immediate response|Documentation plan|Comp model recommendation|Owner-level recommendation|Owner-level read|Diagnostic plan|Progressive exit plan):\s*/i,
+      "",
+    )
+    .trim();
 }
 
 export default function CoachScenarioMatrix({
@@ -121,9 +104,9 @@ export default function CoachScenarioMatrix({
   const selectedScenario =
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
     selectedScenarios[0];
-  const selectedScenarioDifferentiators = selectedScenario
-    ? getScenarioDifferentiators(selectedScenario)
-    : [];
+  const recommendedNextStep = selectedScenario
+    ? getRecommendedNextStep(selectedScenario)
+    : "";
   const selectedChallengeLabel = selectedChallenge
     ? challengeLabels[selectedChallenge]
     : "";
@@ -186,11 +169,11 @@ export default function CoachScenarioMatrix({
           SmarterPractice coach scenarios
         </p>
         <h1 style={{ margin: 0, fontSize: "clamp(2rem, 6vw, 3.5rem)" }}>
-          Coach Scenario Matrix
+          See how practices solve real problems with Smarter Practice AI
         </h1>
         <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
-          Choose a practice category, then select a scenario to preview how a
-          coach can turn team context into a practical next step.
+          Structured recommendations based on your numbers, workflows, and
+          constraints.
         </p>
         {selectedChallengeLabel && (
           <p
@@ -291,42 +274,15 @@ export default function CoachScenarioMatrix({
                 </dd>
               </div>
               <div>
-                <dt style={{ fontWeight: 800 }}>Team input</dt>
+                <dt style={{ fontWeight: 800 }}>Practice context</dt>
                 <dd style={{ margin: "6px 0 0", lineHeight: 1.6 }}>
                   {selectedScenario.teamInput}
                 </dd>
               </div>
               <div>
-                <dt style={{ fontWeight: 800 }}>Output preview</dt>
+                <dt style={{ fontWeight: 800 }}>Recommended next step</dt>
                 <dd style={{ margin: "6px 0 0", lineHeight: 1.6 }}>
-                  {selectedScenario.outputPreview}
-                </dd>
-              </div>
-              <div
-                style={{
-                  borderRadius: "8px",
-                  background: "#f8fafc",
-                  padding: "14px 16px",
-                }}
-              >
-                <dt style={{ color: "#334e68", fontWeight: 800 }}>
-                  How this is different from ChatGPT
-                </dt>
-                <dd style={{ margin: "8px 0 0" }}>
-                  <ul
-                    style={{
-                      display: "grid",
-                      gap: "6px",
-                      margin: 0,
-                      paddingLeft: "20px",
-                      color: "#52606d",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {selectedScenarioDifferentiators.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                  {recommendedNextStep}
                 </dd>
               </div>
               <div>
