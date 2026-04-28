@@ -69,6 +69,57 @@ function getRecommendedNextStep(scenario) {
     .trim();
 }
 
+function getRecommendationSections(scenario) {
+  const lines = getRecommendedNextStep(scenario)
+    .split("\n")
+    .map((line) => line.trimEnd())
+    .filter(Boolean);
+  const sections = [{ label: "Direction", lines: [] }];
+
+  const sectionForLine = (line) => {
+    const normalized = line.replace(/^-\s*/, "").trim();
+
+    if (/^(call script|suggested language|appeal narrative|patient letter|payer call question|safe text examples):/i.test(normalized)) {
+      return "Script";
+    }
+
+    if (/^(if patient|if the patient|if allowed|if denied|if not|if .*hesitates)/i.test(normalized)) {
+      return "If patient hesitates";
+    }
+
+    if (/^(what to do next|next steps|measure|dashboard|test metrics|30-day test|new work order|call order|attach):/i.test(normalized)) {
+      return "Next steps";
+    }
+
+    return null;
+  };
+
+  const getSection = (label) => {
+    let section = sections.find((item) => item.label === label);
+    if (!section) {
+      section = { label, lines: [] };
+      sections.push(section);
+    }
+    return section;
+  };
+
+  lines.forEach((line) => {
+    const nextLabel = sectionForLine(line);
+    if (nextLabel) {
+      const cleanedLine = line.replace(/^-\s*/, "").replace(/^[^:]+:\s*/, "");
+      if (cleanedLine) {
+        getSection(nextLabel).lines.push(cleanedLine);
+      }
+      return;
+    }
+
+    const section = sections[sections.length - 1];
+    section.lines.push(line);
+  });
+
+  return sections.filter((section) => section.lines.length);
+}
+
 export default function CoachScenarioMatrix({
   selectedChallenge = null,
   selectedQuickWin = null,
@@ -104,9 +155,9 @@ export default function CoachScenarioMatrix({
   const selectedScenario =
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
     selectedScenarios[0];
-  const recommendedNextStep = selectedScenario
-    ? getRecommendedNextStep(selectedScenario)
-    : "";
+  const recommendationSections = selectedScenario
+    ? getRecommendationSections(selectedScenario)
+    : [];
   const selectedChallengeLabel = selectedChallenge
     ? challengeLabels[selectedChallenge]
     : "";
@@ -174,6 +225,10 @@ export default function CoachScenarioMatrix({
         <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
           Structured recommendations based on your numbers, workflows, and
           constraints.
+        </p>
+        <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
+          These are the same types of decisions your practice is making every
+          week.
         </p>
         {selectedChallengeLabel && (
           <p
@@ -281,8 +336,40 @@ export default function CoachScenarioMatrix({
               </div>
               <div>
                 <dt style={{ fontWeight: 800 }}>Recommended next step</dt>
-                <dd style={{ margin: "6px 0 0", lineHeight: 1.6 }}>
-                  {recommendedNextStep}
+                <dd
+                  style={{
+                    display: "grid",
+                    gap: "12px",
+                    margin: "8px 0 0",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {recommendationSections.map((section) => (
+                    <div key={section.label}>
+                      <p
+                        style={{
+                          margin: "0 0 4px",
+                          color: "#334e68",
+                          fontWeight: 800,
+                        }}
+                      >
+                        {section.label}:
+                      </p>
+                      <div
+                        style={{
+                          display: "grid",
+                          gap: "4px",
+                          whiteSpace: "pre-wrap",
+                        }}
+                      >
+                        {section.lines.map((line) => (
+                          <p key={line} style={{ margin: 0 }}>
+                            {line}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </dd>
               </div>
               <div>
