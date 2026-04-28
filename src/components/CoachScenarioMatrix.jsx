@@ -1,36 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { scenarios } from "../data/scenarios";
 
-const pageStyle = {
-  maxWidth: "1120px",
-  margin: "0 auto",
-  padding: "32px 20px 48px",
-  color: "#1f2933",
-  fontFamily:
-    'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-};
-
-const filterWrapStyle = {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "10px",
-  margin: "24px 0",
-};
-
-const layoutStyle = {
-  display: "grid",
-  gridTemplateColumns: "minmax(240px, 320px) minmax(0, 1fr)",
-  gap: "24px",
-  alignItems: "start",
-};
-
-const panelStyle = {
-  border: "1px solid #d9e2ec",
-  borderRadius: "8px",
-  background: "#ffffff",
-  boxShadow: "0 8px 24px rgba(15, 23, 42, 0.06)",
-};
-
 const buttonResetStyle = {
   font: "inherit",
   cursor: "pointer",
@@ -170,9 +140,9 @@ export default function CoachScenarioMatrix({
 
   if (!categories.length) {
     return (
-      <main style={pageStyle}>
-        <h1>Coach Scenario Matrix</h1>
-        <p>
+      <main className="scenario-matrix">
+        <h2 className="scenario-matrix__title">Coach Scenario Matrix</h2>
+        <p className="scenario-matrix__intro-text">
           {selectedChallengeLabel
             ? "No examples found for this challenge yet."
             : "No coach scenarios are available yet."}
@@ -182,41 +152,34 @@ export default function CoachScenarioMatrix({
   }
 
   return (
-    <main style={pageStyle}>
-      <section>
-        <h1 style={{ margin: 0, fontSize: "clamp(2rem, 6vw, 3.5rem)" }}>
+    <main className="scenario-matrix">
+      <section className="scenario-matrix__intro">
+        <h2 className="scenario-matrix__title">
           See how your practice can handle real problems with Smarter Practice AI
-        </h1>
-        <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
+        </h2>
+        <p className="scenario-matrix__intro-text">
           Structured recommendations based on your numbers, workflows, and
           constraints.
         </p>
-        <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
+        <p className="scenario-matrix__intro-text">
           These are the same types of decisions your practice is making every
           week.
         </p>
-        <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
+        <p className="scenario-matrix__intro-text">
           Instead of searching for answers, get a clear next step for your
           specific situation.
         </p>
         {selectedChallengeLabel && (
-          <p
-            style={{
-              display: "inline-flex",
-              margin: "12px 0 0",
-              borderRadius: "999px",
-              background: "#e0ecff",
-              color: "#1f5eff",
-              padding: "8px 12px",
-              fontWeight: 800,
-            }}
-          >
+          <p className="scenario-matrix__challenge-label">
             Examples focused on: {selectedChallengeLabel}
           </p>
         )}
       </section>
 
-      <section aria-label="Scenario categories" style={filterWrapStyle}>
+      <section
+        aria-label="Scenario categories"
+        className="scenario-matrix__categories"
+      >
         {categories.map((category) => {
           const isSelected = category === activeCategory;
 
@@ -226,15 +189,12 @@ export default function CoachScenarioMatrix({
               type="button"
               onClick={() => handleCategorySelect(category)}
               aria-pressed={isSelected}
+              className="scenario-matrix__category-button"
               style={{
                 ...buttonResetStyle,
                 border: isSelected ? "1px solid #1f5eff" : "1px solid #bcccdc",
-                borderRadius: "999px",
-                padding: "8px 12px",
                 background: isSelected ? "#1f5eff" : "#ffffff",
                 color: isSelected ? "#ffffff" : "#243b53",
-                fontSize: "0.92rem",
-                fontWeight: 700,
               }}
             >
               {category}
@@ -243,18 +203,14 @@ export default function CoachScenarioMatrix({
         })}
       </section>
 
-      <section style={layoutStyle}>
-        <aside style={panelStyle} aria-label={`${activeCategory} scenarios`}>
-          <h2
-            style={{
-              margin: 0,
-              padding: "18px 18px 12px",
-              fontSize: "1rem",
-              borderBottom: "1px solid #edf2f7",
-            }}
-          >
+      <section className="scenario-matrix__layout">
+        <aside
+          className="scenario-matrix__scenario-list"
+          aria-label={`${activeCategory} scenarios`}
+        >
+          <h3 className="scenario-matrix__list-title">
             {activeCategory}
-          </h2>
+          </h3>
           <div style={{ display: "grid", gap: "1px", background: "#edf2f7" }}>
             {selectedScenarios.map((scenario) => {
               const isSelected = scenario.id === selectedScenario?.id;
@@ -267,13 +223,10 @@ export default function CoachScenarioMatrix({
                   style={{
                     ...buttonResetStyle,
                     border: 0,
-                    padding: "14px 16px",
-                    textAlign: "left",
                     background: isSelected ? "#e0ecff" : "#ffffff",
-                    color: "#243b53",
                     fontWeight: isSelected ? 800 : 600,
-                    lineHeight: 1.35,
                   }}
+                  className="scenario-matrix__scenario-button"
                 >
                   {scenario.scenarioTitle}
                 </button>
@@ -283,35 +236,36 @@ export default function CoachScenarioMatrix({
         </aside>
 
         {selectedScenario && (
-          <article style={{ ...panelStyle, padding: "24px" }}>
-            <p style={{ margin: "0 0 8px", color: "#52606d", fontWeight: 700 }}>
+          <article className="scenario-matrix__detail-card">
+            <p className="scenario-matrix__coach">
               {selectedScenario.coach}
             </p>
-            <h2 style={{ margin: "0 0 20px", fontSize: "1.75rem" }}>
+            <h3 className="scenario-matrix__scenario-title">
               {selectedScenario.scenarioTitle}
-            </h2>
+            </h3>
 
             <dl style={{ display: "grid", gap: "18px", margin: 0 }}>
               <div>
-                <dt style={{ fontWeight: 800 }}>Situation</dt>
-                <dd style={{ margin: "6px 0 0", lineHeight: 1.6 }}>
+                <dt className="scenario-matrix__label">Situation</dt>
+                <dd className="scenario-matrix__body">
                   {selectedScenario.situation}
                 </dd>
               </div>
               <div>
-                <dt style={{ fontWeight: 800 }}>Practice context</dt>
-                <dd style={{ margin: "6px 0 0", lineHeight: 1.6 }}>
+                <dt className="scenario-matrix__label">Practice context</dt>
+                <dd className="scenario-matrix__body">
                   {selectedScenario.teamInput}
                 </dd>
               </div>
               <div>
-                <dt style={{ fontWeight: 800 }}>Recommended next step</dt>
+                <dt className="scenario-matrix__label">
+                  Recommended next step
+                </dt>
                 <dd
+                  className="scenario-matrix__recommendation"
                   style={{
                     display: "grid",
                     gap: "14px",
-                    margin: "8px 0 0",
-                    lineHeight: 1.6,
                   }}
                 >
                   {recommendationSections.map((section, index) => (
@@ -325,12 +279,7 @@ export default function CoachScenarioMatrix({
                       }}
                     >
                       <p
-                        style={{
-                          margin: "0 0 4px",
-                          color: "#334e68",
-                          fontSize: "0.92rem",
-                          fontWeight: 800,
-                        }}
+                        className="scenario-matrix__recommendation-label"
                       >
                         {section.label}:
                       </p>
@@ -355,19 +304,19 @@ export default function CoachScenarioMatrix({
                 </dd>
               </div>
               <div>
-                <dt style={{ fontWeight: 800 }}>Why it matters</dt>
-                <dd style={{ margin: "6px 0 0", lineHeight: 1.6 }}>
+                <dt className="scenario-matrix__label">Why it matters</dt>
+                <dd className="scenario-matrix__body">
                   {selectedScenario.whyItMatters}
                 </dd>
               </div>
               <div>
-                <dt style={{ fontWeight: 800 }}>Tags</dt>
+                <dt className="scenario-matrix__label">Tags</dt>
                 <dd
+                  className="scenario-matrix__tags"
                   style={{
                     display: "flex",
                     flexWrap: "wrap",
                     gap: "8px",
-                    margin: "8px 0 0",
                   }}
                 >
                   {selectedScenario.tags.map((tag) => (
