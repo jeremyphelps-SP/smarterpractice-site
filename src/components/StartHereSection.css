@@ -18,6 +18,14 @@
   text-align: center;
 }
 
+.start-here__positioning {
+  margin: 0 0 14px;
+  color: #334e68;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
 .start-here__header h2 {
   margin: 0;
   color: #102a43;
@@ -32,6 +40,12 @@
   color: #52606d;
   font-size: 1.08rem;
   line-height: 1.65;
+}
+
+.start-here__header .start-here__training-note {
+  color: #334e68;
+  font-size: 0.98rem;
+  font-weight: 700;
 }
 
 .start-here__cards {

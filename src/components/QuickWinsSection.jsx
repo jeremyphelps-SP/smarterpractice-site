@@ -264,7 +264,9 @@ export default function QuickWinsSection({
     <section className="quick-wins" aria-labelledby="quick-wins-title">
       <div className="quick-wins__inner">
         <div className="quick-wins__header">
-          <h2 id="quick-wins-title">Try this in your practice today</h2>
+          <h2 id="quick-wins-title">
+            Try one of these in your practice today
+          </h2>
           <p>
             These are real, practical ways dental teams are already using
             Smarter Practice AI.

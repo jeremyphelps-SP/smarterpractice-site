@@ -40,6 +40,16 @@ export default function AIImageStudio() {
       <div className="ai-studio__intro">
         <p className="ai-studio__eyebrow">CASE ACCEPTANCE VISUALS</p>
         <div className="ai-studio__heading-group">
+          <p
+            style={{
+              margin: "0 0 10px",
+              color: "#52606d",
+              fontSize: "0.95rem",
+              fontWeight: 800,
+            }}
+          >
+            Another way Smarter Practice AI helps your team:
+          </p>
           <h2 id="ai-studio-title">AI Image Studio for Case Acceptance</h2>
           <p className="ai-studio__subheadline">
             Turn authorized patient photos into personalized treatment

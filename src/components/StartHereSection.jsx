@@ -38,10 +38,17 @@ export default function StartHereSection({ onSelectChallenge = () => {} }) {
     <section className="start-here" aria-labelledby="start-here-title">
       <div className="start-here__inner">
         <div className="start-here__header">
+          <p className="start-here__positioning">
+            Smarter Practice AI helps your team make better decisions,
+            communicate more clearly, and run a more profitable practice.
+          </p>
           <h2 id="start-here-title">What do you want to improve first?</h2>
           <p>
             Choose a common practice challenge and see practical ways Smarter
-            Practice AI can help your team use ChatGPT more effectively.
+            Practice AI helps your team handle real problems.
+          </p>
+          <p className="start-here__training-note">
+            Capture your practice's knowledge. Don't let it walk out the door.
           </p>
         </div>
 
