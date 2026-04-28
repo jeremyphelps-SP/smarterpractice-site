@@ -36,7 +36,7 @@
 
 .start-here__cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -44,7 +44,7 @@
   display: block;
   width: 100%;
   min-height: 174px;
-  padding: 22px;
+  padding: 20px;
   border: 1px solid #d9e2ec;
   border-radius: 8px;
   background: #ffffff;
@@ -86,16 +86,30 @@
   line-height: 1.55;
 }
 
-@media (max-width: 860px) {
-  .start-here {
-    padding: 52px 18px 24px;
-  }
-
+@media (max-width: 1120px) {
   .start-here__cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .start-here__card {
     min-height: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .start-here {
+    padding: 52px 18px 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .start-here__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .start-here__cards {
+    grid-template-columns: 1fr;
   }
 }

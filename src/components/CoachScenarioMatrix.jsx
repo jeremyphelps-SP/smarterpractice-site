@@ -36,10 +36,12 @@ const buttonResetStyle = {
   cursor: "pointer",
 };
 
-const roleLabels = {
-  owner: "Dentist Owner",
-  manager: "Office Manager",
-  frontdesk: "Front Desk / Treatment Coordinator",
+const challengeLabels = {
+  "owner-bottleneck": "Reduce owner interruptions",
+  "patient-communication": "Improve patient communication",
+  "insurance-billing": "Clean up insurance and billing workflows",
+  "team-training": "Train the team faster",
+  "growth-case-acceptance": "Grow production and case acceptance",
 };
 
 function groupScenariosByCategory(scenarios) {
@@ -53,16 +55,16 @@ function groupScenariosByCategory(scenarios) {
   }, {});
 }
 
-export default function CoachScenarioMatrix({ selectedRole = null }) {
+export default function CoachScenarioMatrix({ selectedChallenge = null }) {
   const filteredScenarios = useMemo(() => {
-    if (!selectedRole) {
+    if (!selectedChallenge) {
       return scenarios;
     }
 
     return scenarios.filter((scenario) =>
-      scenario.roles?.includes(selectedRole),
+      scenario.challenges?.includes(selectedChallenge),
     );
-  }, [selectedRole]);
+  }, [selectedChallenge]);
 
   const scenariosByCategory = useMemo(
     () => groupScenariosByCategory(filteredScenarios),
@@ -85,7 +87,9 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
   const selectedScenario =
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
     selectedScenarios[0];
-  const selectedRoleLabel = selectedRole ? roleLabels[selectedRole] : "";
+  const selectedChallengeLabel = selectedChallenge
+    ? challengeLabels[selectedChallenge]
+    : "";
 
   useEffect(() => {
     if (activeCategory !== selectedCategory) {
@@ -113,8 +117,8 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
       <main style={pageStyle}>
         <h1>Coach Scenario Matrix</h1>
         <p>
-          {selectedRoleLabel
-            ? "No examples found for this role yet."
+          {selectedChallengeLabel
+            ? "No examples found for this challenge yet."
             : "No coach scenarios are available yet."}
         </p>
       </main>
@@ -134,7 +138,7 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
           Choose a practice category, then select a scenario to preview how a
           coach can turn team context into a practical next step.
         </p>
-        {selectedRoleLabel && (
+        {selectedChallengeLabel && (
           <p
             style={{
               display: "inline-flex",
@@ -146,14 +150,14 @@ export default function CoachScenarioMatrix({ selectedRole = null }) {
               fontWeight: 800,
             }}
           >
-            Showing examples for: {selectedRoleLabel}
+            Showing examples for: {selectedChallengeLabel}
           </p>
         )}
       </section>
 
       <section aria-label="Scenario categories" style={filterWrapStyle}>
         {categories.map((category) => {
-          const isSelected = category === selectedCategory;
+          const isSelected = category === activeCategory;
 
           return (
             <button

@@ -4,12 +4,12 @@ import AIImageStudio from "./components/AIImageStudio";
 import StartHereSection from "./components/StartHereSection";
 
 export default function App() {
-  const [selectedRole, setSelectedRole] = useState(null);
+  const [selectedChallenge, setSelectedChallenge] = useState(null);
 
   return (
     <>
-      <StartHereSection onSelectRole={setSelectedRole} />
-      <CoachScenarioMatrix selectedRole={selectedRole} />
+      <StartHereSection onSelectChallenge={setSelectedChallenge} />
+      <CoachScenarioMatrix selectedChallenge={selectedChallenge} />
       <AIImageStudio />
     </>
   );

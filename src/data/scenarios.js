@@ -23,6 +23,11 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "insurance-billing",
+      "patient-communication",
+      "owner-bottleneck"
     ]
   },
   {
@@ -52,6 +57,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "insurance-billing",
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -79,6 +89,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "insurance-billing",
+      "patient-communication"
     ]
   },
   {
@@ -110,6 +124,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "insurance-billing",
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -141,6 +160,11 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "insurance-billing",
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -168,6 +192,10 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -195,6 +223,10 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -221,6 +253,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -248,6 +284,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance",
+      "insurance-billing"
     ]
   },
   {
@@ -277,6 +318,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -306,6 +351,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -335,6 +384,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -363,6 +416,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance",
+      "team-training"
     ]
   },
   {
@@ -392,6 +450,11 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance",
+      "patient-communication"
     ]
   },
   {
@@ -424,6 +487,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance",
+      "patient-communication"
     ]
   },
   {
@@ -451,6 +519,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance",
+      "owner-bottleneck"
     ]
   },
   {
@@ -480,6 +553,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance",
+      "owner-bottleneck"
     ]
   },
   {
@@ -510,6 +588,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -537,6 +619,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -567,6 +653,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "growth-case-acceptance",
+      "owner-bottleneck"
     ]
   },
   {
@@ -598,6 +689,10 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "team-training"
     ]
   },
   {
@@ -626,6 +721,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "team-training"
     ]
   },
   {
@@ -654,6 +753,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "team-training"
     ]
   },
   {
@@ -681,6 +784,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "team-training"
     ]
   },
   {
@@ -712,6 +819,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "team-training"
     ]
   },
   {
@@ -739,6 +850,9 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck"
     ]
   },
   {
@@ -768,6 +882,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -798,6 +916,9 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck"
     ]
   },
   {
@@ -826,6 +947,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing"
     ]
   },
   {
@@ -855,6 +980,9 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck"
     ]
   },
   {
@@ -882,6 +1010,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing"
     ]
   },
   {
@@ -911,6 +1043,12 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing",
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -942,6 +1080,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing",
+      "patient-communication"
     ]
   },
   {
@@ -972,6 +1115,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -1002,6 +1150,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing"
     ]
   },
   {
@@ -1031,6 +1183,10 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -1059,6 +1215,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -1088,6 +1248,10 @@ export const scenarios = [
     roles: [
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -1117,6 +1281,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "team-training"
     ]
   },
   {
@@ -1147,6 +1315,11 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "patient-communication",
+      "team-training",
+      "owner-bottleneck"
     ]
   },
   {
@@ -1177,6 +1350,10 @@ export const scenarios = [
     roles: [
       "owner",
       "manager"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "team-training"
     ]
   },
   {
@@ -1206,6 +1383,9 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck"
     ]
   },
   {
@@ -1235,6 +1415,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "growth-case-acceptance"
     ]
   },
   {
@@ -1265,6 +1449,10 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck",
+      "insurance-billing"
     ]
   },
   {
@@ -1294,6 +1482,9 @@ export const scenarios = [
       "owner",
       "manager",
       "frontdesk"
+    ],
+    challenges: [
+      "owner-bottleneck"
     ]
   }
 ];

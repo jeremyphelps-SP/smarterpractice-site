@@ -1,48 +1,60 @@
 import "./StartHereSection.css";
 
-const roleOptions = [
+const challengeOptions = [
   {
-    title: "Dentist Owner",
+    title: "Reduce owner interruptions",
     description:
-      "Reduce interruptions, improve decisions, and give your team better first-draft thinking.",
-    roleKey: "owner",
+      "Help your team prepare better drafts, answers, and recommendations before escalating to the doctor.",
+    challengeKey: "owner-bottleneck",
   },
   {
-    title: "Office Manager",
+    title: "Improve patient communication",
     description:
-      "Create SOPs, improve communication, and bring more structure to daily operations.",
-    roleKey: "manager",
+      "Create clearer messages for scheduling, treatment follow-up, payments, insurance questions, and service recovery.",
+    challengeKey: "patient-communication",
   },
   {
-    title: "Front Desk / Treatment Coordinator",
+    title: "Clean up insurance and billing workflows",
     description:
-      "Handle patient communication with more clarity, consistency, and confidence.",
-    roleKey: "frontdesk",
+      "Bring more structure to claims follow-up, payer issues, financial explanations, and A/R workflows.",
+    challengeKey: "insurance-billing",
+  },
+  {
+    title: "Train the team faster",
+    description:
+      "Turn recurring questions, informal knowledge, and daily workflows into SOPs, scripts, and checklists.",
+    challengeKey: "team-training",
+  },
+  {
+    title: "Grow production and case acceptance",
+    description:
+      "Support reactivation, treatment follow-up, case presentation, reviews, referrals, and campaign ideas.",
+    challengeKey: "growth-case-acceptance",
   },
 ];
 
-export default function StartHereSection({ onSelectRole = () => {} }) {
+export default function StartHereSection({ onSelectChallenge = () => {} }) {
   return (
     <section className="start-here" aria-labelledby="start-here-title">
       <div className="start-here__inner">
         <div className="start-here__header">
-          <h2 id="start-here-title">Where should you start?</h2>
+          <h2 id="start-here-title">What do you want to improve first?</h2>
           <p>
-            Choose your role and see practical ways Smarter Practice AI can help
-            your team use ChatGPT more effectively.
+            Choose a common practice challenge and see practical ways Smarter
+            Practice AI can help your team use ChatGPT more effectively.
           </p>
         </div>
 
-        <div className="start-here__cards" aria-label="Choose your role">
-          {roleOptions.map((role) => (
+        <div className="start-here__cards" aria-label="Choose a practice challenge">
+          {challengeOptions.map((challenge) => (
             <button
               className="start-here__card"
-              key={role.roleKey}
+              key={challenge.challengeKey}
               type="button"
-              onClick={() => onSelectRole(role.roleKey)}
+              onClick={() => onSelectChallenge(challenge.challengeKey)}
             >
-              <span>{role.title}</span>
-              <p>{role.description}</p>
+              <span>{challenge.title}</span>
+              <p>{challenge.description}</p>
             </button>
           ))}
         </div>
