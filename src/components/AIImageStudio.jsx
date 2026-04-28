@@ -55,10 +55,6 @@ export default function AIImageStudio() {
             Use real patient context to create visuals that improve case
             acceptance.
           </p>
-          <p className="ai-studio__subheadline">
-            Turn authorized patient photos into personalized treatment
-            presentations in minutes&mdash;not days.
-          </p>
         </div>
         <p className="ai-studio__body">
           Create polished, branded smile makeover concepts, promotional flyers,

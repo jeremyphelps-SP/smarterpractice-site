@@ -303,16 +303,10 @@ export default function QuickWinsSection({
           <h2 id="quick-wins-title">
             Try one of these in your practice today
           </h2>
-          <p>
-            Start with one of these.
-          </p>
-          <p className="quick-wins__differentiator">
-            Not generic prompts - these are built on real practice workflows,
-            data, and decisions.
-          </p>
+          <p>Start with one of these.</p>
           {selectedChallengeLabel && (
             <p className="quick-wins__context">
-              Quick wins for: {selectedChallengeLabel}
+              Focused on: {selectedChallengeLabel}
             </p>
           )}
         </div>
