@@ -27,18 +27,18 @@
 }
 
 .start-here__header h2 {
-  margin: 0;
+  margin: 0 0 12px;
   color: #102a43;
-  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
   font-weight: 650;
-  line-height: 1.05;
-  letter-spacing: 0;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
 .start-here__header p {
   margin: 16px 0 0;
   color: #52606d;
-  font-size: 1.08rem;
+  font-size: 1.03rem;
   line-height: 1.65;
 }
 
@@ -88,9 +88,9 @@
 .start-here__card span {
   display: block;
   color: #102a43;
-  font-size: 1.12rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 .start-here__card p {
