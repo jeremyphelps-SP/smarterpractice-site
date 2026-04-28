@@ -23,6 +23,7 @@ const challengeOptions = [
     title: "Train the team faster",
     description:
       "Turn recurring questions, informal knowledge, and daily workflows into SOPs, scripts, and checklists.",
+    note: "Capture your practice's knowledge. Don't let it walk out the door.",
     challengeKey: "team-training",
   },
   {
@@ -47,9 +48,6 @@ export default function StartHereSection({ onSelectChallenge = () => {} }) {
             Choose a common practice challenge and see practical ways Smarter
             Practice AI helps your team handle real problems.
           </p>
-          <p className="start-here__training-note">
-            Capture your practice's knowledge. Don't let it walk out the door.
-          </p>
         </div>
 
         <div className="start-here__cards" aria-label="Choose a practice challenge">
@@ -62,6 +60,9 @@ export default function StartHereSection({ onSelectChallenge = () => {} }) {
             >
               <span>{challenge.title}</span>
               <p>{challenge.description}</p>
+              {challenge.note && (
+                <p className="start-here__card-note">{challenge.note}</p>
+              )}
             </button>
           ))}
         </div>

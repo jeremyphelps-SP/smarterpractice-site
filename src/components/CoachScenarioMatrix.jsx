@@ -225,9 +225,10 @@ export default function CoachScenarioMatrix({
                 ...buttonResetStyle,
                 border: isSelected ? "1px solid #1f5eff" : "1px solid #bcccdc",
                 borderRadius: "999px",
-                padding: "10px 14px",
+                padding: "8px 12px",
                 background: isSelected ? "#1f5eff" : "#ffffff",
                 color: isSelected ? "#ffffff" : "#243b53",
+                fontSize: "0.92rem",
                 fontWeight: 700,
               }}
             >
