@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
+import DecisionExamplesSection from "./components/DecisionExamplesSection";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
 import TrialCTA from "./components/TrialCTA";
@@ -37,6 +38,7 @@ export default function App() {
         selectedChallenge={selectedChallenge}
         onSelectQuickWin={handleSelectQuickWin}
       />
+      <DecisionExamplesSection />
       <TrialCTA
         selectedChallenge={selectedChallenge}
         selectedQuickWin={selectedQuickWin}
