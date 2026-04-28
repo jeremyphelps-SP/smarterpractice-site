@@ -15,7 +15,6 @@ export default function App() {
   };
 
   const handleSelectQuickWin = (quickWinKey) => {
-    setSelectedChallenge(null);
     setSelectedQuickWin({
       key: quickWinKey,
       selectedAt: Date.now(),
@@ -29,7 +28,10 @@ export default function App() {
   return (
     <>
       <StartHereSection onSelectChallenge={handleSelectChallenge} />
-      <QuickWinsSection onSelectQuickWin={handleSelectQuickWin} />
+      <QuickWinsSection
+        selectedChallenge={selectedChallenge}
+        onSelectQuickWin={handleSelectQuickWin}
+      />
       <div ref={matrixRef}>
         <CoachScenarioMatrix
           selectedChallenge={selectedChallenge}

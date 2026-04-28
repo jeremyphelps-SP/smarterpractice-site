@@ -34,6 +34,17 @@
   line-height: 1.6;
 }
 
+.quick-wins__context {
+  display: inline-flex;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: #e0ecff;
+  color: #1f5eff;
+  padding: 8px 12px;
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
 .quick-wins__cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
