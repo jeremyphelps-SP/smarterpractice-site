@@ -97,33 +97,6 @@
   line-height: 1.55;
 }
 
-.quick-wins__toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 18px auto 0;
-  min-height: 42px;
-  padding: 0 16px;
-  border: 1px solid #bcccdc;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #243b53;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 800;
-}
-
-.quick-wins__toggle:hover,
-.quick-wins__toggle:focus-visible {
-  border-color: #1f5eff;
-  color: #1f5eff;
-}
-
-.quick-wins__toggle:focus-visible {
-  outline: 3px solid rgba(31, 94, 255, 0.24);
-  outline-offset: 3px;
-}
-
 @media (max-width: 860px) {
   .quick-wins {
     padding: 36px 18px 28px;

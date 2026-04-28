@@ -38,7 +38,6 @@ export default function App() {
         selectedChallenge={selectedChallenge}
         onSelectQuickWin={handleSelectQuickWin}
       />
-      <DecisionExamplesSection />
       <TrialCTA
         selectedChallenge={selectedChallenge}
         selectedQuickWin={selectedQuickWin}
@@ -49,6 +48,7 @@ export default function App() {
           selectedQuickWin={selectedQuickWin}
         />
       </div>
+      <DecisionExamplesSection />
       <AIImageStudio />
     </>
   );
