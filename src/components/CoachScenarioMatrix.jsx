@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import coachScenarios from "../data/coachScenarios";
+import { useEffect, useMemo, useState } from "react";
+import { scenarios } from "../data/scenarios";
 
 const pageStyle = {
   maxWidth: "1120px",
@@ -36,6 +36,14 @@ const buttonResetStyle = {
   cursor: "pointer",
 };
 
+const challengeLabels = {
+  "owner-bottleneck": "Reduce owner interruptions",
+  "patient-communication": "Improve patient communication",
+  "insurance-billing": "Clean up insurance and billing workflows",
+  "team-training": "Train the team faster",
+  "growth-case-acceptance": "Grow production and case acceptance",
+};
+
 function groupScenariosByCategory(scenarios) {
   return scenarios.reduce((groups, scenario) => {
     const category = scenario.category || "Uncategorized";
@@ -47,10 +55,20 @@ function groupScenariosByCategory(scenarios) {
   }, {});
 }
 
-export default function CoachScenarioMatrix() {
+export default function CoachScenarioMatrix({ selectedChallenge = null }) {
+  const filteredScenarios = useMemo(() => {
+    if (!selectedChallenge) {
+      return scenarios;
+    }
+
+    return scenarios.filter((scenario) =>
+      scenario.challenges?.includes(selectedChallenge),
+    );
+  }, [selectedChallenge]);
+
   const scenariosByCategory = useMemo(
-    () => groupScenariosByCategory(coachScenarios),
-    [],
+    () => groupScenariosByCategory(filteredScenarios),
+    [filteredScenarios],
   );
   const categories = useMemo(
     () => Object.keys(scenariosByCategory),
@@ -58,7 +76,10 @@ export default function CoachScenarioMatrix() {
   );
 
   const [selectedCategory, setSelectedCategory] = useState(categories[0] || "");
-  const selectedScenarios = scenariosByCategory[selectedCategory] || [];
+  const activeCategory = categories.includes(selectedCategory)
+    ? selectedCategory
+    : categories[0] || "";
+  const selectedScenarios = scenariosByCategory[activeCategory] || [];
   const [selectedScenarioId, setSelectedScenarioId] = useState(
     selectedScenarios[0]?.id || "",
   );
@@ -66,6 +87,24 @@ export default function CoachScenarioMatrix() {
   const selectedScenario =
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
     selectedScenarios[0];
+  const selectedChallengeLabel = selectedChallenge
+    ? challengeLabels[selectedChallenge]
+    : "";
+
+  useEffect(() => {
+    if (activeCategory !== selectedCategory) {
+      setSelectedCategory(activeCategory);
+      setSelectedScenarioId(selectedScenarios[0]?.id || "");
+      return;
+    }
+
+    if (
+      selectedScenarios.length &&
+      !selectedScenarios.some((scenario) => scenario.id === selectedScenarioId)
+    ) {
+      setSelectedScenarioId(selectedScenarios[0].id);
+    }
+  }, [activeCategory, selectedCategory, selectedScenarioId, selectedScenarios]);
 
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
@@ -77,7 +116,11 @@ export default function CoachScenarioMatrix() {
     return (
       <main style={pageStyle}>
         <h1>Coach Scenario Matrix</h1>
-        <p>No coach scenarios are available yet.</p>
+        <p>
+          {selectedChallengeLabel
+            ? "No examples found for this challenge yet."
+            : "No coach scenarios are available yet."}
+        </p>
       </main>
     );
   }
@@ -95,11 +138,26 @@ export default function CoachScenarioMatrix() {
           Choose a practice category, then select a scenario to preview how a
           coach can turn team context into a practical next step.
         </p>
+        {selectedChallengeLabel && (
+          <p
+            style={{
+              display: "inline-flex",
+              margin: "12px 0 0",
+              borderRadius: "999px",
+              background: "#e0ecff",
+              color: "#1f5eff",
+              padding: "8px 12px",
+              fontWeight: 800,
+            }}
+          >
+            Showing examples for: {selectedChallengeLabel}
+          </p>
+        )}
       </section>
 
       <section aria-label="Scenario categories" style={filterWrapStyle}>
         {categories.map((category) => {
-          const isSelected = category === selectedCategory;
+          const isSelected = category === activeCategory;
 
           return (
             <button
@@ -124,7 +182,7 @@ export default function CoachScenarioMatrix() {
       </section>
 
       <section style={layoutStyle}>
-        <aside style={panelStyle} aria-label={`${selectedCategory} scenarios`}>
+        <aside style={panelStyle} aria-label={`${activeCategory} scenarios`}>
           <h2
             style={{
               margin: 0,
@@ -133,7 +191,7 @@ export default function CoachScenarioMatrix() {
               borderBottom: "1px solid #edf2f7",
             }}
           >
-            {selectedCategory}
+            {activeCategory}
           </h2>
           <div style={{ display: "grid", gap: "1px", background: "#edf2f7" }}>
             {selectedScenarios.map((scenario) => {
