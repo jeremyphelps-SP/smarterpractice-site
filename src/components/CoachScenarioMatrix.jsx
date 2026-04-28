@@ -44,6 +44,11 @@ const challengeLabels = {
   "growth-case-acceptance": "Grow production and case acceptance",
 };
 
+const quickWinScenarioIds = {
+  "missed-appointment": "scn-015",
+  "insurance-explanation": "scn-003",
+};
+
 function groupScenariosByCategory(scenarios) {
   return scenarios.reduce((groups, scenario) => {
     const category = scenario.category || "Uncategorized";
@@ -55,7 +60,10 @@ function groupScenariosByCategory(scenarios) {
   }, {});
 }
 
-export default function CoachScenarioMatrix({ selectedChallenge = null }) {
+export default function CoachScenarioMatrix({
+  selectedChallenge = null,
+  selectedQuickWin = null,
+}) {
   const filteredScenarios = useMemo(() => {
     if (!selectedChallenge) {
       return scenarios;
@@ -105,6 +113,23 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
       setSelectedScenarioId(selectedScenarios[0].id);
     }
   }, [activeCategory, selectedCategory, selectedScenarioId, selectedScenarios]);
+
+  useEffect(() => {
+    const targetScenarioId = quickWinScenarioIds[selectedQuickWin?.key];
+    if (!targetScenarioId) {
+      return;
+    }
+
+    const targetScenario = filteredScenarios.find(
+      (scenario) => scenario.id === targetScenarioId,
+    );
+    if (!targetScenario) {
+      return;
+    }
+
+    setSelectedCategory(targetScenario.category);
+    setSelectedScenarioId(targetScenario.id);
+  }, [filteredScenarios, selectedQuickWin]);
 
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
