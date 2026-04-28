@@ -269,6 +269,10 @@ export default function QuickWinsSection({
             These are real, practical ways dental teams are already using
             Smarter Practice AI.
           </p>
+          <p className="quick-wins__differentiator">
+            Not generic prompts - these are built on real practice workflows,
+            data, and decisions.
+          </p>
           {selectedChallengeLabel && (
             <p className="quick-wins__context">
               Quick wins for: {selectedChallengeLabel}

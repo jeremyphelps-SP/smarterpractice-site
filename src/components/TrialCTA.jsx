@@ -24,6 +24,9 @@ export default function TrialCTA({
             Start a 15-day trial and see what your team can create with Smarter
             Practice AI.
           </p>
+          <p className="trial-cta__differentiator">
+            Built for dental practices - not a generic AI chat tool.
+          </p>
         </div>
         <div className="trial-cta__actions">
           <a
