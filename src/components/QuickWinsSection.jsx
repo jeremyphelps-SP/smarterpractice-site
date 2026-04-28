@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { trackEvent } from "../utils/analytics";
 import "./QuickWinsSection.css";
 
@@ -245,17 +244,12 @@ export default function QuickWinsSection({
   selectedChallenge = null,
   onSelectQuickWin = () => {},
 }) {
-  const [showMore, setShowMore] = useState(false);
   const quickWins =
     quickWinsByChallenge[selectedChallenge] || quickWinsByChallenge.default;
-  const visibleQuickWins = showMore ? quickWins : quickWins.slice(0, 3);
+  const visibleQuickWins = quickWins.slice(0, 3);
   const selectedChallengeLabel = selectedChallenge
     ? challengeLabels[selectedChallenge]
     : "";
-
-  useEffect(() => {
-    setShowMore(false);
-  }, [selectedChallenge]);
 
   const handleQuickWinClick = (quickWin) => {
     trackEvent("quick_win_selected", {
@@ -264,17 +258,6 @@ export default function QuickWinsSection({
       quickWinTitle: quickWin.title,
     });
     onSelectQuickWin(quickWin.key);
-  };
-
-  const handleToggle = () => {
-    const nextShowMore = !showMore;
-    trackEvent(
-      nextShowMore ? "quick_wins_expanded" : "quick_wins_collapsed",
-      {
-        selectedChallenge,
-      },
-    );
-    setShowMore(nextShowMore);
   };
 
   return (
@@ -306,15 +289,6 @@ export default function QuickWinsSection({
             </button>
           ))}
         </div>
-        {quickWins.length > 3 && (
-          <button
-            className="quick-wins__toggle"
-            type="button"
-            onClick={handleToggle}
-          >
-            {showMore ? "Show fewer examples" : "See more examples"}
-          </button>
-        )}
       </div>
     </section>
   );
