@@ -47,6 +47,7 @@ const challengeLabels = {
 const quickWinScenarioIds = {
   "missed-appointment": "scn-015",
   "insurance-explanation": "scn-003",
+  "denial-appeal-outline": "scn-001",
 };
 
 const recommendationSectionOrder = [
@@ -193,6 +194,10 @@ export default function CoachScenarioMatrix({
         <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
           These are the same types of decisions your practice is making every
           week.
+        </p>
+        <p style={{ maxWidth: "760px", lineHeight: 1.65, color: "#52606d" }}>
+          Instead of searching for answers, get a clear next step for your
+          specific situation.
         </p>
         {selectedChallengeLabel && (
           <p

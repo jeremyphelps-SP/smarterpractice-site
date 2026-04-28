@@ -21,6 +21,14 @@ export default function TrialCTA({
             Pick one problem. Get a clear next step your team can use immediately.
           </h2>
           <p>Start a 15-day trial. No setup required.</p>
+          <p>
+            Use it when something slows your team down, creates confusion, or
+            needs a better answer.
+          </p>
+          <p>
+            Most teams start by fixing one real issue, like a denied claim, a
+            patient message, or a schedule gap.
+          </p>
         </div>
         <div className="trial-cta__actions">
           <a

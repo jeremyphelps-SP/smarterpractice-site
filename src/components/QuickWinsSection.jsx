@@ -19,11 +19,11 @@ const quickWinsByChallenge = {
       key: "missed-appointment",
     },
     {
-      title: "Insurance Explanation",
+      title: "Insurance Denial Appeal (Paste Your EOB)",
       description:
-        "Explain coverage and costs clearly to reduce confusion and frustration.",
-      actionLine: "Use this when benefits create confusion.",
-      key: "insurance-explanation",
+        "Paste an insurance rejection and get a structured appeal in seconds.",
+      actionLine: "Use this with your next denied claim.",
+      key: "denial-appeal-outline",
     },
     {
       title: "Front Desk Job Posting",
@@ -144,11 +144,11 @@ const quickWinsByChallenge = {
   ],
   "insurance-billing": [
     {
-      title: "Insurance Explanation",
+      title: "Insurance Denial Appeal (Paste Your EOB)",
       description:
-        "Explain coverage and costs clearly to reduce confusion and frustration.",
-      actionLine: "Use this when benefits create confusion.",
-      key: "insurance-explanation",
+        "Paste an insurance rejection and get a structured appeal in seconds.",
+      actionLine: "Use this with your next denied claim.",
+      key: "denial-appeal-outline",
     },
     {
       title: "Claims Follow-Up Script",
