@@ -48,6 +48,25 @@ export default function App() {
         />
       </div>
       <AIImageStudio />
+      <section className="trial-cta trial-cta--final" aria-labelledby="final-cta-title">
+        <div className="trial-cta__inner">
+          <div>
+            <h2 id="final-cta-title">Ready to try this with your team?</h2>
+            <p>
+              Start with one workflow and see how Smarter Practice AI helps your
+              practice move faster.
+            </p>
+          </div>
+          <div className="trial-cta__actions">
+            <a
+              className="trial-cta__button trial-cta__button--primary"
+              href="#trial"
+            >
+              Start 15-day trial
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
