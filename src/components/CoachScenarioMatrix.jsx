@@ -49,6 +49,13 @@ const quickWinScenarioIds = {
   "insurance-explanation": "scn-003",
 };
 
+const recommendationSectionOrder = [
+  ["direction", "Direction"],
+  ["whatIsHappening", "What's happening"],
+  ["whatToChange", "What to change"],
+  ["nextStep", "Next step"],
+];
+
 function groupScenariosByCategory(scenarios) {
   return scenarios.reduce((groups, scenario) => {
     const category = scenario.category || "Uncategorized";
@@ -60,64 +67,24 @@ function groupScenariosByCategory(scenarios) {
   }, {});
 }
 
-function getRecommendedNextStep(scenario) {
-  return scenario.outputPreview
-    .replace(
-      /^(Coach response|Diagnostic read|Decision|Decision framework|Coaching plan|Recovery plan|Operating rule|Patient call plan|Pre-D packet|Immediate response|Documentation plan|Comp model recommendation|Owner-level recommendation|Owner-level read|Diagnostic plan|Progressive exit plan):\s*/i,
-      "",
-    )
-    .trim();
+function asList(value) {
+  if (!value) {
+    return [];
+  }
+
+  return Array.isArray(value) ? value.filter(Boolean) : [value];
 }
 
 function getRecommendationSections(scenario) {
-  const lines = getRecommendedNextStep(scenario)
-    .split("\n")
-    .map((line) => line.trimEnd())
-    .filter(Boolean);
-  const sections = [{ label: "Direction", lines: [] }];
+  const recommendation = scenario.recommendedNextStep || {};
 
-  const sectionForLine = (line) => {
-    const normalized = line.replace(/^-\s*/, "").trim();
-
-    if (/^(stop doing this|what you are missing|the blocker|hidden questions|why|why not|highest risks):/i.test(normalized)) {
-      return "What's happening";
-    }
-
-    if (/^(call script|suggested language|appeal narrative|patient letter|payer call question|safe text examples|replace|with|fix|use neutral|internal message):/i.test(normalized)) {
-      return "What to change";
-    }
-
-    if (/^(what to do next|next steps|measure|dashboard|test metrics|30-day test|new work order|call order|attach):/i.test(normalized)) {
-      return "Next step";
-    }
-
-    return null;
-  };
-
-  const getSection = (label) => {
-    let section = sections.find((item) => item.label === label);
-    if (!section) {
-      section = { label, lines: [] };
-      sections.push(section);
-    }
-    return section;
-  };
-
-  lines.forEach((line) => {
-    const nextLabel = sectionForLine(line);
-    if (nextLabel) {
-      const cleanedLine = line.replace(/^-\s*/, "").replace(/^[^:]+:\s*/, "");
-      if (cleanedLine) {
-        getSection(nextLabel).lines.push(cleanedLine);
-      }
-      return;
-    }
-
-    const section = sections[sections.length - 1];
-    section.lines.push(line);
-  });
-
-  return sections.filter((section) => section.lines.length);
+  return recommendationSectionOrder
+    .map(([key, label]) => ({
+      key,
+      label,
+      items: asList(recommendation[key]),
+    }))
+    .filter((section) => section.items.length);
 }
 
 export default function CoachScenarioMatrix({
@@ -336,35 +303,47 @@ export default function CoachScenarioMatrix({
                 <dd
                   style={{
                     display: "grid",
-                    gap: "12px",
+                    gap: "14px",
                     margin: "8px 0 0",
                     lineHeight: 1.6,
                   }}
                 >
-                  {recommendationSections.map((section) => (
-                    <div key={section.label}>
+                  {recommendationSections.map((section, index) => (
+                    <div
+                      key={section.key}
+                      style={{
+                        borderTop:
+                          index === 0 ? 0 : "1px solid #e6eef6",
+                        paddingTop: index === 0 ? 0 : "12px",
+                        textAlign: "left",
+                      }}
+                    >
                       <p
                         style={{
                           margin: "0 0 4px",
                           color: "#334e68",
+                          fontSize: "0.92rem",
                           fontWeight: 800,
                         }}
                       >
                         {section.label}:
                       </p>
-                      <div
-                        style={{
-                          display: "grid",
-                          gap: "4px",
-                          whiteSpace: "pre-wrap",
-                        }}
-                      >
-                        {section.lines.map((line) => (
-                          <p key={line} style={{ margin: 0 }}>
-                            {line}
-                          </p>
-                        ))}
-                      </div>
+                      {section.key === "direction" ? (
+                        <p style={{ margin: 0 }}>{section.items[0]}</p>
+                      ) : (
+                        <ul
+                          style={{
+                            display: "grid",
+                            gap: "6px",
+                            margin: "4px 0 0",
+                            paddingLeft: "20px",
+                          }}
+                        >
+                          {section.items.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   ))}
                 </dd>

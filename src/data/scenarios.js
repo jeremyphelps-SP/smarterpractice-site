@@ -18,6 +18,20 @@ export const scenarios = [
   - Submit within 48 hours.
   - Call payer 3 business days later and log the reference number.
   - Hold patient billing until the payer response date is known.`,
+    recommendedNextStep: {
+      direction: "Do not send another patient statement yet. This is an appeal-quality problem, not a patient-collection problem.",
+      whatToChange: [
+        "Label the tooth, surface, and date of service.",
+        "Attach the pre-op PA or BW, intraoral photo, and chart note.",
+        "State why a direct restoration was not clinically adequate.",
+        "Tooth #19 presented with recurrent decay beneath a failing MOD restoration, visible crack lines, and pain on chewing. Remaining tooth structure was compromised. Full coverage was necessary to restore function and prevent fracture progression."
+      ],
+      nextStep: [
+        "Submit within 48 hours.",
+        "Call payer 3 business days later and log the reference number.",
+        "Hold patient billing until the payer response date is known."
+      ],
+    },
     whyItMatters: 'This turns a denied claim into a controlled recovery process with patient trust, cash timing, and payer follow-up managed together.',
     tags: ['progressive', 'crown denial', 'appeal', 'D2740', 'cash flow'],
     roles: [
@@ -51,6 +65,23 @@ export const scenarios = [
   - Spend the next two Fridays only on COB and attachments.
   - Track dollars corrected, not calls made.
   - Review the top 10 claims with the owner next Tuesday.`,
+    recommendedNextStep: {
+      direction: "Work A/R over 90 by failure type, starting with COB and attachment problems.",
+      whatIsHappening: [
+        "the report is being treated like a list, not a queue of different failure types.",
+        "Calling oldest claims one by one without grouping.",
+        "Resubmitting claims before the failure reason is corrected."
+      ],
+      whatToChange: [
+        "Attachments: $38,000; upload missing docs; Clinical + Billing",
+        "Credentialing: $29,000; payer escalation; OM"
+      ],
+      nextStep: [
+        "Spend the next two Fridays only on COB and attachments.",
+        "Track dollars corrected, not calls made.",
+        "Review the top 10 claims with the owner next Tuesday."
+      ],
+    },
     whyItMatters: 'A/R drops faster when the practice attacks root causes in batches instead of mistaking activity for progress.',
     tags: ['diagnostic', 'accounts receivable', 'COB', 'billing workflow'],
     roles: [
@@ -83,6 +114,19 @@ export const scenarios = [
   - Review the chart today.
   - Call the patient back by 4 PM with either appeal steps or payment options.
   - Add downgrade language to all posterior composite estimates by Friday.`,
+    recommendedNextStep: {
+      direction: "I can see why this feels different from what you expected. We should have made the downgrade possibility clearer.",
+      whatToChange: [
+        "Your plan paid toward the filling, but it used the lower silver-filling allowance even though the tooth-colored filling was completed.",
+        "If the chart supports an appeal, submit it.",
+        "If not, offer a one-time split payment and update future estimate language."
+      ],
+      nextStep: [
+        "Review the chart today.",
+        "Call the patient back by 4 PM with either appeal steps or payment options.",
+        "Add downgrade language to all posterior composite estimates by Friday."
+      ],
+    },
     whyItMatters: 'The best billing conversations protect the relationship while still moving the balance toward resolution.',
     tags: ['diagnostic', 'EOB', 'patient billing', 'downgrade', 'collections'],
     roles: [
@@ -118,6 +162,23 @@ export const scenarios = [
   - Green gets collected at checkout.
   - Yellow needs coordinator review.
   - Red needs written estimate language before treatment.`,
+    recommendedNextStep: {
+      direction: "Use confidence flags so the team knows when to collect, review, or slow down before checkout.",
+      whatToChange: [
+        "Plan limitations are documented.",
+        "Estimate variance is under $150.",
+        "Missing tooth clause, frequency limit, or COB is unclear.",
+        "Estimate variance is over $150.",
+        "Patient has disputed a prior balance.",
+        "Your estimated portion today is $___ based on the benefits available to us. If insurance processes differently, we adjust the account."
+      ],
+      nextStep: [
+        "Create a confidence flag: green, yellow, red.",
+        "Green gets collected at checkout.",
+        "Yellow needs coordinator review.",
+        "Red needs written estimate language before treatment."
+      ],
+    },
     whyItMatters: 'This gives the team permission to collect confidently without pretending every estimate is perfect.',
     tags: ['decision', 'same-day collections', 'financial policy', 'checkout'],
     roles: [
@@ -155,6 +216,23 @@ export const scenarios = [
   - Send the packet by Wednesday.
   - Schedule a benefits review call with the patient for 7 business days later.
   - If denied, appeal on progression and symptoms, not preference.`,
+    recommendedNextStep: {
+      direction: "Submit a diagnosis-first pre-D packet that proves progression and medical necessity.",
+      whatToChange: [
+        "Include last year's perio chart beside current measurements.",
+        "Do not say the patient dislikes the gumline.",
+        "Current perio chart",
+        "Prior perio chart",
+        "Intraoral photos",
+        "Provider note",
+        "Treatment plan with codes and teeth"
+      ],
+      nextStep: [
+        "Send the packet by Wednesday.",
+        "Schedule a benefits review call with the patient for 7 business days later.",
+        "If denied, appeal on progression and symptoms, not preference."
+      ],
+    },
     whyItMatters: 'A strong pre-D keeps the clinical recommendation moving while reducing the chance that benefits confusion kills the case.',
     tags: ['progressive', 'pre-determination', 'grafting', 'perio', 'documentation'],
     roles: [
@@ -187,6 +265,19 @@ export const scenarios = [
 - What to do next:
   - Calibrate hygiene language tomorrow morning.
   - Audit 10 SRP charts for bleeding, pocketing, radiographs, and diagnosis notes.`,
+    recommendedNextStep: {
+      direction: "This is not a cleaning decision. This is treatment for active gum infection.",
+      whatToChange: [
+        "We found bleeding and deeper pockets in several areas. A regular cleaning does not reach the bacteria causing this.",
+        "Let us look at timing and benefits after we are clear on what your gums need.",
+        "If the patient agrees clinically but hesitates financially, offer phased quadrants.",
+        "If the patient denies the diagnosis, show charting and bleeding points."
+      ],
+      nextStep: [
+        "Calibrate hygiene language tomorrow morning.",
+        "Audit 10 SRP charts for bleeding, pocketing, radiographs, and diagnosis notes."
+      ],
+    },
     whyItMatters: 'Patients say yes when the team leads with diagnosis, not benefit design.',
     tags: ['progressive', 'SRP', 'case acceptance', 'hygiene', 'patient communication'],
     roles: [
@@ -218,6 +309,23 @@ export const scenarios = [
   2. Align benefit timing with the first two phases.
   3. Offer financing by phase, not as one giant number.
   4. Call within 24 hours, not next week.`,
+    recommendedNextStep: {
+      direction: "The blocker is not yes/no. It is sequence risk.",
+      whatIsHappening: [
+        "Will I be stuck mid-treatment while traveling?",
+        "Can I use this year's benefits without committing to everything now?",
+        "What happens if I start and need to pause?"
+      ],
+      whatToChange: [
+        "Based on what we discussed, I mapped this into phases so you are never left in an unstable stage."
+      ],
+      nextStep: [
+        "Reserve phase 1 and phase 2 before starting.",
+        "Align benefit timing with the first two phases.",
+        "Offer financing by phase, not as one giant number.",
+        "Call within 24 hours, not next week."
+      ],
+    },
     whyItMatters: 'Large cases stall when the practice sells the treatment but does not coach the decision architecture.',
     tags: ['diagnostic', 'large case', 'sequencing', 'financing', 'case acceptance'],
     roles: [
@@ -247,6 +355,19 @@ export const scenarios = [
   - Track acceptance by coordinator.
   - Track whether financing was introduced before or after the fee.
   - Review results in the first manager meeting next month.`,
+    recommendedNextStep: {
+      direction: "Offer financing earlier, but do not lead with affordability fear.",
+      whatToChange: [
+        "Most patients choose one of three paths: payment in full, split by appointment, or monthly financing.",
+        "If you cannot afford this, we have financing."
+      ],
+      nextStep: [
+        "Test the new script for 30 days on all cases over $1,500.",
+        "Track acceptance by coordinator.",
+        "Track whether financing was introduced before or after the fee.",
+        "Review results in the first manager meeting next month."
+      ],
+    },
     whyItMatters: 'The timing of the money conversation changes whether financing feels normal or embarrassing.',
     tags: ['decision', 'financing', 'case acceptance', 'payment options'],
     roles: [
@@ -278,6 +399,19 @@ export const scenarios = [
   - Use one sentence to explain the crack.
   - Review two payment paths.
   - Reserve the appointment before the patient leaves.`,
+    recommendedNextStep: {
+      direction: "Your insurance helps with cost, but it does not measure crack risk or decide what keeps the tooth restorable.",
+      whatToChange: [
+        "Waiting may turn a crown appointment into root canal plus crown, or a fracture that cannot be restored.",
+        "The decision today is whether we protect this tooth while it is still predictable."
+      ],
+      nextStep: [
+        "Show the photo.",
+        "Use one sentence to explain the crack.",
+        "Review two payment paths.",
+        "Reserve the appointment before the patient leaves."
+      ],
+    },
     whyItMatters: 'High-trust clinical framing helps patients stop treating insurance as the clinical authority.',
     tags: ['progressive', 'crown acceptance', 'insurance objection', 'patient script'],
     roles: [
@@ -312,6 +446,23 @@ export const scenarios = [
   - Identify patients miscoded as prophy.
   - Calibrate hygienists on one standard explanation.
   - Track D4910 acceptance for 60 days.`,
+    recommendedNextStep: {
+      direction: "Use disease-status language before discussing benefits or recall frequency.",
+      whatIsHappening: [
+        "disease-status language."
+      ],
+      whatToChange: [
+        "After gum therapy, we maintain the infection differently than routine preventive care.",
+        "If bleeding and pocketing remain, recommend 3-month perio maintenance.",
+        "If stable for 12 months, reassess interval."
+      ],
+      nextStep: [
+        "Audit 25 hygiene charts this week.",
+        "Identify patients miscoded as prophy.",
+        "Calibrate hygienists on one standard explanation.",
+        "Track D4910 acceptance for 60 days."
+      ],
+    },
     whyItMatters: 'Perio maintenance acceptance is usually a communication and calibration issue before it is an insurance issue.',
     tags: ['diagnostic', 'perio maintenance', 'hygiene', 'case acceptance'],
     roles: [
@@ -345,6 +496,23 @@ export const scenarios = [
   - Make 8 calls before 5 PM.
   - Text only after calls.
   - Track production recovered.`,
+    recommendedNextStep: {
+      direction: "Protect the crown block first, then fill it from the highest-value treatment opportunities.",
+      whatIsHappening: [
+        "Low-value limited exams unless the block is still open by 10 AM tomorrow."
+      ],
+      whatToChange: [
+        "Hygiene patients already coming tomorrow with diagnosed restorative.",
+        "Emergency patients likely to convert to definitive care.",
+        "Based on what Dr. Patel recommended, we had a treatment opening tomorrow at 9 AM. If that helps you move this forward, I can reserve it now."
+      ],
+      nextStep: [
+        "Assign one owner now.",
+        "Make 8 calls before 5 PM.",
+        "Text only after calls.",
+        "Track production recovered."
+      ],
+    },
     whyItMatters: 'Schedule recovery should protect production quality, not just make the calendar look full.',
     tags: ['progressive', 'schedule hole', 'cancellation recovery', 'production'],
     roles: [
@@ -378,6 +546,22 @@ export const scenarios = [
 - What to do next:
   - Delay Friday expansion for 30 days.
   - Measure recovered production and no-show reduction first.`,
+    recommendedNextStep: {
+      direction: "Fix utilization before adding hours.",
+      whatIsHappening: [
+        "You already have doctor capacity leaking next week.",
+        "No-show rate is high enough to create false demand.",
+        "Friday hours add cost before the current template is disciplined."
+      ],
+      nextStep: [
+        "Fill doctor gaps from unscheduled treatment.",
+        "Add no-show risk scoring.",
+        "Protect two emergency blocks per day.",
+        "Review hygiene overflow after cancellations are controlled.",
+        "Delay Friday expansion for 30 days.",
+        "Measure recovered production and no-show reduction first."
+      ],
+    },
     whyItMatters: 'Expanding hours before fixing utilization can turn a scheduling problem into a payroll problem.',
     tags: ['decision', 'schedule utilization', 'hours expansion', 'owner-level'],
     roles: [
@@ -410,6 +594,23 @@ export const scenarios = [
 - What to do next:
   - Pilot exam windows for 5 clinical days.
   - Debrief with hygienists and assistants next Friday.`,
+    recommendedNextStep: {
+      direction: "Batch hygiene exams into 2-3 windows.",
+      whatIsHappening: [
+        "exam timing is stealing transition time."
+      ],
+      whatToChange: [
+        "Require hygienists to have radiographs, perio findings, and patient concerns ready before doctor enters.",
+        "Block no exam interruptions during anesthesia, prep finish, or final cement."
+      ],
+      nextStep: [
+        "Procedure start variance",
+        "Crown prep end time",
+        "Number of doctor room switches per morning",
+        "Pilot exam windows for 5 clinical days.",
+        "Debrief with hygienists and assistants next Friday."
+      ],
+    },
     whyItMatters: 'Doctor flow improves when the practice manages transitions as seriously as appointments.',
     tags: ['diagnostic', 'doctor flow', 'hygiene exams', 'schedule template'],
     roles: [
@@ -445,6 +646,23 @@ export const scenarios = [
   - Add two emergency blocks tomorrow.
   - Train front desk on the four triage questions.
   - Track planned production displaced by emergency visits.`,
+    recommendedNextStep: {
+      direction: "Emergencies go into protected blocks unless swelling, trauma, or uncontrolled pain requires escalation.",
+      whatToChange: [
+        "Are you in pain now?",
+        "Is there swelling or fever?",
+        "Can you chew on that side?",
+        "Is anything broken, loose, or sharp?",
+        "Urgent medical concern: same-day priority.",
+        "Broken restoration without pain: emergency block.",
+        "Cosmetic concern: next restorative consult."
+      ],
+      nextStep: [
+        "Add two emergency blocks tomorrow.",
+        "Train front desk on the four triage questions.",
+        "Track planned production displaced by emergency visits."
+      ],
+    },
     whyItMatters: 'Emergency access should be reliable without letting emergencies run the whole practice.',
     tags: ['progressive', 'emergency scheduling', 'triage', 'production stability'],
     roles: [
@@ -481,6 +699,24 @@ export const scenarios = [
 - What to do next:
   - Build the risk list for next Monday today.
   - Fill two backup candidates per hygiene column.`,
+    recommendedNextStep: {
+      direction: "Replace generic reminders with a no-show risk workflow for patients likely to break appointments.",
+      whatToChange: [
+        "Monday or first appointment",
+        "No two-way confirmation",
+        "Balance over $150",
+        "High-risk patients get a call 48 hours out.",
+        "Unconfirmed high-risk slots are offered to standby patients after policy notice.",
+        "Preferred days",
+        "Family grouping",
+        "Treatment need",
+        "Last contacted"
+      ],
+      nextStep: [
+        "Build the risk list for next Monday today.",
+        "Fill two backup candidates per hygiene column."
+      ],
+    },
     whyItMatters: 'No-show control gets better when the team stops treating every appointment as equally likely to keep.',
     tags: ['diagnostic', 'no-shows', 'hygiene schedule', 'confirmation'],
     roles: [
@@ -513,6 +749,20 @@ export const scenarios = [
   - Audit 20 calls.
   - Score appointment offer within 90 seconds.
   - Pause budget increase until kept rate improves.`,
+    recommendedNextStep: {
+      direction: "Do not judge this campaign by calls.",
+      whatToChange: [
+        "Judge it by kept visits, payer mix, diagnosed treatment, and collections within 90 days.",
+        "We can help with that. Let me first understand what is going on, then I will verify benefits so we are prepared.",
+        "If kept visits stay under 50%, fix phone conversion before increasing spend.",
+        "If payer mix is low-margin PPO, adjust targeting."
+      ],
+      nextStep: [
+        "Audit 20 calls.",
+        "Score appointment offer within 90 seconds.",
+        "Pause budget increase until kept rate improves."
+      ],
+    },
     whyItMatters: 'Growth that does not convert into kept, profitable visits is just expensive noise.',
     tags: ['diagnostic', 'new patients', 'call conversion', 'marketing ROI', 'owner-level'],
     roles: [
@@ -547,6 +797,22 @@ export const scenarios = [
   - Pull the overdue report today.
   - Build 3 message tracks.
   - Fill next week's six hygiene openings before adding ad budget.`,
+    recommendedNextStep: {
+      direction: "Improve recall reactivation before increasing ad spend.",
+      whatIsHappening: [
+        "Existing patients already know the practice.",
+        "Hygiene has immediate openings.",
+        "Restorative follow-through from recall is measurable.",
+        "Segment by perio status, family members, and unscheduled treatment.",
+        "Call high-value overdue patients first.",
+        "Text only after a call attempt."
+      ],
+      nextStep: [
+        "Pull the overdue report today.",
+        "Build 3 message tracks.",
+        "Fill next week's six hygiene openings before adding ad budget."
+      ],
+    },
     whyItMatters: 'Owner-level growth means choosing the highest-return demand source, not automatically buying more leads.',
     tags: ['decision', 'recall reactivation', 'ad spend', 'growth strategy', 'owner-level'],
     roles: [
@@ -582,6 +848,20 @@ export const scenarios = [
 - What to do next:
   - Recode the last 20 consults by objection.
   - Stop using thinking about it as a category.`,
+    recommendedNextStep: {
+      direction: "Follow up with a phased treatment path that answers the patient's real objection.",
+      whatToChange: [
+        "What is the biggest question now: cost, surgery, timing, or comparing options?",
+        "Offer a 10-minute financing or clinical clarification call.",
+        "Cost: financing review",
+        "Fear: doctor call",
+        "Timing: phased schedule"
+      ],
+      nextStep: [
+        "Recode the last 20 consults by objection.",
+        "Stop using thinking about it as a category."
+      ],
+    },
     whyItMatters: 'High-value consults need coached follow-up, not generic reminder messages.',
     tags: ['progressive', 'implant consult', 'lead nurturing', 'case conversion'],
     roles: [
@@ -613,6 +893,19 @@ export const scenarios = [
   - Add uninsured flag to new patient intake.
   - Require member vs non-member comparison before checkout.
   - Track offer rate and enrollment rate separately.`,
+    recommendedNextStep: {
+      direction: "Make membership enrollment easier by showing timing and value side by side.",
+      whatIsHappening: [
+        "Since you do not have dental insurance, we have an in-office membership option many patients use.",
+        "Non-member: $___; none; one-time visit",
+        "Member: $___; 15%; ongoing care"
+      ],
+      nextStep: [
+        "Add uninsured flag to new patient intake.",
+        "Require member vs non-member comparison before checkout.",
+        "Track offer rate and enrollment rate separately."
+      ],
+    },
     whyItMatters: 'Membership growth depends on making the option visible before the patient feels surprised by fees.',
     tags: ['diagnostic', 'membership plan', 'uninsured patients', 'growth'],
     roles: [
@@ -647,6 +940,23 @@ export const scenarios = [
   - Build a list of 100 loyal patients.
   - Launch a 30-day referral ask.
   - Compare results to the last whitening campaign before repeating discounts.`,
+    recommendedNextStep: {
+      direction: "Choose referral campaign over broad discounting.",
+      whatToChange: [
+        "Invite loyal hygiene patients and completed restorative patients.",
+        "Offer a thank-you that does not discount clinical care.",
+        "Ask for referrals tied to trust, not price.",
+        "Referral source",
+        "Kept visit rate",
+        "Comprehensive exam conversion",
+        "90-day diagnosed treatment"
+      ],
+      nextStep: [
+        "Build a list of 100 loyal patients.",
+        "Launch a 30-day referral ask.",
+        "Compare results to the last whitening campaign before repeating discounts."
+      ],
+    },
     whyItMatters: 'Owner-level marketing protects brand and margin while still creating demand.',
     tags: ['owner-level', 'referrals', 'marketing strategy', 'new patients'],
     roles: [
@@ -684,6 +994,23 @@ export const scenarios = [
 - What to do next:
   - Create one laminated setup map per procedure.
   - Sign off competencies, not days employed.`,
+    recommendedNextStep: {
+      direction: "Use a focused onboarding pathway built around the procedures the assistant will actually support.",
+      whatToChange: [
+        "Learn room close-out checklist.",
+        "Perform turnover with lead assistant observing.",
+        "Correct tray setup before doctor enters.",
+        "Run one column with spot checks.",
+        "Room ready on time",
+        "Correct tray",
+        "Materials stocked",
+        "Infection control complete"
+      ],
+      nextStep: [
+        "Create one laminated setup map per procedure.",
+        "Sign off competencies, not days employed."
+      ],
+    },
     whyItMatters: 'Training gets faster when standards are visible and measurable.',
     tags: ['progressive', 'assistant onboarding', 'turnover', 'training'],
     roles: [
@@ -715,6 +1042,19 @@ export const scenarios = [
   - Document the conversation.
   - Offer support if there is a schedule barrier.
   - Review punctuality next Friday.`,
+    recommendedNextStep: {
+      direction: "Coach the lateness pattern with facts, expectations, and support.",
+      whatToChange: [
+        "That puts the front desk in apology mode and compresses your clinical time.",
+        "What is getting in the way of being ready by 7:45?",
+        "Starting tomorrow, I need you ready for huddle by 7:45 each clinical day."
+      ],
+      nextStep: [
+        "Document the conversation.",
+        "Offer support if there is a schedule barrier.",
+        "Review punctuality next Friday."
+      ],
+    },
     whyItMatters: 'Strong culture is kind enough to be clear and clear enough to be fair.',
     tags: ['decision', 'coaching script', 'hygiene team', 'accountability'],
     roles: [
@@ -747,6 +1087,20 @@ export const scenarios = [
   - Use the board tomorrow.
   - Review completion before close.
   - Remove topics that do not require action.`,
+    recommendedNextStep: {
+      direction: "Turn huddles into assigned work with owners, due times, and end-of-day review.",
+      whatIsHappening: [
+        "Open hygiene 2 PM: Front desk; 10 AM; pending",
+        "Lab case check: Assistant; 8:30 AM; pending",
+        "$4,200 unscheduled case: TC; noon; pending",
+        "No item enters the huddle without one owner."
+      ],
+      nextStep: [
+        "Use the board tomorrow.",
+        "Review completion before close.",
+        "Remove topics that do not require action."
+      ],
+    },
     whyItMatters: 'Meetings improve the practice only when they convert concern into assigned work.',
     tags: ['diagnostic', 'huddle', 'accountability', 'team systems'],
     roles: [
@@ -778,6 +1132,20 @@ export const scenarios = [
   - Assign roles by shift tomorrow.
   - Measure missed calls, checkout time, and patient wait time.
   - Revisit hiring only after role data is clean.`,
+    recommendedNextStep: {
+      direction: "Clarify roles for 30 days before hiring.",
+      whatToChange: [
+        "Role A owns live patients: checkout, collections, next visit.",
+        "Role B owns phones, texts, voicemails, and online requests.",
+        "Patient at desk outranks ringing phone.",
+        "Role B catches the phone and logs callback if needed."
+      ],
+      nextStep: [
+        "Assign roles by shift tomorrow.",
+        "Measure missed calls, checkout time, and patient wait time.",
+        "Revisit hiring only after role data is clean."
+      ],
+    },
     whyItMatters: 'Hiring into unclear work often makes the confusion more expensive.',
     tags: ['decision', 'front desk', 'role clarity', 'staffing'],
     roles: [
@@ -813,6 +1181,24 @@ export const scenarios = [
   - Hold marketing spend steady for 30 days.
   - Fix call answer and checkout flow first.
   - Add demand after operations can catch it.`,
+    recommendedNextStep: {
+      direction: "Growth constraint is not demand yet. It is throughput.",
+      whatToChange: [
+        "More missed calls",
+        "Longer hygiene delays",
+        "More rushed handoffs",
+        "Lower collections at checkout",
+        "Call answer rate above 90%",
+        "Hygiene openings protected for new patients",
+        "Assistant onboarding complete",
+        "Financial policy consistently used"
+      ],
+      nextStep: [
+        "Hold marketing spend steady for 30 days.",
+        "Fix call answer and checkout flow first.",
+        "Add demand after operations can catch it."
+      ],
+    },
     whyItMatters: 'Growth is healthier when the team can deliver the experience being marketed.',
     tags: ['owner-level', 'team capacity', 'growth readiness', 'operations'],
     roles: [
@@ -844,6 +1230,20 @@ export const scenarios = [
   - Assign one owner per leak.
   - Review weekly dollars, not just percentages.
   - Expect improvement in 45-60 days, not instantly.`,
+    recommendedNextStep: {
+      direction: "Treat overhead creep as separate leaks that need separate fixes.",
+      whatIsHappening: [
+        "Supplies: rush shipping weekly; one order day + par levels",
+        "Lab: premium vendor drift; case selection guide",
+        "Overtime: front desk overlap; shift redesign",
+        "Do not cut quality blindly."
+      ],
+      nextStep: [
+        "Assign one owner per leak.",
+        "Review weekly dollars, not just percentages.",
+        "Expect improvement in 45-60 days, not instantly."
+      ],
+    },
     whyItMatters: 'Profitability work improves when the owner sees operational causes behind financial ratios.',
     tags: ['diagnostic', 'overhead', 'profitability', 'owner-level'],
     roles: [
@@ -876,6 +1276,23 @@ export const scenarios = [
   - Pull top 10 CDT write-offs by payer.
   - Review claims over 60 by payer.
   - Do not increase provider days until collection gap is explained.`,
+    recommendedNextStep: {
+      direction: "Separate production from collectable revenue before making compensation or growth decisions.",
+      whatToChange: [
+        "Step 2: Identify adjustment categories:",
+        "PPO contractual",
+        "courtesy discounts",
+        "write-offs",
+        "refunds",
+        "Step 3: Tie unpaid production to A/R buckets.",
+        "Are we producing more profitable work or just more discounted work?"
+      ],
+      nextStep: [
+        "Pull top 10 CDT write-offs by payer.",
+        "Review claims over 60 by payer.",
+        "Do not increase provider days until collection gap is explained."
+      ],
+    },
     whyItMatters: 'Production growth that does not convert to cash can hide payer drag, billing delay, or discount leakage.',
     tags: ['progressive', 'production vs collections', 'profitability', 'cash flow'],
     roles: [
@@ -910,6 +1327,22 @@ export const scenarios = [
   - Ask vendor for training schedule and cancellation terms.
   - Have CPA review timing.
   - Decide after implementation owner is confirmed.`,
+    recommendedNextStep: {
+      direction: "Cash reserve remains above the owner-approved floor.",
+      whatToChange: [
+        "Scanner has a named clinical owner.",
+        "Expected savings or added acceptance exceeds monthly payment within 6 months.",
+        "Cash: probably acceptable.",
+        "Implementation ownership: unclear.",
+        "ROI: promising but unproven.",
+        "Negotiate a 60-day implementation plan before signing."
+      ],
+      nextStep: [
+        "Ask vendor for training schedule and cancellation terms.",
+        "Have CPA review timing.",
+        "Decide after implementation owner is confirmed."
+      ],
+    },
     whyItMatters: 'Equipment should be bought for predictable operating return, not just tax timing or excitement.',
     tags: ['decision', 'equipment purchase', 'cash flow', 'owner-level'],
     roles: [
@@ -941,6 +1374,20 @@ export const scenarios = [
   - Pull 12-month volume by payer.
   - Compare allowed fee to break-even.
   - Build renegotiation packet for the top 2 plans.`,
+    recommendedNextStep: {
+      direction: "Do not start with a general fee increase.",
+      whatToChange: [
+        "D2740: high dollar write-off; payer negotiation",
+        "D4910: below hygiene cost; plan review",
+        "D2950: underpaid adjunct; estimate language",
+        "Renegotiate, limit new patients, or prepare exit for worst plans."
+      ],
+      nextStep: [
+        "Pull 12-month volume by payer.",
+        "Compare allowed fee to break-even.",
+        "Build renegotiation packet for the top 2 plans."
+      ],
+    },
     whyItMatters: 'Profit improves faster when fee strategy follows the codes causing the largest actual dollar loss.',
     tags: ['diagnostic', 'CDT analysis', 'write-offs', 'profitability'],
     roles: [
@@ -974,6 +1421,22 @@ export const scenarios = [
   - Set the reserve number with CPA.
   - Review monthly on the 10th, not at emotional month-end.
   - Tie bonus distributions to collected cash, not gross production.`,
+    recommendedNextStep: {
+      direction: "Create a distribution floor and ceiling.",
+      whatToChange: [
+        "one payroll cycle",
+        "one month lab average",
+        "rent and debt service",
+        "tax reserve",
+        "Base draw monthly.",
+        "Bonus draw only when cash exceeds reserve after known obligations."
+      ],
+      nextStep: [
+        "Set the reserve number with CPA.",
+        "Review monthly on the 10th, not at emotional month-end.",
+        "Tie bonus distributions to collected cash, not gross production."
+      ],
+    },
     whyItMatters: 'Owner pay becomes calmer when it is governed by cash rules instead of hope and timing luck.',
     tags: ['owner-level', 'distributions', 'cash reserve', 'profitability'],
     roles: [
@@ -1004,6 +1467,20 @@ export const scenarios = [
   2. Request updated fee schedule.
   3. Stop accepting new patients from this plan if fees do not improve by deadline.
   4. Prepare patient transition messaging now.`,
+    recommendedNextStep: {
+      direction: "Renegotiate with a 60-day deadline, then decide exit or restriction.",
+      whatToChange: [
+        "Patient communication needs preparation.",
+        "Active treatment cases need protection.",
+        "Chair time is being consumed below target margin."
+      ],
+      nextStep: [
+        "Build the top CDT write-off packet.",
+        "Request updated fee schedule.",
+        "Stop accepting new patients from this plan if fees do not improve by deadline.",
+        "Prepare patient transition messaging now."
+      ],
+    },
     whyItMatters: 'PPO strategy should be decisive without being reckless.',
     tags: ['decision', 'PPO', 'renegotiation', 'owner-level'],
     roles: [
@@ -1037,6 +1514,22 @@ export const scenarios = [
   - Build a leased-network map by Friday.
   - Request fee schedules for each hidden network.
   - Decide whether removal is allowed by contract.`,
+    recommendedNextStep: {
+      direction: "Map the hidden leased network before deciding how to manage PPO drag.",
+      whatToChange: [
+        "payer name",
+        "network name",
+        "TPA or umbrella network",
+        "allowed amount",
+        "contract source listed on EOB",
+        "Which network contract priced this claim, and how is our provider attached to it?"
+      ],
+      nextStep: [
+        "Build a leased-network map by Friday.",
+        "Request fee schedules for each hidden network.",
+        "Decide whether removal is allowed by contract."
+      ],
+    },
     whyItMatters: 'You cannot manage PPO drag if you cannot identify who is pricing the claim.',
     tags: ['diagnostic', 'leased network', 'PPO', 'EOB audit'],
     roles: [
@@ -1074,6 +1567,23 @@ export const scenarios = [
   - Draft letter this week.
   - Train phones before mailing.
   - Prepare estimate examples for top procedures.`,
+    recommendedNextStep: {
+      direction: "We are changing our relationship with the plan, not ending care for patients.",
+      whatToChange: [
+        "What is changing",
+        "What stays the same",
+        "How out-of-network benefits may still help",
+        "Who to call for a personal estimate",
+        "active treatment",
+        "families scheduled in next 60 days",
+        "patients with perio maintenance"
+      ],
+      nextStep: [
+        "Draft letter this week.",
+        "Train phones before mailing.",
+        "Prepare estimate examples for top procedures."
+      ],
+    },
     whyItMatters: 'A PPO exit can improve margin only if the practice preserves patient confidence during the transition.',
     tags: ['progressive', 'PPO exit', 'patient retention', 'communication'],
     roles: [
@@ -1109,6 +1619,23 @@ export const scenarios = [
   - Retarget campaigns toward higher-value services and geography.
   - Train phone team to capture plan before promising participation.
   - Review payer mix every 2 weeks.`,
+    recommendedNextStep: {
+      direction: "This is not clean growth. It is volume with margin dilution.",
+      whatToChange: [
+        "Keep scaling ads if payer mix improves.",
+        "Pause or retarget if low-margin PPO mix stays above 60%.",
+        "source",
+        "plan",
+        "kept visit",
+        "diagnosed treatment",
+        "90-day collections"
+      ],
+      nextStep: [
+        "Retarget campaigns toward higher-value services and geography.",
+        "Train phone team to capture plan before promising participation.",
+        "Review payer mix every 2 weeks."
+      ],
+    },
     whyItMatters: 'Growth strategy has to measure profitability, not just patient count.',
     tags: ['owner-level', 'new patient mix', 'PPO drag', 'marketing ROI'],
     roles: [
@@ -1144,6 +1671,23 @@ export const scenarios = [
   - Set a minimum D4910 threshold this week.
   - Compare all PPO hygiene fees to threshold.
   - Bring the bottom two plans to the owner meeting.`,
+    recommendedNextStep: {
+      direction: "Set a minimum D4910 fee threshold before accepting or expanding low-paying plan volume.",
+      whatToChange: [
+        "room overhead",
+        "supplies",
+        "admin time",
+        "target contribution margin",
+        "renegotiate",
+        "limit new patients from that plan",
+        "evaluate out-of-network path"
+      ],
+      nextStep: [
+        "Set a minimum D4910 threshold this week.",
+        "Compare all PPO hygiene fees to threshold.",
+        "Bring the bottom two plans to the owner meeting."
+      ],
+    },
     whyItMatters: 'A full hygiene schedule can still lose strategic value if plans underpay the maintenance model.',
     tags: ['decision', 'PPO hygiene', 'minimum fee', 'D4910'],
     roles: [
@@ -1178,6 +1722,24 @@ export const scenarios = [
   - Complete internal documentation today.
   - Review autocomplete and attachment workflow.
   - Train team on double-check rule before sending estimates.`,
+    recommendedNextStep: {
+      direction: "Stop the thread. Do not forward or delete the sent message.",
+      whatToChange: [
+        "Ask the unintended recipient to delete it and confirm deletion.",
+        "Identify exactly what was disclosed.",
+        "Notify privacy lead.",
+        "date/time",
+        "recipient",
+        "information disclosed",
+        "mitigation steps",
+        "patient notification decision"
+      ],
+      nextStep: [
+        "Complete internal documentation today.",
+        "Review autocomplete and attachment workflow.",
+        "Train team on double-check rule before sending estimates."
+      ],
+    },
     whyItMatters: 'Compliance response is strongest when the practice contains, documents, and improves the process quickly.',
     tags: ['progressive', 'HIPAA', 'wrong recipient', 'incident response'],
     roles: [
@@ -1209,6 +1771,21 @@ export const scenarios = [
   - How are deletions handled?
 - What to do next:
   - Do not sync patient data until BAA and safeguards are reviewed.`,
+    recommendedNextStep: {
+      direction: "Treat the vendor as a business associate review until safeguards are confirmed.",
+      whatToChange: [
+        "Are those identifiers tied to care, appointments, or billing? Yes.",
+        "Is the vendor performing a service for the practice? Yes.",
+        "Treat as business associate review until proven otherwise.",
+        "Will you sign a BAA?",
+        "Where is data stored?",
+        "Who can access messages?",
+        "How are deletions handled?"
+      ],
+      nextStep: [
+        "Do not sync patient data until BAA and safeguards are reviewed."
+      ],
+    },
     whyItMatters: 'Reminder tools can still handle PHI when they touch identifiable appointment data.',
     tags: ['decision', 'BAA', 'vendor review', 'HIPAA'],
     roles: [
@@ -1243,6 +1820,24 @@ export const scenarios = [
   - Audit 10 extraction notes per provider next month.
   - Review misses privately with each provider.
   - Add template prompts by Friday.`,
+    recommendedNextStep: {
+      direction: "Make consent fields required for extraction procedure notes.",
+      whatIsHappening: [
+        "diagnosis and tooth number",
+        "risks discussed",
+        "alternatives, including no treatment",
+        "post-op instructions",
+        "patient questions answered"
+      ],
+      whatToChange: [
+        "Speed does not remove documentation requirements."
+      ],
+      nextStep: [
+        "Audit 10 extraction notes per provider next month.",
+        "Review misses privately with each provider.",
+        "Add template prompts by Friday."
+      ],
+    },
     whyItMatters: 'Consent quality matters most when treatment is urgent and memory later gets fuzzy.',
     tags: ['diagnostic', 'informed consent', 'extractions', 'documentation'],
     roles: [
@@ -1275,6 +1870,24 @@ export const scenarios = [
 - What to do next:
   - Write a texting policy.
   - Train front desk on privacy phrase: For privacy, I do not want to put those details in a text. Can I call you?`,
+    recommendedNextStep: {
+      direction: "Keep reminders in text.",
+      whatIsHappening: [
+        "diagnosis",
+        "procedure details",
+        "detailed balances tied to treatment",
+        "clinical photos"
+      ],
+      whatToChange: [
+        "Move sensitive details to phone, portal, or secure messaging.",
+        "Please call us about your account.",
+        "Your appointment is tomorrow at 2 PM."
+      ],
+      nextStep: [
+        "Write a texting policy.",
+        "Train front desk on privacy phrase: For privacy, I do not want to put those details in a text. Can I call you?"
+      ],
+    },
     whyItMatters: 'A simple texting boundary protects privacy without making the team afraid to communicate.',
     tags: ['decision', 'texting', 'PHI', 'patient communication'],
     roles: [
@@ -1309,6 +1922,24 @@ export const scenarios = [
   - Review active users in each platform.
 - What to do next:
   - Delay new tool sync until access and BAA list are clean.`,
+    recommendedNextStep: {
+      direction: "Approve software rollout only after basic controls are assigned.",
+      whatIsHappening: [
+        "Shared logins",
+        "Missing BAA inventory",
+        "No user access review",
+        "Unclear texting boundaries"
+      ],
+      whatToChange: [
+        "Name compliance owner.",
+        "Build BAA tracker.",
+        "Remove shared logins.",
+        "Review active users in each platform."
+      ],
+      nextStep: [
+        "Delay new tool sync until access and BAA list are clean."
+      ],
+    },
     whyItMatters: 'Technology creates leverage, but unmanaged access creates preventable compliance exposure.',
     tags: ['owner-level', 'compliance strategy', 'software', 'BAA'],
     roles: [
@@ -1345,6 +1976,24 @@ export const scenarios = [
   - Create one trip folder before leaving.
   - Ask CPA how to treat mixed-purpose travel.
   - Write one note after the course summarizing business takeaways for the practice.`,
+    recommendedNextStep: {
+      direction: "Prepare CE trip documentation before travel so business and personal costs stay separate.",
+      whatToChange: [
+        "registration receipt",
+        "certificate",
+        "airfare receipt",
+        "hotel folio split by dates",
+        "meal receipts with business purpose",
+        "spouse costs",
+        "personal extra day",
+        "non-course entertainment"
+      ],
+      nextStep: [
+        "Create one trip folder before leaving.",
+        "Ask CPA how to treat mixed-purpose travel.",
+        "Write one note after the course summarizing business takeaways for the practice."
+      ],
+    },
     whyItMatters: 'Owner expenses are easier to defend and classify when documentation is built before year-end cleanup.',
     tags: ['progressive', 'CE travel', 'tax documentation', 'owner-level'],
     roles: [
@@ -1377,6 +2026,24 @@ export const scenarios = [
   - Add two hygiene days per month.
   - Batch doctor exams.
   - Recalculate room ROI after 60 days.`,
+    recommendedNextStep: {
+      direction: "Extend hygiene hours first for 60 days before building out.",
+      whatIsHappening: [
+        "Demand appears real, but staffing and doctor exam flow are not proven.",
+        "A smaller test protects cash."
+      ],
+      whatToChange: [
+        "hygiene production per hour",
+        "perio maintenance mix",
+        "doctor exam disruption",
+        "restorative diagnosis from hygiene"
+      ],
+      nextStep: [
+        "Add two hygiene days per month.",
+        "Batch doctor exams.",
+        "Recalculate room ROI after 60 days."
+      ],
+    },
     whyItMatters: 'Expansion decisions should prove demand and flow before committing construction dollars.',
     tags: ['decision', 'hygiene expansion', 'capacity planning', 'owner-level'],
     roles: [
@@ -1409,6 +2076,22 @@ export const scenarios = [
   - Model 3 months of cash under both options.
   - Have attorney review final terms.
   - Put reporting cadence in writing.`,
+    recommendedNextStep: {
+      direction: "Use a short daily minimum during ramp-up with conversion to percentage of collections or clearly defined adjusted production.",
+      whatToChange: [
+        "lab fee treatment",
+        "remake policy",
+        "write-off handling",
+        "timing of payment",
+        "If schedule is immature, daily minimum with sunset date.",
+        "If collections are reliable, percentage model can work."
+      ],
+      nextStep: [
+        "Model 3 months of cash under both options.",
+        "Have attorney review final terms.",
+        "Put reporting cadence in writing."
+      ],
+    },
     whyItMatters: 'Compensation design shapes behavior, trust, and cash flow from the first pay period.',
     tags: ['owner-level', 'associate compensation', 'cash flow', 'decision'],
     roles: [
@@ -1443,6 +2126,23 @@ export const scenarios = [
   - Build a top-code fee table.
   - Train team on explanation language.
   - Monitor acceptance and complaints for 60 days.`,
+    recommendedNextStep: {
+      direction: "Do not make this only a percentage exercise.",
+      whatToChange: [
+        "top 30 procedure volume",
+        "office fee vs local benchmark",
+        "PPO allowed fee",
+        "patient out-of-pocket impact",
+        "membership plan pricing",
+        "Raise UCR where appropriate.",
+        "Renegotiate or review PPO plans where allowed fees block impact."
+      ],
+      nextStep: [
+        "Build a top-code fee table.",
+        "Train team on explanation language.",
+        "Monitor acceptance and complaints for 60 days."
+      ],
+    },
     whyItMatters: 'Fee strategy works best when it connects pricing, payer reality, and patient communication.',
     tags: ['diagnostic', 'fee update', 'UCR', 'owner-level'],
     roles: [
@@ -1476,6 +2176,22 @@ export const scenarios = [
   - Ask CPA to confirm tax reserve.
   - Schedule debt review after next collection cycle.
   - Avoid making the decision from today's bank balance alone.`,
+    recommendedNextStep: {
+      direction: "Do not pay debt below the reserve floor.",
+      whatToChange: [
+        "Set aside tax estimate.",
+        "Confirm payroll and lab reserve.",
+        "Review A/R over 60.",
+        "Apply only true excess cash to debt.",
+        "Hold cash until tax payment clears.",
+        "Reassess partial principal payment afterward."
+      ],
+      nextStep: [
+        "Ask CPA to confirm tax reserve.",
+        "Schedule debt review after next collection cycle.",
+        "Avoid making the decision from today's bank balance alone."
+      ],
+    },
     whyItMatters: 'The best financial decision is not always the one that reduces debt fastest; sometimes it is the one that protects operating control.',
     tags: ['owner-level', 'debt', 'cash reserve', 'decision'],
     roles: [
