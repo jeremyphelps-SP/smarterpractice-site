@@ -3,6 +3,8 @@ import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
+import TrialCTA from "./components/TrialCTA";
+import { trackEvent } from "./utils/analytics";
 
 export default function App() {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
@@ -12,6 +14,9 @@ export default function App() {
   const handleSelectChallenge = (challengeKey) => {
     setSelectedQuickWin(null);
     setSelectedChallenge(challengeKey);
+    trackEvent("challenge_selected", {
+      selectedChallenge: challengeKey,
+    });
   };
 
   const handleSelectQuickWin = (quickWinKey) => {
@@ -32,7 +37,11 @@ export default function App() {
         selectedChallenge={selectedChallenge}
         onSelectQuickWin={handleSelectQuickWin}
       />
-      <div ref={matrixRef}>
+      <TrialCTA
+        selectedChallenge={selectedChallenge}
+        selectedQuickWin={selectedQuickWin}
+      />
+      <div id="scenario-matrix" ref={matrixRef}>
         <CoachScenarioMatrix
           selectedChallenge={selectedChallenge}
           selectedQuickWin={selectedQuickWin}
