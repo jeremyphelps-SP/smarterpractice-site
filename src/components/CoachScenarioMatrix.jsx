@@ -79,16 +79,16 @@ function getRecommendationSections(scenario) {
   const sectionForLine = (line) => {
     const normalized = line.replace(/^-\s*/, "").trim();
 
-    if (/^(call script|suggested language|appeal narrative|patient letter|payer call question|safe text examples):/i.test(normalized)) {
-      return "Script";
+    if (/^(stop doing this|what you are missing|the blocker|hidden questions|why|why not|highest risks):/i.test(normalized)) {
+      return "What's happening";
     }
 
-    if (/^(if patient|if the patient|if allowed|if denied|if not|if .*hesitates)/i.test(normalized)) {
-      return "If patient hesitates";
+    if (/^(call script|suggested language|appeal narrative|patient letter|payer call question|safe text examples|replace|with|fix|use neutral|internal message):/i.test(normalized)) {
+      return "What to change";
     }
 
     if (/^(what to do next|next steps|measure|dashboard|test metrics|30-day test|new work order|call order|attach):/i.test(normalized)) {
-      return "Next steps";
+      return "Next step";
     }
 
     return null;
@@ -239,7 +239,7 @@ export default function CoachScenarioMatrix({
               fontWeight: 800,
             }}
           >
-            Showing examples for: {selectedChallengeLabel}
+            Examples focused on: {selectedChallengeLabel}
           </p>
         )}
       </section>
