@@ -52,6 +52,10 @@ export default function AIImageStudio() {
           </p>
           <h2 id="ai-studio-title">AI Image Studio for Case Acceptance</h2>
           <p className="ai-studio__subheadline">
+            Use real patient context to create visuals that improve case
+            acceptance.
+          </p>
+          <p className="ai-studio__subheadline">
             Turn authorized patient photos into personalized treatment
             presentations in minutes&mdash;not days.
           </p>
