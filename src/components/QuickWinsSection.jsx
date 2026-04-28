@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { trackEvent } from "../utils/analytics";
 import "./QuickWinsSection.css";
 
 const challengeLabels = {
@@ -256,6 +257,26 @@ export default function QuickWinsSection({
     setShowMore(false);
   }, [selectedChallenge]);
 
+  const handleQuickWinClick = (quickWin) => {
+    trackEvent("quick_win_selected", {
+      selectedChallenge,
+      quickWinKey: quickWin.key,
+      quickWinTitle: quickWin.title,
+    });
+    onSelectQuickWin(quickWin.key);
+  };
+
+  const handleToggle = () => {
+    const nextShowMore = !showMore;
+    trackEvent(
+      nextShowMore ? "quick_wins_expanded" : "quick_wins_collapsed",
+      {
+        selectedChallenge,
+      },
+    );
+    setShowMore(nextShowMore);
+  };
+
   return (
     <section className="quick-wins" aria-labelledby="quick-wins-title">
       <div className="quick-wins__inner">
@@ -278,7 +299,7 @@ export default function QuickWinsSection({
               className="quick-wins__card"
               key={quickWin.key}
               type="button"
-              onClick={() => onSelectQuickWin(quickWin.key)}
+              onClick={() => handleQuickWinClick(quickWin)}
             >
               <span>{quickWin.title}</span>
               <p>{quickWin.description}</p>
@@ -289,7 +310,7 @@ export default function QuickWinsSection({
           <button
             className="quick-wins__toggle"
             type="button"
-            onClick={() => setShowMore((current) => !current)}
+            onClick={handleToggle}
           >
             {showMore ? "Show fewer examples" : "See more examples"}
           </button>
