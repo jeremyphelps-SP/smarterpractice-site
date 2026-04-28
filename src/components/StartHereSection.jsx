@@ -48,6 +48,10 @@ export default function StartHereSection({ onSelectChallenge = () => {} }) {
             Choose a common practice challenge and see practical ways Smarter
             Practice AI helps your team handle real problems.
           </p>
+          <p className="start-here__work-cue">
+            Your team isn't guessing. They're using the same tools top practices
+            rely on every day.
+          </p>
         </div>
 
         <div className="start-here__cards" aria-label="Choose a practice challenge">

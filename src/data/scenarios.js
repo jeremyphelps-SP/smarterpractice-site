@@ -3,7 +3,7 @@ export const scenarios = [
     id: 'scn-001',
     category: 'Get Paid Faster',
     coach: 'Revenue Cycle Coach Dana',
-    scenarioTitle: 'Crown Denial Appeal After the First Weak Submission',
+    scenarioTitle: 'Crown Denial Appeal (from actual rejection notice)',
     situation: 'Based on what we discussed in your last billing review, crown denials are not random. Your D2740 claim for tooth #19 was denied after the original narrative said only fractured cusp, even though the chart shows recurrent decay, pain on chewing, and an intraoral photo that was never attached.',
     teamInput: 'You have 21 days left to appeal. The claim value is $1,240, the patient already paid $420, and the front desk is worried about sending another balance statement before insurance reconsideration is complete.',
     outputPreview: `Coach response:
@@ -99,7 +99,7 @@ export const scenarios = [
     id: 'scn-003',
     category: 'Get Paid Faster',
     coach: 'Patient Billing Coach Mia',
-    scenarioTitle: 'EOB Conversation After a Composite Downgrade',
+    scenarioTitle: 'EOB Conversation (from actual benefits response)',
     situation: 'Based on the patient call you described, the tension is not just the $186 balance. The patient feels the estimate was presented as a promise, and your team is trying to explain insurance without accepting any ownership.',
     teamInput: 'The EOB downgraded D2392 to an amalgam allowance. The patient expected to owe $74 and now owes $260. She has been with the practice 9 years and has referred two family members.',
     outputPreview: `Patient call plan:
@@ -479,7 +479,7 @@ export const scenarios = [
     id: 'scn-011',
     category: 'Fix the Schedule',
     coach: 'Scheduling Coach Ben',
-    scenarioTitle: 'Tomorrow Morning Crown Cancellation Recovery',
+    scenarioTitle: 'Tomorrow Morning Crown Cancellation Recovery (from today\'s schedule)',
     situation: 'Based on your schedule note, the 9 AM cancellation tomorrow is not just an empty slot. It is the highest-value doctor block of the week, and filling it with a limited exam would hide the real loss.',
     teamInput: 'Two-hour crown prep canceled at 3:20 PM. There are 14 patients on the ASAP list, three hygiene patients tomorrow with diagnosed restorative treatment, and $7,800 in unscheduled treatment from the last 30 days.',
     outputPreview: `Recovery plan:
@@ -679,7 +679,7 @@ export const scenarios = [
     id: 'scn-015',
     category: 'Fix the Schedule',
     coach: 'Hygiene Growth Coach Laura',
-    scenarioTitle: 'No-Show Pattern the Reminder System Is Not Solving',
+    scenarioTitle: 'No-Show Pattern (from your broken appointment list)',
     situation: 'The reminder software is doing what it was designed to do, but it is not making judgment calls. Your Monday hygiene no-shows need risk-based escalation.',
     teamInput: 'Monday hygiene no-show rate is 17%, practice average is 8%, and 61% of Monday no-shows had at least one prior broken appointment. Standby list is not segmented.',
     outputPreview: `Diagnostic plan:
