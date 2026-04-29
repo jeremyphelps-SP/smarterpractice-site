@@ -1,8 +1,8 @@
 export const coachCapabilityCategories = [
   {
     category: "Get Paid Faster",
-    summary: "Find the next billing move faster and keep claims from sitting.",
-    outcome: "Fewer stalled claims, clearer patient balance conversations, and faster collections follow-up.",
+    summary: "Know what to do with denials, balances, and payer follow-up tomorrow.",
+    outcome: "More collected dollars, fewer aging claims, and less time stuck in payer follow-up.",
     tasks: [
       "How do we appeal this denial?",
       "Are we collecting this correctly?",
@@ -23,8 +23,8 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Help Patients Say Yes",
-    summary: "Make treatment easier to understand, value, and schedule.",
-    outcome: "Patients leave with clearer next steps, stronger confidence, and fewer unanswered objections.",
+    summary: "Give patients clearer reasons, next steps, and follow-up after the consult.",
+    outcome: "More scheduled treatment, fewer stalled cases, and clearer patient conversations.",
     tasks: [
       "What should we say to this patient?",
       "How do we follow up without sounding pushy?",
@@ -49,9 +49,31 @@ export const coachCapabilityCategories = [
     ],
   },
   {
+    category: "Fix the Schedule",
+    summary: "Fill gaps, protect provider time, and recover from schedule changes faster.",
+    outcome: "Fewer empty blocks, less daily scrambling, and a schedule the team can trust.",
+    tasks: [
+      "Who should we call to fill this opening?",
+      "How do we recover from tomorrow's cancellation?",
+      "Where should this emergency fit without wrecking the day?",
+    ],
+    capabilities: [
+      {
+        name: "Huddle & Systems Coach",
+        description:
+          "Turns schedule risks into practical huddle agendas, recovery steps, and team ownership.",
+      },
+      {
+        name: "Practice Growth Coach",
+        description:
+          "Helps connect open time, unscheduled treatment, and patient follow-up to production goals.",
+      },
+    ],
+  },
+  {
     category: "Run a Stronger Team",
-    summary: "Turn daily friction into clearer ownership and better follow-through.",
-    outcome: "Fewer dropped handoffs, more useful huddles, and cleaner accountability across the team.",
+    summary: "Turn repeat team problems into clear owners, scripts, and next steps.",
+    outcome: "Fewer dropped handoffs, faster onboarding, and clearer accountability in daily work.",
     tasks: [
       "What should we cover in tomorrow's huddle?",
       "Who should own this recurring bottleneck?",
@@ -72,8 +94,8 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Grow Production",
-    summary: "Choose the growth moves most likely to turn into kept visits and scheduled care.",
-    outcome: "Better campaign follow-up, stronger referral systems, and growth plans the schedule can absorb.",
+    summary: "Focus follow-up and marketing on work that turns into scheduled care.",
+    outcome: "More scheduled treatment, fewer missed opportunities, and growth your schedule can actually handle.",
     tasks: [
       "Where are our best production opportunities?",
       "How should we follow up with these consults?",
@@ -94,8 +116,8 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Stay Protected",
-    summary: "Make compliance questions easier to document before they become problems.",
-    outcome: "Cleaner policies, better incident documentation, and more consistent privacy workflows.",
+    summary: "Document privacy, consent, and vendor questions before risk grows.",
+    outcome: "Cleaner documentation, faster incident response, and fewer avoidable compliance gaps.",
     tasks: [
       "What do we document after this privacy issue?",
       "Does this vendor need a BAA?",
@@ -111,8 +133,8 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Make Smarter Decisions",
-    summary: "Pressure-test software, spending, tax, and expansion choices before money moves.",
-    outcome: "Clearer purchase timing, better vendor questions, and fewer expensive decisions made on instinct.",
+    summary: "Pressure-test purchases, vendors, tax questions, and cash decisions before money moves.",
+    outcome: "Better buying decisions, clearer cash tradeoffs, and fewer expensive surprises.",
     tasks: [
       "Should we buy this technology now or wait?",
       "What should we ask this vendor before signing?",

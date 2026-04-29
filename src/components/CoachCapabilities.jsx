@@ -4,7 +4,7 @@ import "./CoachCapabilities.css";
 
 export default function CoachCapabilities() {
   const [selectedCategoryName, setSelectedCategoryName] = useState(
-    coachCapabilityCategories[0]?.category || "",
+    "Get Paid Faster",
   );
   const selectedCategory =
     coachCapabilityCategories.find(
@@ -23,6 +23,10 @@ export default function CoachCapabilities() {
           document, and follow through &mdash; without starting from a blank page.
         </p>
         <p className="coach-capabilities__bridge">
+          Most teams already have the answers somewhere. The problem is getting
+          to them fast enough to use them.
+        </p>
+        <p className="coach-capabilities__bridge">
           Each area below shows how your team uses Smarter Practice AI to handle
           real work &mdash; without guessing, Googling, or interrupting the
           doctor.
@@ -35,7 +39,7 @@ export default function CoachCapabilities() {
           aria-label="Practice capability categories"
         >
           <p className="coach-capabilities__selector-label">
-            Practice areas
+            Where do you need help right now?
           </p>
           <div className="coach-capabilities__selector-list">
             {coachCapabilityCategories.map((category) => {
@@ -70,7 +74,8 @@ export default function CoachCapabilities() {
             </h3>
             <p>{selectedCategory.summary}</p>
             <p className="coach-capabilities__used-by">
-              Used by: Front desk, office manager, treatment coordinator
+              Used by: Front desk, office manager, treatment coordinator &mdash;
+              without waiting on the doctor
             </p>
           </div>
 
