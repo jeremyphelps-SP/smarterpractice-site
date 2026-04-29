@@ -2,7 +2,7 @@ export const scenarios = [
   {
     id: 'scn-001',
     category: 'Get Paid Faster',
-    coach: 'Revenue Cycle Coach Dana',
+    coach: 'Dental Claims Coach',
     scenarioTitle: 'Crown Denial Appeal (from actual rejection notice)',
     situation: 'Based on what we discussed in your last billing review, crown denials are not random. Your D2740 claim for tooth #19 was denied after the original narrative said only fractured cusp, even though the chart shows recurrent decay, pain on chewing, and an intraoral photo that was never attached.',
     teamInput: 'You have 21 days left to appeal. The claim value is $1,240, the patient already paid $420, and the front desk is worried about sending another balance statement before insurance reconsideration is complete.',
@@ -47,7 +47,7 @@ export const scenarios = [
   {
     id: 'scn-002',
     category: 'Get Paid Faster',
-    coach: 'Revenue Cycle Coach Dana',
+    coach: 'Dental Claims Coach',
     scenarioTitle: 'What Am I Missing in A/R Over 90?',
     situation: 'You asked why A/R over 90 is still high even though the team works the report every Friday. The deeper issue is that they are working oldest-first instead of diagnosing why dollars are stuck.',
     teamInput: 'Insurance A/R over 90 is $212,000. Roughly $64,000 is COB-related, $38,000 needs attachments, $29,000 is credentialing mismatch, and the rest is mixed payer follow-up. Billing has 5 protected hours per week.',
@@ -98,7 +98,7 @@ export const scenarios = [
   {
     id: 'scn-003',
     category: 'Get Paid Faster',
-    coach: 'Patient Billing Coach Mia',
+    coach: 'Dental Claims Coach',
     scenarioTitle: 'EOB Conversation (from actual benefits response)',
     situation: 'Based on the patient call you described, the tension is not just the $186 balance. The patient feels the estimate was presented as a promise, and your team is trying to explain insurance without accepting any ownership.',
     teamInput: 'The EOB downgraded D2392 to an amalgam allowance. The patient expected to owe $74 and now owes $260. She has been with the practice 9 years and has referred two family members.',
@@ -142,7 +142,7 @@ export const scenarios = [
   {
     id: 'scn-004',
     category: 'Get Paid Faster',
-    coach: 'Insurance Systems Coach Priya',
+    coach: 'Dental Claims Coach',
     scenarioTitle: 'Should We Collect Now or Wait for Insurance?',
     situation: 'You asked whether to keep collecting estimated patient portions at checkout when benefits are uncertain. The real decision is not collect or do not collect. It is how much confidence the team has in the estimate and how exceptions are approved.',
     teamInput: 'Same-day collection is 68%. The owner wants 90%. Front desk avoids collecting crown co-pays when estimates vary by more than $150. Patient A/R over 60 is now $41,000.',
@@ -195,7 +195,7 @@ export const scenarios = [
   {
     id: 'scn-005',
     category: 'Get Paid Faster',
-    coach: 'Revenue Cycle Coach Dana',
+    coach: 'Dental Claims Coach',
     scenarioTitle: 'Pre-D Packet for Perio Grafting with Weak Documentation',
     situation: 'Based on the perio cases you showed me, the payer is not rejecting grafting because grafting is impossible to cover. They are rejecting vague submissions that sound cosmetic.',
     teamInput: 'The patient has recession on #22 and #27, sensitivity, 1 mm attached gingiva, and recession progression from 3 mm to 5 mm over 14 months. The pre-D must go out this week before the patient loses momentum.',
@@ -248,7 +248,7 @@ export const scenarios = [
   {
     id: 'scn-006',
     category: 'Help Patients Say Yes',
-    coach: 'Treatment Acceptance Coach Elena',
+    coach: 'Case Acceptance Coach',
     scenarioTitle: 'SRP Case That Keeps Turning Into a Cleaning Conversation',
     situation: 'Based on what we discussed after your hygiene meeting, the team is diagnosing SRP but presenting it like an upgraded cleaning. That is why patients keep asking what insurance covers instead of understanding active disease.',
     teamInput: 'The patient has 5-6 mm pockets, bleeding on 42% of sites, radiographic calculus, and early bone loss. The patient says, I only want what my insurance covers today.',
@@ -292,7 +292,7 @@ export const scenarios = [
   {
     id: 'scn-007',
     category: 'Help Patients Say Yes',
-    coach: 'Treatment Acceptance Coach Elena',
+    coach: 'Case Acceptance Coach',
     scenarioTitle: 'What Are We Missing in Large Case Follow-Up?',
     situation: 'You said the patient accepted the $18,400 plan but disappeared after the consult. What you are missing is that acceptance in the room is not the same as a scheduled treatment pathway.',
     teamInput: 'The patient travels two weeks per month, wants to start with the painful quadrant, has $3,000 remaining insurance this year, and asked whether the whole plan has to be done before January.',
@@ -340,7 +340,7 @@ export const scenarios = [
   {
     id: 'scn-008',
     category: 'Help Patients Say Yes',
-    coach: 'Financing Coach Alex',
+    coach: 'Case Acceptance Coach',
     scenarioTitle: 'Should We Offer Financing Earlier or Wait for Objection?',
     situation: 'The team is split. One person thinks early financing sounds pushy; another thinks waiting until the patient objects makes financing feel like a rescue plan. The numbers suggest the second person is right.',
     teamInput: 'Cases from $1,500-$4,000 have a 37% same-day acceptance rate. When financing is mentioned before the fee reveal, acceptance rises to 52%. When mentioned only after objection, it is 29%.',
@@ -383,7 +383,7 @@ export const scenarios = [
   {
     id: 'scn-009',
     category: 'Help Patients Say Yes',
-    coach: 'Patient Communication Coach Tia',
+    coach: 'Chairside Clinical Companion',
     scenarioTitle: 'Crown Fee Objection from a Patient Who Trusts Insurance More Than Diagnosis',
     situation: 'Based on the pattern we saw in consult notes, the patient is not rejecting the crown. She is using insurance coverage as a proxy for whether the crown is really necessary.',
     teamInput: 'The patient has delayed treatment twice. The crown fee is $1,620, insurance estimate is $740, and the patient says, If my plan barely pays, maybe it is not that important.',
@@ -428,7 +428,7 @@ export const scenarios = [
   {
     id: 'scn-010',
     category: 'Help Patients Say Yes',
-    coach: 'Hygiene Growth Coach Laura',
+    coach: 'Practice Growth Coach',
     scenarioTitle: 'What Am I Missing When Patients Decline Perio Maintenance?',
     situation: 'You are hearing patients say insurance only covers two cleanings, but the bigger issue is that the team keeps calling periodontal maintenance a cleaning.',
     teamInput: 'Only 11% of active hygiene patients are coded D4910, but audit notes show 26% have prior SRP or persistent pocketing. Hygienists are worried about upsetting long-term patients.',
@@ -478,7 +478,7 @@ export const scenarios = [
   {
     id: 'scn-011',
     category: 'Fix the Schedule',
-    coach: 'Scheduling Coach Ben',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'Tomorrow Morning Crown Cancellation Recovery (from today\'s schedule)',
     situation: 'Based on your schedule note, the 9 AM cancellation tomorrow is not just an empty slot. It is the highest-value doctor block of the week, and filling it with a limited exam would hide the real loss.',
     teamInput: 'Two-hour crown prep canceled at 3:20 PM. There are 14 patients on the ASAP list, three hygiene patients tomorrow with diagnosed restorative treatment, and $7,800 in unscheduled treatment from the last 30 days.',
@@ -528,7 +528,7 @@ export const scenarios = [
   {
     id: 'scn-012',
     category: 'Fix the Schedule',
-    coach: 'Scheduling Coach Ben',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'Should We Add Hours or Fix Utilization First?',
     situation: 'The owner is considering adding Friday hours because the schedule feels full, but the data shows recurring midweek gaps and no-show leakage. This is a decision point, not a staffing problem yet.',
     teamInput: 'Hygiene is booked out 9 weeks, doctor has 7.5 open hours next week, no-shows average 11%, and overtime would cost about $1,800 per month if Fridays are added.',
@@ -577,7 +577,7 @@ export const scenarios = [
   {
     id: 'scn-013',
     category: 'Fix the Schedule',
-    coach: 'Operations Coach Maya',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'What Am I Missing in Doctor Flow?',
     situation: 'You described the doctor as running behind every day, but the schedule is not overbooked on paper. That means the issue is likely interruption design, not total volume.',
     teamInput: 'Doctor is interrupted for hygiene exams every 20-30 minutes. Crown preps run 12 minutes late on average. Assistants say they lose setup rhythm after exams.',
@@ -627,7 +627,7 @@ export const scenarios = [
   {
     id: 'scn-014',
     category: 'Fix the Schedule',
-    coach: 'Scheduling Coach Ben',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'Emergency Blocks Without Sacrificing Planned Production',
     situation: 'Based on last month, emergencies are not the problem. Uncontrolled emergency placement is the problem. They are pushing planned restorative into late-day stress.',
     teamInput: 'Same-day emergencies average 3.4 per day. Two blocks are available most mornings, but the front desk inserts emergencies wherever the patient can come. Planned production ran late 9 of the last 16 days.',
@@ -678,7 +678,7 @@ export const scenarios = [
   {
     id: 'scn-015',
     category: 'Fix the Schedule',
-    coach: 'Hygiene Growth Coach Laura',
+    coach: 'Practice Growth Coach',
     scenarioTitle: 'No-Show Pattern (from your broken appointment list)',
     situation: 'The reminder software is doing what it was designed to do, but it is not making judgment calls. Your Monday hygiene no-shows need risk-based escalation.',
     teamInput: 'Monday hygiene no-show rate is 17%, practice average is 8%, and 61% of Monday no-shows had at least one prior broken appointment. Standby list is not segmented.',
@@ -733,7 +733,7 @@ export const scenarios = [
   {
     id: 'scn-016',
     category: 'Grow New Patients',
-    coach: 'Growth Coach Riley',
+    coach: 'Practice Growth Coach',
     scenarioTitle: 'New Patient Calls Are Up, But Quality Is Down',
     situation: 'Based on the campaign report, you are getting more calls but not better growth. The owner sees 48 new patient calls and feels encouraged; the schedule shows only 19 kept visits.',
     teamInput: 'Google ads spent $3,200 this month. Call answer rate is 76%, scheduled rate is 54%, kept rate is 40%, and most callers ask about PPO participation before describing their dental concern.',
@@ -779,7 +779,7 @@ export const scenarios = [
   {
     id: 'scn-017',
     category: 'Grow New Patients',
-    coach: 'Growth Coach Riley',
+    coach: 'Practice Growth Coach',
     scenarioTitle: 'Should We Spend More on Ads or Improve Recall Reactivation?',
     situation: 'You asked whether to add $2,000 per month to ads. Based on what we discussed, the practice has a cheaper growth lever sitting in the inactive patient list.',
     teamInput: 'There are 1,180 patients overdue 9+ months. Ads cost $180 per scheduled new patient. Hygiene has six openings next week and restorative diagnosis from recall averages $620 per returning patient.',
@@ -829,7 +829,7 @@ export const scenarios = [
   {
     id: 'scn-018',
     category: 'Grow New Patients',
-    coach: 'Growth Coach Riley',
+    coach: 'Practice Growth Coach',
     scenarioTitle: 'Implant Consult Follow-Up That Reveals the Real Objection',
     situation: 'Based on the last five implant consults, patients are not disappearing because they are uninterested. They leave with too many unresolved decisions: surgery fear, cost, timing, and insurance uncertainty.',
     teamInput: 'Implant consult show rate is 82%, but only 26% schedule the next step. Average case value is $5,800. Coordinator notes usually say thinking about it with no objection category.',
@@ -877,7 +877,7 @@ export const scenarios = [
   {
     id: 'scn-019',
     category: 'Grow New Patients',
-    coach: 'Patient Experience Coach Tia',
+    coach: 'Chairside Clinical Companion',
     scenarioTitle: 'What Are We Missing in Membership Plan Enrollment?',
     situation: 'The membership plan is not failing because patients dislike it. It is failing because the team introduces it after the patient has already mentally paid full price at checkout.',
     teamInput: 'Only 13% of eligible uninsured patients enroll. The plan is $39 per month, includes preventive care, and discounts treatment 15%. Most uninsured new patients ask about cost during scheduling.',
@@ -921,7 +921,7 @@ export const scenarios = [
   {
     id: 'scn-020',
     category: 'Grow New Patients',
-    coach: 'Growth Coach Riley',
+    coach: 'Practice Growth Coach',
     scenarioTitle: 'Owner-Level Referral Strategy Instead of Another Discount Campaign',
     situation: 'The owner wants a whitening discount to create quick new patient demand. Based on your payer mix and open hygiene capacity, a referral campaign may create better patients with less margin damage.',
     teamInput: 'The last whitening promo brought 31 appointments, but only 9 converted to comprehensive exams. Existing patient referrals have a 74% kept rate and 2.1x higher diagnosed treatment in the first 90 days.',
@@ -973,7 +973,7 @@ export const scenarios = [
   {
     id: 'scn-021',
     category: 'Build a Stronger Team',
-    coach: 'Team Systems Coach Naomi',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'New Assistant Onboarding After Turnover Time Doubled',
     situation: 'Based on last week\'s schedule review, the new assistants are not slow because they lack effort. They lack a visible standard for what ready means.',
     teamInput: 'Turnover increased from 12 to 24 minutes. Two assistants started in the last 30 days. Crown prep trays vary by assistant, and sterilization handoffs are verbal.',
@@ -1025,7 +1025,7 @@ export const scenarios = [
   {
     id: 'scn-022',
     category: 'Build a Stronger Team',
-    coach: 'Team Systems Coach Naomi',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'Hygienist Lateness Coaching Without Losing Trust',
     situation: 'You asked how direct to be with a strong hygienist who is repeatedly late. The answer is direct on the behavior and respectful about the person.',
     teamInput: 'She has arrived 5-8 minutes late 6 times in 3 weeks. First patients start late, but patient reviews mention her positively. The office manager is worried about damaging morale.',
@@ -1070,7 +1070,7 @@ export const scenarios = [
   {
     id: 'scn-023',
     category: 'Build a Stronger Team',
-    coach: 'Team Systems Coach Naomi',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'What Am I Missing When Huddles Do Not Change Behavior?',
     situation: 'You said the huddle happens every day, but the same problems keep repeating. That usually means the meeting has information but no ownership.',
     teamInput: 'Recurring issues include open hygiene, unscheduled treatment, lab cases not checked, and claims missing attachments. The huddle lasts 15 minutes but ends without assigned owners.',
@@ -1116,7 +1116,7 @@ export const scenarios = [
   {
     id: 'scn-024',
     category: 'Build a Stronger Team',
-    coach: 'HR Coach Simone',
+    coach: 'Staffing & HR Coach',
     scenarioTitle: 'Should We Hire Another Front Desk Person or Clarify Roles?',
     situation: 'The team feels overwhelmed, but based on workflow notes, the front desk may have an ownership problem before it has a headcount problem.',
     teamInput: 'Two front desk employees overlap from 9 AM to 3 PM. Calls are missed during checkout, checkout backs up after hygiene, and both employees assume the other person is watching texts.',
@@ -1161,7 +1161,7 @@ export const scenarios = [
   {
     id: 'scn-025',
     category: 'Build a Stronger Team',
-    coach: 'Team Systems Coach Naomi',
+    coach: 'Huddle & Systems Coach',
     scenarioTitle: 'Owner-Level Team Capacity Review Before Growth Push',
     situation: 'The owner wants 20 more new patients per month, but based on team capacity, the practice may not be ready to absorb growth without service quality slipping.',
     teamInput: 'Current call answer rate is 78%, hygiene is booked out 8 weeks, assistants are training, and checkout collections are inconsistent. Marketing wants to increase spend next month.',
@@ -1214,7 +1214,7 @@ export const scenarios = [
   {
     id: 'scn-026',
     category: 'Improve Profitability',
-    coach: 'Profitability Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'What Am I Missing in Overhead Creep?',
     situation: 'You said overhead rose from 61% to 67% and there is no obvious culprit. That is exactly when we stop looking for one big leak and start looking for several habits compounding.',
     teamInput: 'Supply spend rose from 6.2% to 8.8%, lab from 8.1% to 10.4%, and overtime is up $2,300 per month. Collections are flat, not falling.',
@@ -1258,7 +1258,7 @@ export const scenarios = [
   {
     id: 'scn-027',
     category: 'Improve Profitability',
-    coach: 'Profitability Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Production Is Up, Collections Are Flat',
     situation: 'Based on your dashboard, production is not the number to celebrate yet. Gross production rose 9%, but collections stayed flat and adjustments rose faster than visits.',
     teamInput: 'Quarterly gross production is $842,000, collections are $701,000, write-offs are $112,000, and insurance A/R over 60 rose to $96,000.',
@@ -1308,7 +1308,7 @@ export const scenarios = [
   {
     id: 'scn-028',
     category: 'Improve Profitability',
-    coach: 'Profitability Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Should We Buy the Scanner Now or Wait?',
     situation: 'The doctor wants the $92,000 scanner before year-end. The tension is real: it may reduce remakes and help case presentation, but it also competes with a hygiene room refresh.',
     teamInput: 'Vendor offers $1,980 per month financing. Lab remakes cost about $3,400 per month. Cash reserve would fall from $185,000 to $118,000 with the down payment and training package.',
@@ -1357,7 +1357,7 @@ export const scenarios = [
   {
     id: 'scn-029',
     category: 'Improve Profitability',
-    coach: 'Profitability Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Top CDT Write-Offs Reveal the Real Profit Drag',
     situation: 'Based on the payer report, your low-margin problem is concentrated. The top five CDT codes account for 61% of write-off dollars.',
     teamInput: 'D2740, D2950, D4910, D4341, and D2392 show the largest total write-offs. The owner was planning a general fee increase but has not reviewed payer-specific allowed amounts.',
@@ -1403,7 +1403,7 @@ export const scenarios = [
   {
     id: 'scn-030',
     category: 'Improve Profitability',
-    coach: 'Dental CFO Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Owner Distribution Guardrails During Cash Swings',
     situation: 'The owner wants larger monthly distributions, but based on the last two quarters, the practice is using bank balance as a decision tool instead of a cash forecast.',
     teamInput: 'The practice has two payrolls monthly, $38,000 average lab bill, quarterly tax estimates, and insurance A/R over 60 at $96,000. Owner currently draws variable amounts based on month-end cash.',
@@ -1451,7 +1451,7 @@ export const scenarios = [
   {
     id: 'scn-031',
     category: 'Reduce PPO Drag',
-    coach: 'PPO Strategy Coach Nina',
+    coach: 'PPO Strategy Advisor',
     scenarioTitle: 'Should We Drop the Low-Paying PPO or Renegotiate First?',
     situation: 'You asked whether to drop the plan immediately. Based on the numbers, it deserves pressure first, but not an open-ended negotiation that delays a decision forever.',
     teamInput: 'The plan is 18% of visits, 24% of doctor chair time, and only 11% of collections. D2740 reimburses $925 against a $1,650 office fee. Hygiene is booked out 9 weeks.',
@@ -1496,7 +1496,7 @@ export const scenarios = [
   {
     id: 'scn-032',
     category: 'Reduce PPO Drag',
-    coach: 'PPO Strategy Coach Nina',
+    coach: 'PPO Strategy Advisor',
     scenarioTitle: 'What Am I Missing in Leased Network Write-Offs?',
     situation: 'The team keeps saying we are out-of-network, but the EOBs say otherwise. What you are missing is leased network pricing through an umbrella agreement.',
     teamInput: 'Unexpected contractual adjustments total $18,600 over 90 days. EOBs reference a network name the office manager does not recognize. Credentialing files are incomplete.',
@@ -1547,7 +1547,7 @@ export const scenarios = [
   {
     id: 'scn-033',
     category: 'Reduce PPO Drag',
-    coach: 'PPO Strategy Coach Nina',
+    coach: 'PPO Strategy Advisor',
     scenarioTitle: 'PPO Exit Messaging for Long-Term Families',
     situation: 'Based on your patient list, the exit risk is not volume. It is trust. Long-term families need to hear continuity before they hear insurance change.',
     teamInput: 'The plan has 740 active patients, including 128 families with 5+ years in the practice. The plan underpays crown and perio codes, but many patients may still have out-of-network benefits.',
@@ -1600,7 +1600,7 @@ export const scenarios = [
   {
     id: 'scn-034',
     category: 'Reduce PPO Drag',
-    coach: 'PPO Strategy Coach Nina',
+    coach: 'PPO Strategy Advisor',
     scenarioTitle: 'New Patient Growth Is Making PPO Drag Worse',
     situation: 'The owner is happy new patients are up, but based on payer mix, the growth is pulling the practice toward lower-margin work.',
     teamInput: 'New patient volume rose 22%, but 68% of new patients are from the two lowest reimbursing PPOs. Net collections per new patient fell from $486 to $372.',
@@ -1652,7 +1652,7 @@ export const scenarios = [
   {
     id: 'scn-035',
     category: 'Reduce PPO Drag',
-    coach: 'PPO Strategy Coach Nina',
+    coach: 'PPO Strategy Advisor',
     scenarioTitle: 'Minimum Fee Threshold for Hygiene Codes',
     situation: 'Based on your hygiene profitability review, several plans reimburse D4910 below the cost of delivering the appointment once wages and room time are included.',
     teamInput: 'Average hygiene wage with taxes is $58 per hour. D4910 visits are 60 minutes. Two plans reimburse below $85, and perio maintenance demand is high.',
@@ -1703,7 +1703,7 @@ export const scenarios = [
   {
     id: 'scn-036',
     category: 'Avoid Compliance Mistakes',
-    coach: 'Compliance Coach Avery',
+    coach: 'HIPAA & Compliance Coach',
     scenarioTitle: 'Wrong-Recipient Email: What To Do in the Next Hour',
     situation: 'Based on what you described, this is not a moment for panic or deletion. It is a containment and documentation moment.',
     teamInput: 'A treatment estimate with patient name, tooth numbers, and fees was emailed to the wrong patient. Recipient replied 18 minutes later. Office manager has not called either patient yet.',
@@ -1754,7 +1754,7 @@ export const scenarios = [
   {
     id: 'scn-037',
     category: 'Avoid Compliance Mistakes',
-    coach: 'Compliance Coach Avery',
+    coach: 'HIPAA & Compliance Coach',
     scenarioTitle: 'Does This Vendor Need a BAA?',
     situation: 'The vendor says a BAA is not necessary because they only send reminders. Based on the data fields involved, that answer is not enough.',
     teamInput: 'The platform will receive patient names, phone numbers, appointment dates, message history, and review requests. It may also sync appointment status from the practice software.',
@@ -1801,7 +1801,7 @@ export const scenarios = [
   {
     id: 'scn-038',
     category: 'Avoid Compliance Mistakes',
-    coach: 'Compliance Coach Avery',
+    coach: 'HIPAA & Compliance Coach',
     scenarioTitle: 'What Are We Missing in Extraction Consent Notes?',
     situation: 'The doctors say consent is discussed verbally, but the audit shows missing documentation. What is missing is not conversation; it is proof of the conversation.',
     teamInput: 'Thirty percent of sampled extraction charts lack risks, alternatives, or post-op instructions. Most misses happen on same-day emergency extractions.',
@@ -1852,7 +1852,7 @@ export const scenarios = [
   {
     id: 'scn-039',
     category: 'Avoid Compliance Mistakes',
-    coach: 'Compliance Coach Avery',
+    coach: 'HIPAA & Compliance Coach',
     scenarioTitle: 'Should We Text Balances and Treatment Details?',
     situation: 'The team wants texting to be convenient, but based on the examples you showed, convenience is drifting into sensitive detail without a clear policy.',
     teamInput: 'Texts include balances, procedure names, and prescription updates. Some patients consented to texting generally, but the office has no distinction between reminders and sensitive content.',
@@ -1903,7 +1903,7 @@ export const scenarios = [
   {
     id: 'scn-040',
     category: 'Avoid Compliance Mistakes',
-    coach: 'Compliance Coach Avery',
+    coach: 'HIPAA & Compliance Coach',
     scenarioTitle: 'Owner-Level Compliance Risk Map Before Adding Software',
     situation: 'The owner wants three new tools this quarter: texting, online forms, and payment links. Based on the current process, adding tools before governance will multiply privacy and access risk.',
     teamInput: 'Passwords are shared for two systems, BAAs are stored inconsistently, and no one owns quarterly user access review. The owner wants speed but not avoidable risk.',
@@ -1956,7 +1956,7 @@ export const scenarios = [
   {
     id: 'scn-041',
     category: 'Make Smarter Money Decisions',
-    coach: 'Dental CFO Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'CE Trip Documentation Before the Expense Happens',
     situation: 'Based on your travel plan, the CE trip has a clean business purpose, but the spouse travel and extra personal day need separation before receipts get messy.',
     teamInput: 'Course tuition is $2,400, airfare is $620, hotel is 4 nights at $310, spouse is traveling separately, and the owner added one personal day after the course.',
@@ -2008,7 +2008,7 @@ export const scenarios = [
   {
     id: 'scn-042',
     category: 'Make Smarter Money Decisions',
-    coach: 'Dental CFO Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Should We Expand Hygiene or Extend Hours First?',
     situation: 'The owner wants another hygiene room, but based on capacity data, the decision should compare build-out risk against a smaller operating test.',
     teamInput: 'Recall is booked out 10 weeks. Build-out would cost $78,000. A part-time hygienist is available two days per week. Doctor exams already interrupt operative flow.',
@@ -2058,7 +2058,7 @@ export const scenarios = [
   {
     id: 'scn-043',
     category: 'Make Smarter Money Decisions',
-    coach: 'Dental CFO Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Associate Compensation Model That Does Not Reward Uncollected Production',
     situation: 'Based on your payer mix, paying only on gross or adjusted production could create friction if collections lag. The model needs to match how cash actually enters the practice.',
     teamInput: 'The associate will inherit a PPO-heavy schedule. Expected production is $72,000 per month, but net collections may lag 30-45 days. Owner wants recruiting stability without overpaying during ramp-up.',
@@ -2107,7 +2107,7 @@ export const scenarios = [
   {
     id: 'scn-044',
     category: 'Make Smarter Money Decisions',
-    coach: 'Dental CFO Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'What Am I Missing in Fee Update Planning?',
     situation: 'You are thinking about a 6% fee increase across the board. What you may be missing is that the impact is not equal across codes, payers, and patient conversations.',
     teamInput: 'Fees have not changed in 18 months. Supplies, lab, and wages increased. Top procedures are D1110, D4910, D2740, D2950, and D2392. PPO allowed fees limit collections on many codes.',
@@ -2158,7 +2158,7 @@ export const scenarios = [
   {
     id: 'scn-045',
     category: 'Make Smarter Money Decisions',
-    coach: 'Dental CFO Coach Ryan',
+    coach: 'Tax Strategy Co-Pilot',
     scenarioTitle: 'Owner-Level Choice: Pay Down Debt or Preserve Cash?',
     situation: 'The owner wants to use excess cash to pay down equipment debt, but based on seasonal A/R swings and upcoming tax payments, preserving liquidity may be the smarter short-term move.',
     teamInput: 'Current cash is $210,000. Minimum operating reserve target is $150,000. Equipment debt balance is $64,000 at 7.2%. Quarterly tax estimate of $38,000 is due in six weeks.',

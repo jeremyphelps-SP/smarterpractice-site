@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
 import QuickWinsSection from "./components/QuickWinsSection";
@@ -41,6 +42,7 @@ export default function App() {
         selectedChallenge={selectedChallenge}
         selectedQuickWin={selectedQuickWin}
       />
+      <CoachCapabilities />
       <div id="scenario-matrix" ref={matrixRef}>
         <CoachScenarioMatrix
           selectedChallenge={selectedChallenge}
