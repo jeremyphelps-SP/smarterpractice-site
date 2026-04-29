@@ -1,7 +1,7 @@
 export const coachCapabilityCategories = [
   {
     category: "Get Paid Faster",
-    summary: "Know what to do with denials, balances, and payer follow-up tomorrow.",
+    summary: "Know exactly what to do next on claims, denials, and A/R so money doesn't sit.",
     outcome: "More collected dollars, fewer aging claims, and less time stuck in payer follow-up.",
     tasks: [
       "How do we appeal this denial?",
@@ -23,7 +23,7 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Help Patients Say Yes",
-    summary: "Give patients clearer reasons, next steps, and follow-up after the consult.",
+    summary: "Make treatment easier to understand so more patients schedule and move forward.",
     outcome: "More scheduled treatment, fewer stalled cases, and clearer patient conversations.",
     tasks: [
       "What should we say to this patient?",
@@ -72,7 +72,7 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Run a Stronger Team",
-    summary: "Turn repeat team problems into clear owners, scripts, and next steps.",
+    summary: "Give your team clearer answers so they stop interrupting and start solving.",
     outcome: "Fewer dropped handoffs, faster onboarding, and clearer accountability in daily work.",
     tasks: [
       "What should we cover in tomorrow's huddle?",
@@ -94,7 +94,7 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Grow Production",
-    summary: "Focus follow-up and marketing on work that turns into scheduled care.",
+    summary: "Focus on the patients and opportunities most likely to turn into real revenue.",
     outcome: "More scheduled treatment, fewer missed opportunities, and growth your schedule can actually handle.",
     tasks: [
       "Where are our best production opportunities?",
@@ -116,7 +116,7 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Stay Protected",
-    summary: "Document privacy, consent, and vendor questions before risk grows.",
+    summary: "Handle compliance questions correctly before they turn into problems.",
     outcome: "Cleaner documentation, faster incident response, and fewer avoidable compliance gaps.",
     tasks: [
       "What do we document after this privacy issue?",
@@ -133,7 +133,7 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Make Smarter Decisions",
-    summary: "Pressure-test purchases, vendors, tax questions, and cash decisions before money moves.",
+    summary: "Pressure-test major decisions before money or time is committed.",
     outcome: "Better buying decisions, clearer cash tradeoffs, and fewer expensive surprises.",
     tasks: [
       "Should we buy this technology now or wait?",
