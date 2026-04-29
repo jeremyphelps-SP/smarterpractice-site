@@ -1,7 +1,13 @@
 export const coachCapabilityCategories = [
   {
     category: "Revenue & Insurance",
-    summary: "Reduce revenue friction and help the team act on payer patterns.",
+    summary: "Claims, payer strategy, and collection follow-through.",
+    outcome: "Reduce payer friction, improve follow-up, and protect collections.",
+    tasks: [
+      "Turn denial notices into appeal drafts",
+      "Prepare PPO negotiation talking points",
+      "Create patient-friendly insurance explanations",
+    ],
     capabilities: [
       {
         name: "Dental Claims Coach",
@@ -17,7 +23,13 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Team & Operations",
-    summary: "Create clearer systems for staffing, huddles, and daily execution.",
+    summary: "Staffing, huddles, accountability, and daily systems.",
+    outcome: "Create stronger operating rhythms so the team knows what to do next.",
+    tasks: [
+      "Draft huddle agendas around schedule risks",
+      "Clarify role ownership for recurring bottlenecks",
+      "Create coaching scripts for sensitive team issues",
+    ],
     capabilities: [
       {
         name: "Staffing & HR Coach",
@@ -33,7 +45,13 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Patient Experience",
-    summary: "Improve chairside communication, follow-up, and case acceptance.",
+    summary: "Clinical communication, follow-up, and case acceptance.",
+    outcome: "Help patients understand treatment, value, and next steps.",
+    tasks: [
+      "Create case presentation talking points",
+      "Draft treatment follow-up messages",
+      "Generate personalized smile makeover visuals",
+    ],
     capabilities: [
       {
         name: "Chairside Clinical Companion",
@@ -54,7 +72,13 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Growth & Strategy",
-    summary: "Support marketing decisions, expansion plans, and production growth.",
+    summary: "Marketing, production growth, and expansion decisions.",
+    outcome: "Turn growth ideas into practical plans tied to capacity and profitability.",
+    tasks: [
+      "Prioritize growth opportunities by practice impact",
+      "Draft campaign follow-up and referral workflows",
+      "Evaluate expansion tradeoffs before adding cost",
+    ],
     capabilities: [
       {
         name: "Practice Growth Coach",
@@ -70,7 +94,13 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Risk & Compliance",
-    summary: "Make compliance work easier to organize, document, and maintain.",
+    summary: "HIPAA, documentation, policies, and risk workflows.",
+    outcome: "Make compliance work easier to organize, document, and maintain.",
+    tasks: [
+      "Draft incident response checklists",
+      "Organize HIPAA training reminders",
+      "Prepare vendor and BAA review questions",
+    ],
     capabilities: [
       {
         name: "HIPAA & Compliance Coach",
@@ -81,7 +111,13 @@ export const coachCapabilityCategories = [
   },
   {
     category: "Technology & Finance",
-    summary: "Connect operational decisions to technology, taxes, and cash flow.",
+    summary: "Systems, security, tax planning, and financial decisions.",
+    outcome: "Connect technology and money decisions to stronger profitability.",
+    tasks: [
+      "Compare software and IT vendor tradeoffs",
+      "Prepare tax-planning discussion points",
+      "Evaluate purchase timing against cash flow",
+    ],
     capabilities: [
       {
         name: "Technology & IT Advisor",
@@ -92,17 +128,6 @@ export const coachCapabilityCategories = [
         name: "Tax Strategy Co-Pilot",
         description:
           "Helps organize tax-planning questions, purchase timing, and profitability conversations.",
-      },
-    ],
-  },
-  {
-    category: "Utility Support",
-    summary: "Give dentists fast help with everyday practice questions.",
-    capabilities: [
-      {
-        name: "QuickAssist for Dentists",
-        description:
-          "Provides quick drafts, checklists, and decision support when the team needs a starting point.",
       },
     ],
   },
