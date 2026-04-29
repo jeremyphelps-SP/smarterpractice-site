@@ -2,11 +2,11 @@ import { trackEvent } from "../utils/analytics";
 import "./QuickWinsSection.css";
 
 const challengeLabels = {
-  "owner-bottleneck": "Reduce owner interruptions",
-  "patient-communication": "Improve patient communication",
-  "insurance-billing": "Clean up insurance and billing workflows",
-  "team-training": "Train the team faster",
-  "growth-case-acceptance": "Grow production and case acceptance",
+  "owner-bottleneck": "Fix the schedule",
+  "patient-communication": "Help patients say yes",
+  "insurance-billing": "Get paid faster",
+  "team-training": "Build a stronger team",
+  "growth-case-acceptance": "Grow production",
 };
 
 const quickWinsByChallenge = {
