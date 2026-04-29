@@ -168,11 +168,13 @@ export default function AIImageStudio() {
             <span>Generated presentation</span>
             <strong>Output concepts</strong>
           </div>
-          <img
-            className={`ai-studio__featured-image${isFading ? " is-fading" : ""}`}
-            src={selectedImage.src}
-            alt={selectedImage.alt}
-          />
+          <div className="ai-studio__featured-image-frame">
+            <img
+              className={`ai-studio__featured-image${isFading ? " is-fading" : ""}`}
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+            />
+          </div>
           <div className="ai-studio__thumbnails" aria-label="Generated output examples">
             {generatedImages.map((image) => (
               <figure key={image.id}>
