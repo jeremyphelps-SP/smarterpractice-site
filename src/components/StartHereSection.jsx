@@ -2,35 +2,34 @@ import "./StartHereSection.css";
 
 const challengeOptions = [
   {
-    title: "Reduce owner interruptions",
-    description:
-      "Help your team prepare better drafts, answers, and recommendations before escalating to the doctor.",
-    challengeKey: "owner-bottleneck",
-  },
-  {
-    title: "Improve patient communication",
-    description:
-      "Create clearer messages for scheduling, treatment follow-up, payments, insurance questions, and service recovery.",
-    challengeKey: "patient-communication",
-  },
-  {
-    title: "Clean up insurance and billing workflows",
-    description:
-      "Bring more structure to claims follow-up, payer issues, financial explanations, and A/R workflows.",
+    title: "Get paid faster",
+    description: "Move claims, denials, and balances forward without waiting.",
     challengeKey: "insurance-billing",
+    coachCategory: "Get Paid Faster",
   },
   {
-    title: "Train the team faster",
-    description:
-      "Turn recurring questions, informal knowledge, and daily workflows into SOPs, scripts, and checklists.",
-    note: "Capture your practice's knowledge. Don't let it walk out the door.",
+    title: "Help patients say yes",
+    description: "Make treatment clearer so more patients schedule next steps.",
+    challengeKey: "patient-communication",
+    coachCategory: "Help Patients Say Yes",
+  },
+  {
+    title: "Fix the schedule",
+    description: "Fill gaps, protect provider time, and reduce daily scrambling.",
+    challengeKey: "owner-bottleneck",
+    coachCategory: "Fix the Schedule",
+  },
+  {
+    title: "Build a stronger team",
+    description: "Give the team clearer answers, owners, and next steps.",
     challengeKey: "team-training",
+    coachCategory: "Run a Stronger Team",
   },
   {
-    title: "Grow production and case acceptance",
-    description:
-      "Support reactivation, treatment follow-up, case presentation, reviews, referrals, and campaign ideas.",
+    title: "Grow production",
+    description: "Focus follow-up on the patients most likely to move forward.",
     challengeKey: "growth-case-acceptance",
+    coachCategory: "Grow Production",
   },
 ];
 
@@ -60,13 +59,12 @@ export default function StartHereSection({ onSelectChallenge = () => {} }) {
               className="start-here__card"
               key={challenge.challengeKey}
               type="button"
-              onClick={() => onSelectChallenge(challenge.challengeKey)}
+              onClick={() =>
+                onSelectChallenge(challenge.challengeKey, challenge.coachCategory)
+              }
             >
               <span>{challenge.title}</span>
               <p>{challenge.description}</p>
-              {challenge.note && (
-                <p className="start-here__card-note">{challenge.note}</p>
-              )}
             </button>
           ))}
         </div>

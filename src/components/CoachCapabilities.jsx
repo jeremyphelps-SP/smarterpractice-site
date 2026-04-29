@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { coachCapabilityCategories } from "../data/coachCapabilities";
 import "./CoachCapabilities.css";
 
-export default function CoachCapabilities() {
-  const [selectedCategoryName, setSelectedCategoryName] = useState(
-    "Get Paid Faster",
-  );
+export default function CoachCapabilities({
+  selectedCategoryName = "Get Paid Faster",
+  onSelectCategory = () => {},
+}) {
   const selectedCategory =
     coachCapabilityCategories.find(
       (category) => category.category === selectedCategoryName,
@@ -15,8 +14,11 @@ export default function CoachCapabilities() {
     <section className="coach-capabilities" aria-labelledby="coach-capabilities-title">
       <div className="coach-capabilities__intro">
         <p className="coach-capabilities__eyebrow">PRACTICE-READY AI SUPPORT</p>
+        <p className="coach-capabilities__bridge">
+          Once you pick a problem, here&rsquo;s how your team actually handles it.
+        </p>
         <h2 id="coach-capabilities-title">
-          Role-specific AI support for the work your practice already does
+          Here&rsquo;s how your team handles it
         </h2>
         <p>
           Give each part of the practice a clearer way to draft, decide,
@@ -51,7 +53,7 @@ export default function CoachCapabilities() {
                   type="button"
                   className="coach-capabilities__category-button"
                   aria-pressed={isSelected}
-                  onClick={() => setSelectedCategoryName(category.category)}
+                  onClick={() => onSelectCategory(category.category)}
                 >
                   <span>{category.category}</span>
                   <small>{category.summary}</small>
