@@ -1,12 +1,12 @@
 export const coachCapabilityCategories = [
   {
-    category: "Revenue & Insurance",
-    summary: "Claims, payer strategy, and collection follow-through.",
-    outcome: "Reduce payer friction, improve follow-up, and protect collections.",
+    category: "Get Paid Faster",
+    summary: "Find the next billing move faster and keep claims from sitting.",
+    outcome: "Fewer stalled claims, clearer patient balance conversations, and faster collections follow-up.",
     tasks: [
-      "Turn denial notices into appeal drafts",
-      "Prepare PPO negotiation talking points",
-      "Create patient-friendly insurance explanations",
+      "How do we appeal this denial?",
+      "Are we collecting this correctly?",
+      "What should we say when insurance pays less than expected?",
     ],
     capabilities: [
       {
@@ -22,35 +22,13 @@ export const coachCapabilityCategories = [
     ],
   },
   {
-    category: "Team & Operations",
-    summary: "Staffing, huddles, accountability, and daily systems.",
-    outcome: "Create stronger operating rhythms so the team knows what to do next.",
+    category: "Help Patients Say Yes",
+    summary: "Make treatment easier to understand, value, and schedule.",
+    outcome: "Patients leave with clearer next steps, stronger confidence, and fewer unanswered objections.",
     tasks: [
-      "Draft huddle agendas around schedule risks",
-      "Clarify role ownership for recurring bottlenecks",
-      "Create coaching scripts for sensitive team issues",
-    ],
-    capabilities: [
-      {
-        name: "Staffing & HR Coach",
-        description:
-          "Guides hiring, accountability, role clarity, and sensitive team conversations.",
-      },
-      {
-        name: "Huddle & Systems Coach",
-        description:
-          "Turns recurring bottlenecks into practical huddle agendas, checklists, and operating rhythms.",
-      },
-    ],
-  },
-  {
-    category: "Patient Experience",
-    summary: "Clinical communication, follow-up, and case acceptance.",
-    outcome: "Help patients understand treatment, value, and next steps.",
-    tasks: [
-      "Create case presentation talking points",
-      "Draft treatment follow-up messages",
-      "Generate personalized smile makeover visuals",
+      "What should we say to this patient?",
+      "How do we follow up without sounding pushy?",
+      "How can we show this patient what the outcome could look like?",
     ],
     capabilities: [
       {
@@ -71,13 +49,35 @@ export const coachCapabilityCategories = [
     ],
   },
   {
-    category: "Growth & Strategy",
-    summary: "Marketing, production growth, and expansion decisions.",
-    outcome: "Turn growth ideas into practical plans tied to capacity and profitability.",
+    category: "Run a Stronger Team",
+    summary: "Turn daily friction into clearer ownership and better follow-through.",
+    outcome: "Fewer dropped handoffs, more useful huddles, and cleaner accountability across the team.",
     tasks: [
-      "Prioritize growth opportunities by practice impact",
-      "Draft campaign follow-up and referral workflows",
-      "Evaluate expansion tradeoffs before adding cost",
+      "What should we cover in tomorrow's huddle?",
+      "Who should own this recurring bottleneck?",
+      "How do we coach this team issue clearly?",
+    ],
+    capabilities: [
+      {
+        name: "Staffing & HR Coach",
+        description:
+          "Guides hiring, accountability, role clarity, and sensitive team conversations.",
+      },
+      {
+        name: "Huddle & Systems Coach",
+        description:
+          "Turns recurring bottlenecks into practical huddle agendas, checklists, and operating rhythms.",
+      },
+    ],
+  },
+  {
+    category: "Grow Production",
+    summary: "Choose the growth moves most likely to turn into kept visits and scheduled care.",
+    outcome: "Better campaign follow-up, stronger referral systems, and growth plans the schedule can absorb.",
+    tasks: [
+      "Where are our best production opportunities?",
+      "How should we follow up with these consults?",
+      "Should we add capacity before spending more on marketing?",
     ],
     capabilities: [
       {
@@ -93,13 +93,13 @@ export const coachCapabilityCategories = [
     ],
   },
   {
-    category: "Risk & Compliance",
-    summary: "HIPAA, documentation, policies, and risk workflows.",
-    outcome: "Make compliance work easier to organize, document, and maintain.",
+    category: "Stay Protected",
+    summary: "Make compliance questions easier to document before they become problems.",
+    outcome: "Cleaner policies, better incident documentation, and more consistent privacy workflows.",
     tasks: [
-      "Draft incident response checklists",
-      "Organize HIPAA training reminders",
-      "Prepare vendor and BAA review questions",
+      "What do we document after this privacy issue?",
+      "Does this vendor need a BAA?",
+      "What should our team do before texting this information?",
     ],
     capabilities: [
       {
@@ -110,13 +110,13 @@ export const coachCapabilityCategories = [
     ],
   },
   {
-    category: "Technology & Finance",
-    summary: "Systems, security, tax planning, and financial decisions.",
-    outcome: "Connect technology and money decisions to stronger profitability.",
+    category: "Make Smarter Decisions",
+    summary: "Pressure-test software, spending, tax, and expansion choices before money moves.",
+    outcome: "Clearer purchase timing, better vendor questions, and fewer expensive decisions made on instinct.",
     tasks: [
-      "Compare software and IT vendor tradeoffs",
-      "Prepare tax-planning discussion points",
-      "Evaluate purchase timing against cash flow",
+      "Should we buy this technology now or wait?",
+      "What should we ask this vendor before signing?",
+      "How does this decision affect cash flow?",
     ],
     capabilities: [
       {

@@ -38,6 +38,13 @@
   line-height: 1.62;
 }
 
+.coach-capabilities__intro .coach-capabilities__bridge {
+  margin-top: 14px;
+  color: #243b53;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
 .coach-capabilities__layout {
   display: grid;
   grid-template-columns: minmax(240px, 0.38fr) minmax(0, 1fr);
@@ -150,6 +157,12 @@
   color: #52606d;
   font-size: 1rem;
   line-height: 1.58;
+}
+
+.coach-capabilities__detail-header .coach-capabilities__used-by {
+  color: #334e68;
+  font-size: 0.9rem;
+  font-weight: 800;
 }
 
 .coach-capabilities__detail-grid {
