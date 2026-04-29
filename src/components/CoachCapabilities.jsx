@@ -23,13 +23,13 @@ export default function CoachCapabilities() {
           document, and follow through &mdash; without starting from a blank page.
         </p>
         <p className="coach-capabilities__bridge">
-          Most teams already have the answers somewhere. The problem is getting
-          to them fast enough to use them.
-        </p>
-        <p className="coach-capabilities__bridge">
           Each area below shows how your team uses Smarter Practice AI to handle
           real work &mdash; without guessing, Googling, or interrupting the
           doctor.
+        </p>
+        <p className="coach-capabilities__bridge">
+          Most teams already have the answers somewhere. The problem is getting
+          to them fast enough to use them.
         </p>
       </div>
 
