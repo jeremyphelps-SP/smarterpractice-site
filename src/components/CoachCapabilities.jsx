@@ -22,6 +22,11 @@ export default function CoachCapabilities() {
           Give each part of the practice a clearer way to draft, decide,
           document, and follow through &mdash; without starting from a blank page.
         </p>
+        <p className="coach-capabilities__bridge">
+          Each area below shows how your team uses Smarter Practice AI to handle
+          real work &mdash; without guessing, Googling, or interrupting the
+          doctor.
+        </p>
       </div>
 
       <div className="coach-capabilities__layout">
@@ -64,6 +69,9 @@ export default function CoachCapabilities() {
               {selectedCategory.category}
             </h3>
             <p>{selectedCategory.summary}</p>
+            <p className="coach-capabilities__used-by">
+              Used by: Front desk, office manager, treatment coordinator
+            </p>
           </div>
 
           <div className="coach-capabilities__detail-grid">
@@ -77,7 +85,7 @@ export default function CoachCapabilities() {
             </section>
 
             <section className="coach-capabilities__detail-section">
-              <p className="coach-capabilities__label">Practice outcome</p>
+              <p className="coach-capabilities__label">What improves</p>
               <p className="coach-capabilities__outcome">
                 {selectedCategory.outcome}
               </p>
