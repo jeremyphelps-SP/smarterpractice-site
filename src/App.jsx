@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
+import Hero from "./components/Hero";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
 import TrialCTA from "./components/TrialCTA";
@@ -47,6 +48,7 @@ export default function App() {
 
   return (
     <>
+      <Hero />
       <StartHereSection onSelectChallenge={handleSelectChallenge} />
       <div ref={coachCapabilitiesRef}>
         <CoachCapabilities
