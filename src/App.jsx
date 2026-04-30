@@ -8,9 +8,11 @@ import Hero from "./components/Hero";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
 import TrialCTA from "./components/TrialCTA";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
 import { trackEvent } from "./utils/analytics";
 
-export default function App() {
+function HomePage() {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [selectedCoachCategory, setSelectedCoachCategory] =
     useState("Get Paid Faster");
@@ -93,6 +95,23 @@ export default function App() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
+
+export default function App() {
+  const pathname = window.location.pathname.replace(/\/+$/, "");
+  let page = <HomePage />;
+
+  if (pathname.endsWith("/terms")) {
+    page = <TermsPage />;
+  } else if (pathname.endsWith("/privacy")) {
+    page = <PrivacyPage />;
+  }
+
+  return (
+    <>
+      {page}
       <Footer />
     </>
   );
