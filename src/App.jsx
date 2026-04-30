@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
+import AboutSection from "./components/AboutSection";
 import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
@@ -19,9 +21,11 @@ export default function App() {
   const handleSelectChallenge = (challengeKey, coachCategory) => {
     setSelectedQuickWin(null);
     setSelectedChallenge(challengeKey);
+
     if (coachCategory) {
       setSelectedCoachCategory(coachCategory);
     }
+
     trackEvent("challenge_selected", {
       selectedChallenge: challengeKey,
       selectedCoachCategory: coachCategory,
@@ -42,35 +46,46 @@ export default function App() {
     });
 
     requestAnimationFrame(() => {
-      matrixRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      matrixRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
   return (
     <>
       <Hero />
+      <AboutSection />
       <StartHereSection onSelectChallenge={handleSelectChallenge} />
+
       <div ref={coachCapabilitiesRef}>
         <CoachCapabilities
           selectedCategoryName={selectedCoachCategory}
           onSelectCategory={setSelectedCoachCategory}
         />
       </div>
+
       <div id="scenario-matrix" ref={matrixRef}>
         <CoachScenarioMatrix
           selectedChallenge={selectedChallenge}
           selectedQuickWin={selectedQuickWin}
         />
       </div>
+
       <AIImageStudio />
+
       <QuickWinsSection
         selectedChallenge={selectedChallenge}
         onSelectQuickWin={handleSelectQuickWin}
       />
+
       <TrialCTA
         selectedChallenge={selectedChallenge}
         selectedQuickWin={selectedQuickWin}
       />
+
+      <Footer />
     </>
   );
 }
