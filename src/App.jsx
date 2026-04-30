@@ -23,9 +23,11 @@ function HomePage() {
   const handleSelectChallenge = (challengeKey, coachCategory) => {
     setSelectedQuickWin(null);
     setSelectedChallenge(challengeKey);
+
     if (coachCategory) {
       setSelectedCoachCategory(coachCategory);
     }
+
     trackEvent("challenge_selected", {
       selectedChallenge: challengeKey,
       selectedCoachCategory: coachCategory,
@@ -46,7 +48,10 @@ function HomePage() {
     });
 
     requestAnimationFrame(() => {
-      matrixRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      matrixRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
@@ -55,46 +60,32 @@ function HomePage() {
       <Hero />
       <AboutSection />
       <StartHereSection onSelectChallenge={handleSelectChallenge} />
-      <QuickWinsSection
-        selectedChallenge={selectedChallenge}
-        onSelectQuickWin={handleSelectQuickWin}
-      />
-      <TrialCTA
-        selectedChallenge={selectedChallenge}
-        selectedQuickWin={selectedQuickWin}
-      />
+
       <div ref={coachCapabilitiesRef}>
         <CoachCapabilities
           selectedCategoryName={selectedCoachCategory}
           onSelectCategory={setSelectedCoachCategory}
         />
       </div>
+
       <div id="scenario-matrix" ref={matrixRef}>
         <CoachScenarioMatrix
           selectedChallenge={selectedChallenge}
           selectedQuickWin={selectedQuickWin}
         />
       </div>
+
       <AIImageStudio />
-      <section className="trial-cta trial-cta--final" aria-labelledby="final-cta-title">
-        <div className="trial-cta__inner">
-          <div>
-            <h2 id="final-cta-title">Ready to try this with your team?</h2>
-            <p>
-              Start with one workflow and see how Smarter Practice AI helps your
-              practice move faster.
-            </p>
-          </div>
-          <div className="trial-cta__actions">
-            <a
-              className="trial-cta__button trial-cta__button--primary"
-              href="#trial"
-            >
-              Start 15-day trial
-            </a>
-          </div>
-        </div>
-      </section>
+
+      <QuickWinsSection
+        selectedChallenge={selectedChallenge}
+        onSelectQuickWin={handleSelectQuickWin}
+      />
+
+      <TrialCTA
+        selectedChallenge={selectedChallenge}
+        selectedQuickWin={selectedQuickWin}
+      />
     </>
   );
 }
