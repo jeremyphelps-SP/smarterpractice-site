@@ -100,12 +100,12 @@ function HomePage() {
 }
 
 export default function App() {
-  const pathname = window.location.pathname.replace(/\/+$/, "");
+  const hash = window.location.hash;
   let page = <HomePage />;
 
-  if (pathname.endsWith("/terms")) {
+  if (hash === "#/terms") {
     page = <TermsPage />;
-  } else if (pathname.endsWith("/privacy")) {
+  } else if (hash === "#/privacy") {
     page = <PrivacyPage />;
   }
 

@@ -1,8 +1,8 @@
 import "./Footer.css";
 
 export default function Footer() {
-  const termsUrl = `${import.meta.env.BASE_URL}terms`;
-  const privacyUrl = `${import.meta.env.BASE_URL}privacy`;
+  const termsUrl = `${import.meta.env.BASE_URL}#/terms`;
+  const privacyUrl = `${import.meta.env.BASE_URL}#/privacy`;
 
   return (
     <footer className="site-footer" aria-label="Site footer">
