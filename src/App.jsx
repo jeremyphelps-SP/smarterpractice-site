@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
+import AboutSection from "./components/AboutSection";
 import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
+import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
@@ -49,6 +51,7 @@ export default function App() {
   return (
     <>
       <Hero />
+      <AboutSection />
       <StartHereSection onSelectChallenge={handleSelectChallenge} />
       <QuickWinsSection
         selectedChallenge={selectedChallenge}
@@ -90,6 +93,7 @@ export default function App() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
