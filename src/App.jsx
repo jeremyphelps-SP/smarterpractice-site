@@ -1,13 +1,18 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import AboutSection from "./components/AboutSection";
 import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
 import QuickWinsSection from "./components/QuickWinsSection";
 import StartHereSection from "./components/StartHereSection";
 import TrialCTA from "./components/TrialCTA";
+import PrivacyPage from "./pages/PrivacyPage";
+import TermsPage from "./pages/TermsPage";
 import { trackEvent } from "./utils/analytics";
 
-export default function App() {
+function HomePage() {
   const [selectedChallenge, setSelectedChallenge] = useState(null);
   const [selectedCoachCategory, setSelectedCoachCategory] =
     useState("Get Paid Faster");
@@ -18,9 +23,11 @@ export default function App() {
   const handleSelectChallenge = (challengeKey, coachCategory) => {
     setSelectedQuickWin(null);
     setSelectedChallenge(challengeKey);
+
     if (coachCategory) {
       setSelectedCoachCategory(coachCategory);
     }
+
     trackEvent("challenge_selected", {
       selectedChallenge: challengeKey,
       selectedCoachCategory: coachCategory,
@@ -41,53 +48,74 @@ export default function App() {
     });
 
     requestAnimationFrame(() => {
-      matrixRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      matrixRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
   return (
     <>
+      <Hero />
+      <AboutSection />
       <StartHereSection onSelectChallenge={handleSelectChallenge} />
-      <QuickWinsSection
-        selectedChallenge={selectedChallenge}
-        onSelectQuickWin={handleSelectQuickWin}
-      />
-      <TrialCTA
-        selectedChallenge={selectedChallenge}
-        selectedQuickWin={selectedQuickWin}
-      />
+
       <div ref={coachCapabilitiesRef}>
         <CoachCapabilities
           selectedCategoryName={selectedCoachCategory}
           onSelectCategory={setSelectedCoachCategory}
         />
       </div>
+
       <div id="scenario-matrix" ref={matrixRef}>
         <CoachScenarioMatrix
           selectedChallenge={selectedChallenge}
           selectedQuickWin={selectedQuickWin}
         />
       </div>
+
       <AIImageStudio />
-      <section className="trial-cta trial-cta--final" aria-labelledby="final-cta-title">
-        <div className="trial-cta__inner">
-          <div>
-            <h2 id="final-cta-title">Ready to try this with your team?</h2>
-            <p>
-              Start with one workflow and see how Smarter Practice AI helps your
-              practice move faster.
-            </p>
-          </div>
-          <div className="trial-cta__actions">
-            <a
-              className="trial-cta__button trial-cta__button--primary"
-              href="#trial"
-            >
-              Start 15-day trial
-            </a>
-          </div>
-        </div>
-      </section>
+
+      <QuickWinsSection
+        selectedChallenge={selectedChallenge}
+        onSelectQuickWin={handleSelectQuickWin}
+      />
+
+      <TrialCTA
+        selectedChallenge={selectedChallenge}
+        selectedQuickWin={selectedQuickWin}
+      />
+    </>
+  );
+}
+
+export default function App() {
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
+  let page = <HomePage />;
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
+  if (currentHash === "#/terms") {
+    page = <TermsPage />;
+  } else if (currentHash === "#/privacy") {
+    page = <PrivacyPage />;
+  }
+
+  return (
+    <>
+      {page}
+      <Footer />
     </>
   );
 }

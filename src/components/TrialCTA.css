@@ -47,6 +47,7 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: flex-end;
+  max-width: 360px;
 }
 
 .trial-cta__button {
@@ -71,6 +72,23 @@
   border: 1px solid #bcccdc;
   background: #ffffff;
   color: #243b53;
+}
+
+.trial-cta__microcopy,
+.trial-cta__expectation {
+  flex-basis: 100%;
+  margin: 0;
+  color: #627d98;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.trial-cta__microcopy {
+  margin-top: -2px;
+}
+
+.trial-cta__expectation {
+  color: #486581;
 }
 
 .trial-cta__button:hover,
