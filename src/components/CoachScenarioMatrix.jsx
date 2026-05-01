@@ -286,15 +286,15 @@ function getScenarioTrigger(scenario) {
     searchableText.includes("appeal") ||
     searchableText.includes("payer")
   ) {
-    return "Use this when a claim, denial, EOB, or payer issue needs a clear next move.";
+    return "A claim, denial, EOB, or payer issue needs a clear next move.";
   }
 
   if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
-    return "Use this when a compliance question needs containment, documentation, and follow-up.";
+    return "A compliance question needs containment, documentation, and follow-up.";
   }
 
   if (searchableText.includes("schedule") || searchableText.includes("appointment")) {
-    return "Use this when the schedule needs a recovery plan instead of another quick fix.";
+    return "The schedule needs a recovery plan instead of another quick fix.";
   }
 
   if (
@@ -302,7 +302,7 @@ function getScenarioTrigger(scenario) {
     searchableText.includes("case acceptance") ||
     searchableText.includes("communication")
   ) {
-    return "Use this when the team needs clearer patient language and a next step.";
+    return "The team needs clearer patient language and a next step.";
   }
 
   if (
@@ -311,26 +311,17 @@ function getScenarioTrigger(scenario) {
     searchableText.includes("money") ||
     searchableText.includes("tax")
   ) {
-    return "Use this when a practice decision needs clear financial tradeoffs.";
+    return "A practice decision needs clear financial tradeoffs.";
   }
 
-  return "Use this when the team needs to turn a practice issue into a specific action plan.";
-}
-
-function getPromptGroundingSentence(scenario) {
-  const topic = scenario.scenarioTitle.replace(/\s*\([^)]*\)/g, "").trim();
-
-  return `Focus on ${topic.toLowerCase()} in the context of ${scenario.category.toLowerCase()}.`;
+  return "The team needs to turn a practice issue into a specific action plan.";
 }
 
 function createCoachPrompt(scenario) {
-  return `You are my ${scenario.coach}.
-${getPromptGroundingSentence(scenario)}
-
-Review this situation and respond with:
+  return `Review this situation and respond with:
 1. The most important next step
 2. What needs to change
-3. Any key risks or mistakes to avoid
+3. Key risks or mistakes to avoid
 4. ${getScenarioSpecificInstruction(scenario)}
 
 Context:
@@ -341,6 +332,7 @@ function getExecutionExample(scenario) {
   if (scenario.executionExample) {
     return {
       ...scenario.executionExample,
+      intro: "Drop in the real situation:",
       trigger: scenario.executionExample.trigger || getScenarioTrigger(scenario),
       prompt: createCoachPrompt(scenario),
     };
@@ -348,7 +340,7 @@ function getExecutionExample(scenario) {
 
   return {
     trigger: getScenarioTrigger(scenario),
-    intro: "Paste the relevant note, report, patient message, or workflow detail and say:",
+    intro: "Drop in the real situation:",
     prompt: createCoachPrompt(scenario),
     outputLabel: "You'll get:",
     outputs: [
@@ -387,6 +379,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
   const [selectedScenarioId, setSelectedScenarioId] = useState(
     selectedScenarios[0]?.id || "",
   );
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const selectedScenario =
     selectedScenarios.find((scenario) => scenario.id === selectedScenarioId) ||
@@ -394,6 +387,12 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
   const recommendationSections = selectedScenario
     ? getRecommendationSections(selectedScenario)
     : [];
+  const nextStepSection = recommendationSections.find(
+    (section) => section.key === "nextStep",
+  );
+  const detailRecommendationSections = recommendationSections.filter(
+    (section) => section.key !== "nextStep",
+  );
   const executionExample = selectedScenario
     ? getExecutionExample(selectedScenario)
     : null;
@@ -415,6 +414,10 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
       setSelectedScenarioId(selectedScenarios[0].id);
     }
   }, [activeCategory, selectedCategory, selectedScenarioId, selectedScenarios]);
+
+  useEffect(() => {
+    setIsDetailsOpen(false);
+  }, [selectedScenarioId]);
 
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
@@ -524,122 +527,117 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
               {selectedScenario.scenarioTitle}
             </h3>
 
-            <dl style={{ display: "grid", gap: "18px", margin: 0 }}>
+            <dl className="scenario-matrix__detail-list">
               <div>
                 <dt className="scenario-matrix__label">Situation</dt>
                 <dd className="scenario-matrix__body">
                   {selectedScenario.situation}
                 </dd>
               </div>
-              <div>
-                <dt className="scenario-matrix__label">Practice context</dt>
-                <dd className="scenario-matrix__body">
-                  {selectedScenario.teamInput}
-                </dd>
-              </div>
-              <div>
-                <dt className="scenario-matrix__label">
-                  Recommended next step
-                </dt>
-                <dd
-                  className="scenario-matrix__recommendation"
-                  style={{
-                    display: "grid",
-                    gap: "14px",
-                  }}
-                >
-                  {recommendationSections.map((section, index) => (
-                    <div
-                      key={section.key}
-                      style={{
-                        borderTop:
-                          index === 0 ? 0 : "1px solid #e6eef6",
-                        paddingTop: index === 0 ? 0 : "12px",
-                        textAlign: "left",
-                      }}
-                    >
-                      <p
-                        className="scenario-matrix__recommendation-label"
-                      >
-                        {section.label}:
-                      </p>
-                      <ul
-                        style={{
-                          display: "grid",
-                          gap: "6px",
-                          margin: "4px 0 0",
-                          paddingLeft: "20px",
-                        }}
-                      >
-                        {section.items.map((item) => (
-                          <li key={item}>
-                            {formatInstructionItem(item, section.key)}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </dd>
-              </div>
-              {executionExample && (
-                <div>
+              {nextStepSection && (
+                <div className="scenario-matrix__action-block">
                   <dt className="scenario-matrix__label">
-                    Use this in your practice
+                    {nextStepSection.label}:
                   </dt>
-                  <dd className="scenario-matrix__execution">
-                    <p className="scenario-matrix__execution-label">
-                      Use this when:
-                    </p>
-                    <p>{executionExample.trigger}</p>
-                    <p>{executionExample.intro}</p>
-                    <blockquote>
-                      {executionExample.prompt}
-                    </blockquote>
-                    <p className="scenario-matrix__execution-label">
-                      {executionExample.outputLabel}
-                    </p>
+                  <dd className="scenario-matrix__recommendation">
                     <ul>
-                      {executionExample.outputs.map((output) => (
-                        <li key={output}>{output}</li>
+                      {nextStepSection.items.map((item) => (
+                        <li key={item}>
+                          {formatInstructionItem(item, nextStepSection.key)}
+                        </li>
                       ))}
                     </ul>
                   </dd>
                 </div>
               )}
-              <div>
-                <dt className="scenario-matrix__label">Why it matters</dt>
-                <dd className="scenario-matrix__body">
-                  {selectedScenario.whyItMatters}
-                </dd>
-              </div>
-              <div>
-                <dt className="scenario-matrix__label">Tags</dt>
-                <dd
-                  className="scenario-matrix__tags"
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "8px",
-                  }}
-                >
-                  {selectedScenario.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        borderRadius: "999px",
-                        background: "#f0f4f8",
-                        color: "#334e68",
-                        padding: "6px 10px",
-                        fontSize: "0.9rem",
-                        fontWeight: 700,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </dd>
-              </div>
+              {executionExample && (
+                <div>
+                  <dt className="scenario-matrix__label">Use this when:</dt>
+                  <dd className="scenario-matrix__body">
+                    {executionExample.trigger}
+                  </dd>
+                </div>
+              )}
             </dl>
+
+            <button
+              type="button"
+              className="scenario-matrix__details-toggle"
+              aria-expanded={isDetailsOpen}
+              onClick={() => setIsDetailsOpen((isOpen) => !isOpen)}
+            >
+              {isDetailsOpen ? "Show less" : "More details"}
+            </button>
+
+            {isDetailsOpen && (
+              <div className="scenario-matrix__details-panel">
+                <dl className="scenario-matrix__detail-list">
+                  <div>
+                    <dt className="scenario-matrix__label">
+                      Practice context
+                    </dt>
+                    <dd className="scenario-matrix__body">
+                      {selectedScenario.teamInput}
+                    </dd>
+                  </div>
+                  {detailRecommendationSections.map((section) => (
+                    <div key={section.key}>
+                      <dt className="scenario-matrix__label">
+                        {section.label}:
+                      </dt>
+                      <dd className="scenario-matrix__recommendation">
+                        <ul>
+                          {section.items.map((item) => (
+                            <li key={item}>
+                              {formatInstructionItem(item, section.key)}
+                            </li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                  ))}
+                  {executionExample && (
+                    <div>
+                      <dt className="scenario-matrix__label">Full prompt</dt>
+                      <dd className="scenario-matrix__execution">
+                        <p>{executionExample.intro}</p>
+                        <blockquote>
+                          {executionExample.prompt}
+                        </blockquote>
+                      </dd>
+                    </div>
+                  )}
+                  {executionExample && (
+                    <div>
+                      <dt className="scenario-matrix__label">
+                        {executionExample.outputLabel}
+                      </dt>
+                      <dd className="scenario-matrix__body">
+                        <ul className="scenario-matrix__detail-bullets">
+                          {executionExample.outputs.map((output) => (
+                            <li key={output}>{output}</li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                  )}
+                  <div>
+                    <dt className="scenario-matrix__label">Why it matters</dt>
+                    <dd className="scenario-matrix__body">
+                      {selectedScenario.whyItMatters}
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className="scenario-matrix__label">Tags</dt>
+                    <dd className="scenario-matrix__tags">
+                      {selectedScenario.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            )}
           </article>
         )}
       </section>
