@@ -14,12 +14,6 @@ const challengeLabels = {
   "growth-case-acceptance": "Grow production",
 };
 
-const quickWinScenarioIds = {
-  "missed-appointment": "scn-015",
-  "insurance-explanation": "scn-003",
-  "denial-appeal-outline": "scn-001",
-};
-
 const recommendationSectionOrder = [
   ["direction", "Direction"],
   ["whatIsHappening", "What's happening"],
@@ -58,10 +52,24 @@ function getRecommendationSections(scenario) {
     .filter((section) => section.items.length);
 }
 
-export default function CoachScenarioMatrix({
-  selectedChallenge = null,
-  selectedQuickWin = null,
-}) {
+function getExecutionExample(scenario) {
+  if (scenario.executionExample) {
+    return scenario.executionExample;
+  }
+
+  return {
+    intro: "Paste the relevant note, report, patient message, or workflow detail and say:",
+    prompt: `Help me handle this ${scenario.scenarioTitle.toLowerCase()} scenario.\nGive me the clearest next step, what to say, and what to document.`,
+    outputLabel: "You'll get:",
+    outputs: [
+      "A practical draft your team can use",
+      "The key details to check before acting",
+      "A clear follow-up step",
+    ],
+  };
+}
+
+export default function CoachScenarioMatrix({ selectedChallenge = null }) {
   const filteredScenarios = useMemo(() => {
     if (!selectedChallenge) {
       return scenarios;
@@ -96,6 +104,9 @@ export default function CoachScenarioMatrix({
   const recommendationSections = selectedScenario
     ? getRecommendationSections(selectedScenario)
     : [];
+  const executionExample = selectedScenario
+    ? getExecutionExample(selectedScenario)
+    : null;
   const selectedChallengeLabel = selectedChallenge
     ? challengeLabels[selectedChallenge]
     : "";
@@ -114,23 +125,6 @@ export default function CoachScenarioMatrix({
       setSelectedScenarioId(selectedScenarios[0].id);
     }
   }, [activeCategory, selectedCategory, selectedScenarioId, selectedScenarios]);
-
-  useEffect(() => {
-    const targetScenarioId = quickWinScenarioIds[selectedQuickWin?.key];
-    if (!targetScenarioId) {
-      return;
-    }
-
-    const targetScenario = filteredScenarios.find(
-      (scenario) => scenario.id === targetScenarioId,
-    );
-    if (!targetScenario) {
-      return;
-    }
-
-    setSelectedCategory(targetScenario.category);
-    setSelectedScenarioId(targetScenario.id);
-  }, [filteredScenarios, selectedQuickWin]);
 
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
@@ -299,6 +293,27 @@ export default function CoachScenarioMatrix({
                   ))}
                 </dd>
               </div>
+              {executionExample && (
+                <div>
+                  <dt className="scenario-matrix__label">
+                    Use this in your practice
+                  </dt>
+                  <dd className="scenario-matrix__execution">
+                    <p>{executionExample.intro}</p>
+                    <blockquote>
+                      {executionExample.prompt}
+                    </blockquote>
+                    <p className="scenario-matrix__execution-label">
+                      {executionExample.outputLabel}
+                    </p>
+                    <ul>
+                      {executionExample.outputs.map((output) => (
+                        <li key={output}>{output}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              )}
               <div>
                 <dt className="scenario-matrix__label">Why it matters</dt>
                 <dd className="scenario-matrix__body">

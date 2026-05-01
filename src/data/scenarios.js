@@ -32,6 +32,16 @@ export const scenarios = [
         "Hold patient billing until the payer response date is known."
       ],
     },
+    executionExample: {
+      intro: "Paste your EOB or denial note and say:",
+      prompt: "Create a structured appeal for this denied D2740 claim.\nInclude narrative, required documentation, and follow-up steps.",
+      outputLabel: "You'll get:",
+      outputs: [
+        "A complete appeal narrative",
+        "What attachments to include",
+        "What to do next (timing and follow-up)"
+      ],
+    },
     whyItMatters: 'This turns a denied claim into a controlled recovery process with patient trust, cash timing, and payer follow-up managed together.',
     tags: ['progressive', 'crown denial', 'appeal', 'D2740', 'cash flow'],
     roles: [

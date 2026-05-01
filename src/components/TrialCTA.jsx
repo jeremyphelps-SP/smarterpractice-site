@@ -4,10 +4,7 @@ import "./TrialCTA.css";
 
 const formspreeEndpoint = "https://formspree.io/f/xjglvnno";
 
-export default function TrialCTA({
-  selectedChallenge = null,
-  selectedQuickWin = null,
-}) {
+export default function TrialCTA({ selectedChallenge = null }) {
   const [status, setStatus] = useState("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,7 +17,6 @@ export default function TrialCTA({
 
     trackEvent("trial_form_submitted", {
       selectedChallenge,
-      selectedQuickWin: selectedQuickWin?.key,
       ctaLocation: "trial_cta",
     });
 
