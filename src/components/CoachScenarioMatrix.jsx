@@ -15,10 +15,9 @@ const challengeLabels = {
 };
 
 const recommendationSectionOrder = [
-  ["direction", "Direction"],
-  ["whatIsHappening", "What's happening"],
+  ["whatIsHappening", "Why it's happening"],
   ["whatToChange", "What to fix"],
-  ["nextStep", "Next step"],
+  ["nextStep", "Do this"],
 ];
 
 const actionStarts = [
@@ -36,7 +35,6 @@ const actionStarts = [
   "calibrate",
   "check",
   "collect",
-  "complete",
   "confirm",
   "create",
   "delay",
@@ -69,7 +67,6 @@ const actionStarts = [
   "separate",
   "set",
   "spend",
-  "start",
   "stop",
   "submit",
   "summarize",
@@ -94,6 +91,28 @@ const collectionTerms = [
   "receipt",
   "registration",
   "treatment plan",
+];
+
+const actionTermRules = [
+  [["appeal"], "Appeal"],
+  [["attachment", "attachments", "photo", "photos", "radiograph"], "Attach"],
+  [["audit"], "Audit"],
+  [["call"], "Call"],
+  [["chart", "note", "notes", "documentation"], "Document"],
+  [["checklist"], "Create"],
+  [["claim", "claims"], "Track"],
+  [["decision"], "Document"],
+  [["estimate"], "Review"],
+  [["fee", "fees", "pricing"], "Review"],
+  [["financing"], "Offer"],
+  [["follow-up", "follow up"], "Schedule"],
+  [["huddle"], "Run"],
+  [["language", "message", "script"], "Write"],
+  [["policy"], "Write"],
+  [["report"], "Review"],
+  [["schedule", "appointment", "visit"], "Schedule"],
+  [["task", "workflow"], "Assign"],
+  [["training"], "Train"],
 ];
 
 function groupScenariosByCategory(scenarios) {
@@ -137,8 +156,27 @@ function ensurePeriod(value) {
   return /[.!?]$/.test(value) ? value : `${value}.`;
 }
 
+function stripFillerStart(value) {
+  return value
+    .replace(/^identify\s+/i, "")
+    .replace(/^start with\s+/i, "Lead with ")
+    .replace(/^begin with\s+/i, "Lead with ")
+    .replace(/^start by\s+/i, "")
+    .replace(/^begin by\s+/i, "")
+    .replace(/^complete\s+/i, "");
+}
+
+function chooseActionVerb(text, fallback = "Fix") {
+  const lowerText = text.toLowerCase();
+  const rule = actionTermRules.find(([terms]) =>
+    terms.some((term) => lowerText.includes(term)),
+  );
+
+  return rule ? rule[1] : fallback;
+}
+
 function formatInstructionItem(item, sectionKey) {
-  const text = String(item).trim();
+  const text = stripFillerStart(String(item).trim());
 
   if (!text) {
     return "";
@@ -159,20 +197,20 @@ function formatInstructionItem(item, sectionKey) {
   }
 
   if (sectionKey === "whatIsHappening") {
-    return ensurePeriod(`Identify ${text}`);
+    return ensurePeriod(sentenceCase(text));
   }
 
   if (sectionKey === "whatToChange") {
     const lowerText = text.toLowerCase();
     const prefix = collectionTerms.some((term) => lowerText.includes(term))
       ? "Collect"
-      : "Fix";
+      : chooseActionVerb(text, "Change");
 
     return ensurePeriod(`${prefix} ${text}`);
   }
 
   if (sectionKey === "nextStep") {
-    return ensurePeriod(`Complete ${text}`);
+    return ensurePeriod(`${chooseActionVerb(text, "Do")} ${text}`);
   }
 
   return ensurePeriod(normalized);
@@ -213,7 +251,7 @@ function getScenarioSpecificInstruction(scenario) {
   }
 
   if (category === "Avoid Compliance Mistakes" || searchableText.includes("hipaa")) {
-    return "Identify the documentation and notification steps.";
+    return "List the documentation and notification steps.";
   }
 
   if (category === "Fix the Schedule" || searchableText.includes("schedule")) {
@@ -229,11 +267,65 @@ function getScenarioSpecificInstruction(scenario) {
     return "Write what the team should say.";
   }
 
-  return "Identify the decision factors.";
+  return "Map the decision factors.";
+}
+
+function getScenarioTrigger(scenario) {
+  const searchableText = [
+    scenario.category,
+    scenario.coach,
+    scenario.scenarioTitle,
+    ...(scenario.tags || []),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  if (
+    searchableText.includes("claim") ||
+    searchableText.includes("denial") ||
+    searchableText.includes("appeal") ||
+    searchableText.includes("payer")
+  ) {
+    return "Use this when a claim, denial, EOB, or payer issue needs a clear next move.";
+  }
+
+  if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
+    return "Use this when a compliance question needs containment, documentation, and follow-up.";
+  }
+
+  if (searchableText.includes("schedule") || searchableText.includes("appointment")) {
+    return "Use this when the schedule needs a recovery plan instead of another quick fix.";
+  }
+
+  if (
+    searchableText.includes("patient") ||
+    searchableText.includes("case acceptance") ||
+    searchableText.includes("communication")
+  ) {
+    return "Use this when the team needs clearer patient language and a next step.";
+  }
+
+  if (
+    searchableText.includes("profit") ||
+    searchableText.includes("fee") ||
+    searchableText.includes("money") ||
+    searchableText.includes("tax")
+  ) {
+    return "Use this when a practice decision needs clear financial tradeoffs.";
+  }
+
+  return "Use this when the team needs to turn a practice issue into a specific action plan.";
+}
+
+function getPromptGroundingSentence(scenario) {
+  const topic = scenario.scenarioTitle.replace(/\s*\([^)]*\)/g, "").trim();
+
+  return `Focus on ${topic.toLowerCase()} in the context of ${scenario.category.toLowerCase()}.`;
 }
 
 function createCoachPrompt(scenario) {
   return `You are my ${scenario.coach}.
+${getPromptGroundingSentence(scenario)}
 
 Review this situation and respond with:
 1. The most important next step
@@ -249,11 +341,13 @@ function getExecutionExample(scenario) {
   if (scenario.executionExample) {
     return {
       ...scenario.executionExample,
+      trigger: scenario.executionExample.trigger || getScenarioTrigger(scenario),
       prompt: createCoachPrompt(scenario),
     };
   }
 
   return {
+    trigger: getScenarioTrigger(scenario),
     intro: "Paste the relevant note, report, patient message, or workflow detail and say:",
     prompt: createCoachPrompt(scenario),
     outputLabel: "You'll get:",
@@ -469,24 +563,20 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                       >
                         {section.label}:
                       </p>
-                      {section.key === "direction" ? (
-                        <p style={{ margin: 0 }}>{section.items[0]}</p>
-                      ) : (
-                        <ul
-                          style={{
-                            display: "grid",
-                            gap: "6px",
-                            margin: "4px 0 0",
-                            paddingLeft: "20px",
-                          }}
-                        >
-                          {section.items.map((item) => (
-                            <li key={item}>
-                              {formatInstructionItem(item, section.key)}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      <ul
+                        style={{
+                          display: "grid",
+                          gap: "6px",
+                          margin: "4px 0 0",
+                          paddingLeft: "20px",
+                        }}
+                      >
+                        {section.items.map((item) => (
+                          <li key={item}>
+                            {formatInstructionItem(item, section.key)}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
                 </dd>
@@ -497,6 +587,10 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                     Use this in your practice
                   </dt>
                   <dd className="scenario-matrix__execution">
+                    <p className="scenario-matrix__execution-label">
+                      Use this when:
+                    </p>
+                    <p>{executionExample.trigger}</p>
                     <p>{executionExample.intro}</p>
                     <blockquote>
                       {executionExample.prompt}
