@@ -40,14 +40,14 @@ function HomePage() {
       <Hero />
       <ProofStrip />
 
-      <div id="scenario-matrix">
-        <CoachScenarioMatrix selectedChallenge={selectedChallenge} />
-      </div>
-
       <CoachCapabilities
         selectedCategoryName={selectedCoachCategory}
         onSelectCategory={setSelectedCoachCategory}
       />
+
+      <div id="scenario-matrix">
+        <CoachScenarioMatrix selectedChallenge={selectedChallenge} />
+      </div>
 
       <AIImageStudio />
 

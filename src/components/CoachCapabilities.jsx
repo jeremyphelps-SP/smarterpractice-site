@@ -18,8 +18,8 @@ export default function CoachCapabilities({
           Here&rsquo;s how your team uses it
         </h2>
         <p>
-          Once you pick a problem, Smarter Practice AI helps your team draft
-          faster, make better decisions, and follow through consistently.
+          Your team uses this to handle real situations like claims, scheduling
+          gaps, and case presentation.
         </p>
       </div>
 
