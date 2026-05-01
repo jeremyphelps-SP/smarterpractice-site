@@ -34,7 +34,6 @@ export const scenarios = [
     },
     executionExample: {
       intro: "Paste your EOB or denial note and say:",
-      prompt: "Create a structured appeal for this denied D2740 claim.\nInclude narrative, required documentation, and follow-up steps.",
       outputLabel: "You'll get:",
       outputs: [
         "A complete appeal narrative",
