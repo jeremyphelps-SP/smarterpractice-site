@@ -14,24 +14,12 @@ export default function CoachCapabilities({
     <section className="coach-capabilities" aria-labelledby="coach-capabilities-title">
       <div className="coach-capabilities__intro">
         <p className="coach-capabilities__eyebrow">PRACTICE-READY AI SUPPORT</p>
-        <p className="coach-capabilities__bridge">
-          Once you pick a problem, here&rsquo;s how your team actually handles it.
-        </p>
         <h2 id="coach-capabilities-title">
-          Here&rsquo;s how your team handles it
+          Here&rsquo;s how your team uses it
         </h2>
         <p>
-          Give each part of the practice a clearer way to draft, decide,
-          document, and follow through &mdash; without starting from a blank page.
-        </p>
-        <p className="coach-capabilities__bridge">
-          Each area below shows how your team uses Smarter Practice AI to handle
-          real work &mdash; without guessing, Googling, or interrupting the
-          doctor.
-        </p>
-        <p className="coach-capabilities__bridge">
-          Most teams already have the answers somewhere. The problem is getting
-          to them fast enough to use them.
+          Once you pick a problem, Smarter Practice AI helps your team draft
+          faster, make better decisions, and follow through consistently.
         </p>
       </div>
 

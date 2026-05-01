@@ -155,15 +155,11 @@ export default function CoachScenarioMatrix({
     <main className="scenario-matrix">
       <section className="scenario-matrix__intro">
         <h2 className="scenario-matrix__title">
-          See how your practice can handle real problems with Smarter Practice AI
+          Pick a real problem. Get a clear next step.
         </h2>
         <p className="scenario-matrix__intro-text">
           Structured recommendations based on your numbers, workflows, and
           constraints.
-        </p>
-        <p className="scenario-matrix__intro-text">
-          These are the same types of decisions your practice is making every
-          week.
         </p>
         <p className="scenario-matrix__intro-text">
           Instead of searching for answers, get a clear next step for your
