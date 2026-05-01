@@ -134,7 +134,8 @@ export default function TrialCTA({ selectedChallenge = null }) {
                 )}
 
                 <p className="trial-cta__microcopy">
-                  This goes directly to Jeremy.
+                  This goes directly to Jeremy &mdash; you&rsquo;ll get a
+                  response with your setup.
                 </p>
 
                 <button
@@ -144,7 +145,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
                 >
                   {status === "submitting"
                     ? "Sending..."
-                    : "Request 15-day trial"}
+                    : "Start 15-day trial"}
                 </button>
               </form>
 
