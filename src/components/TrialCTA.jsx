@@ -1,6 +1,19 @@
 import { trackEvent } from "../utils/analytics";
 import "./TrialCTA.css";
 
+const trialEmail = "jeremy@smarterpractice.ai";
+const trialEmailSubject = "Smarter Practice AI 15-Day Trial Request";
+const trialEmailBody = `Name:
+Practice Name:
+Practice Email (for account setup):
+Role:
+Biggest Workflow Challenge:
+
+Anything else we should know about your practice:`;
+const trialMailtoHref = `mailto:${trialEmail}?subject=${encodeURIComponent(
+  trialEmailSubject,
+)}&body=${encodeURIComponent(trialEmailBody)}`;
+
 export default function TrialCTA({
   selectedChallenge = null,
   selectedQuickWin = null,
@@ -20,30 +33,38 @@ export default function TrialCTA({
           <h2 id="trial-cta-title">
             Pick one problem. Get a clear next step your team can use immediately.
           </h2>
-          <p>Start a 15-day trial. No setup required.</p>
+          <p>Request a 15-day trial.</p>
+          <p>
+            Send a few details and we&apos;ll set up your trial with the right
+            starting workflow.
+          </p>
           <p>
             Use it when something slows your team down, creates confusion, or
             needs a better answer.
-          </p>
-          <p>
-            Most teams start by fixing one real issue, like a denied claim, a
-            patient message, or a schedule gap.
           </p>
         </div>
         <div className="trial-cta__actions">
           <a
             className="trial-cta__button trial-cta__button--primary"
-            href="#trial"
+            href={trialMailtoHref}
             onClick={handleTrialClick}
           >
-            Start 15-day trial
+            Email Jeremy to request a trial
           </a>
+          <p className="trial-cta__microcopy">
+            This opens a pre-filled email so we can set up your workspace
+            correctly.
+          </p>
           <a
             className="trial-cta__button trial-cta__button--secondary"
             href="#scenario-matrix"
           >
             Explore examples first
           </a>
+          <p className="trial-cta__expectation">
+            After setup, your team will receive an invitation email from OpenAI
+            to join your Smarter Practice AI workspace.
+          </p>
         </div>
       </div>
     </section>
