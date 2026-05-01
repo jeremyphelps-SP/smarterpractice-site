@@ -5,37 +5,43 @@ const generatedImages = [
   {
     id: "lululemon",
     src: import.meta.env.BASE_URL + "images/ai-studio/lululemon.png",
-    label: "Fitness / Lululemon style",
+    styleName: "Fitness Lifestyle",
+    inspiration: "Lululemon-inspired",
     alt: "Generated fitness lifestyle smile makeover presentation",
   },
   {
     id: "apple",
     src: import.meta.env.BASE_URL + "images/ai-studio/apple.png",
-    label: "Tech / Apple style",
+    styleName: "Tech Minimal",
+    inspiration: "Apple-inspired",
     alt: "Generated tech minimalist smile makeover presentation",
   },
   {
     id: "peloton",
     src: import.meta.env.BASE_URL + "images/ai-studio/peloton.png",
-    label: "Sport / Peloton style",
+    styleName: "Sport Performance",
+    inspiration: "Peloton-inspired",
     alt: "Generated sport performance smile makeover presentation",
   },
   {
     id: "rolex",
     src: import.meta.env.BASE_URL + "images/ai-studio/rolex.png",
-    label: "Luxury / Rolex style",
+    styleName: "Luxury",
+    inspiration: "Rolex-inspired",
     alt: "Generated luxury smile makeover presentation",
   },
   {
     id: "maldives",
     src: import.meta.env.BASE_URL + "images/ai-studio/maldives.png",
-    label: "Travel / Maldives style",
+    styleName: "Travel Lifestyle",
+    inspiration: "Maldives-inspired",
     alt: "Generated travel lifestyle smile makeover presentation",
   },
   {
     id: "better-homes",
     src: import.meta.env.BASE_URL + "images/ai-studio/better-homes.png",
-    label: "Lifestyle / Better Homes",
+    styleName: "Home Lifestyle",
+    inspiration: "Better Homes-inspired",
     alt: "Generated home lifestyle smile makeover presentation",
   },
 ];
@@ -63,15 +69,6 @@ const valueCards = [
     title: "Make it easier to say yes",
     body: "Give your team better tools for case presentation",
   },
-];
-
-const promptExamples = [
-  "Lululemon (fitness)",
-  "Apple (tech/minimal)",
-  "Peloton (sport/performance)",
-  "Rolex (luxury)",
-  "Maldives (travel/lifestyle)",
-  "Better Homes (lifestyle/home)",
 ];
 
 export default function AIImageStudio() {
@@ -185,7 +182,14 @@ export default function AIImageStudio() {
                 >
                   <img src={image.src} alt={image.alt} />
                 </button>
-                <figcaption>{image.label}</figcaption>
+                <figcaption>
+                  <span className="ai-studio__thumbnail-label">
+                    {image.styleName}
+                  </span>
+                  <span className="ai-studio__thumbnail-reference">
+                    ({image.inspiration})
+                  </span>
+                </figcaption>
               </figure>
             ))}
           </div>
@@ -217,11 +221,6 @@ export default function AIImageStudio() {
           <p>Focus on [patient context].</p>
           <p>Include [services + pricing].&rdquo;</p>
         </div>
-        <ul className="ai-studio__prompt-examples" aria-label="Prompt examples">
-          {promptExamples.map((example) => (
-            <li key={example}>{example}</li>
-          ))}
-        </ul>
         <p className="ai-studio__consistency">
           Give your team a repeatable way to create these &mdash; without
           guessing what to ask.

@@ -268,11 +268,23 @@
 }
 
 .ai-studio__thumbnails figcaption {
-  margin-top: 8px;
+  display: grid;
+  gap: 3px;
+  margin-top: 10px;
   color: #52606d;
-  font-size: 0.82rem;
-  font-weight: 700;
   line-height: 1.25;
+}
+
+.ai-studio__thumbnail-label {
+  color: #243b53;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.ai-studio__thumbnail-reference {
+  color: #627d98;
+  font-size: 0.74rem;
+  font-weight: 600;
 }
 
 .ai-studio__bridge {
@@ -348,26 +360,6 @@
 
 .ai-studio__prompt-structure p + p {
   margin-top: 6px;
-}
-
-.ai-studio__prompt-examples {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.ai-studio__prompt-examples li {
-  padding: 7px 10px;
-  border: 1px solid #d9e2ec;
-  border-radius: 999px;
-  background: #ffffff;
-  color: #52606d;
-  font-size: 0.82rem;
-  font-weight: 800;
-  line-height: 1.2;
 }
 
 .ai-studio__consistency {
