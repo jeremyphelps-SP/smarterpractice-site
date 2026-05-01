@@ -19,15 +19,24 @@
   align-items: start;
   max-width: 1120px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.trial-cta__content,
+.trial-cta__inner > div:first-child {
+  box-sizing: border-box;
+  padding: 28px;
   border: 1px solid #d9e2ec;
   border-radius: 8px;
-  background: #f8fafc;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  background: #ffffff;
 }
 
 .trial-cta h2 {
-  margin: 0;
+  margin: 0 0 10px;
   color: #102a43;
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 650;
@@ -37,9 +46,34 @@
 
 .trial-cta p {
   margin: 10px 0 0;
+  max-width: 520px;
   color: #52606d;
   font-size: 1rem;
   line-height: 1.55;
+}
+
+.trial-cta__pricing {
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid #e6eef6;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.trial-cta__pricing-label {
+  margin-bottom: 6px;
+  color: #52606d;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.trial-cta__pricing strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #102a43;
+  font-size: 1.2rem;
 }
 
 .trial-cta__actions {
@@ -48,6 +82,17 @@
   gap: 14px;
   max-width: 420px;
   width: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.trial-cta__form-intro {
+  color: #243b53;
+  font-weight: 600;
 }
 
 .trial-cta__form {
@@ -121,10 +166,12 @@
 
 .trial-cta__button--primary {
   width: 100%;
+  height: 48px;
   margin-top: 6px;
   border: 1px solid #1f5eff;
   background: #1f5eff;
   color: #ffffff;
+  font-size: 1rem;
   box-shadow: 0 10px 24px rgba(31, 94, 255, 0.16);
 }
 
