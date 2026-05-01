@@ -1,5 +1,5 @@
 .ai-studio {
-  padding: 48px 20px;
+  padding: 40px 20px 44px;
   color: #1f2933;
   background: #ffffff;
   border-top: 1px solid #d9e2ec;
@@ -22,7 +22,7 @@
 }
 
 .ai-studio__section-bridge {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   color: #52606d;
   font-size: 1rem;
   line-height: 1.7;
@@ -31,9 +31,9 @@
 .ai-studio__intro {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-  gap: 24px 48px;
+  gap: 20px 42px;
   align-items: end;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
 }
 
 .ai-studio__eyebrow {
@@ -48,7 +48,7 @@
 .ai-studio__heading-group h2 {
   margin: 0 0 12px;
   color: #102a43;
-  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.5px;
@@ -387,7 +387,7 @@
 
 @media (max-width: 860px) {
   .ai-studio {
-    padding: 48px 18px;
+    padding: 40px 18px;
   }
 
   .ai-studio__intro,

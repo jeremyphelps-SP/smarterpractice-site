@@ -280,21 +280,53 @@ function getScenarioTrigger(scenario) {
     .join(" ")
     .toLowerCase();
 
+  if (searchableText.includes("crown denial") || searchableText.includes("d2740")) {
+    return "A crown claim is denied and the appeal needs stronger documentation.";
+  }
+
+  if (searchableText.includes("a/r") || searchableText.includes("accounts receivable")) {
+    return "A/R is aging and the team needs to prioritize the work by failure type.";
+  }
+
+  if (searchableText.includes("eob") || searchableText.includes("benefits")) {
+    return "An EOB or benefits response creates patient confusion or a payer follow-up task.";
+  }
+
+  if (searchableText.includes("no-show") || searchableText.includes("cancellation")) {
+    return "Open time, no-shows, or cancellations are creating production gaps.";
+  }
+
+  if (searchableText.includes("case acceptance") || searchableText.includes("large case")) {
+    return "A patient understands treatment but has not committed to the next step.";
+  }
+
+  if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
+    return "A privacy, consent, or vendor issue needs documented follow-through.";
+  }
+
+  if (searchableText.includes("ppo") || searchableText.includes("write-off")) {
+    return "PPO drag or write-offs are affecting collections and profit.";
+  }
+
+  if (searchableText.includes("fee") || searchableText.includes("pricing")) {
+    return "Fee or pricing decisions need clearer financial tradeoffs.";
+  }
+
+  if (searchableText.includes("huddle") || searchableText.includes("training") || searchableText.includes("onboarding")) {
+    return "A team behavior, training, or handoff issue needs a repeatable process.";
+  }
+
   if (
     searchableText.includes("claim") ||
     searchableText.includes("denial") ||
     searchableText.includes("appeal") ||
     searchableText.includes("payer")
   ) {
-    return "A claim, denial, EOB, or payer issue needs a clear next move.";
-  }
-
-  if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
-    return "A compliance question needs containment, documentation, and follow-up.";
+    return "A payer issue needs a documented appeal or follow-up plan.";
   }
 
   if (searchableText.includes("schedule") || searchableText.includes("appointment")) {
-    return "The schedule needs a recovery plan instead of another quick fix.";
+    return "The schedule needs a specific recovery plan.";
   }
 
   if (
@@ -302,7 +334,7 @@ function getScenarioTrigger(scenario) {
     searchableText.includes("case acceptance") ||
     searchableText.includes("communication")
   ) {
-    return "The team needs clearer patient language and a next step.";
+    return "A patient conversation needs clearer language and ownership.";
   }
 
   if (
@@ -311,10 +343,62 @@ function getScenarioTrigger(scenario) {
     searchableText.includes("money") ||
     searchableText.includes("tax")
   ) {
-    return "A practice decision needs clear financial tradeoffs.";
+    return "A practice decision needs financial tradeoffs and next steps.";
   }
 
-  return "The team needs to turn a practice issue into a specific action plan.";
+  return "A real practice issue needs a specific action plan.";
+}
+
+function getScenarioOutcome(scenario) {
+  const searchableText = [
+    scenario.category,
+    scenario.scenarioTitle,
+    ...(scenario.tags || []),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  if (searchableText.includes("crown denial") || searchableText.includes("appeal")) {
+    return "Faster appeal resolution and fewer repeat denials.";
+  }
+
+  if (searchableText.includes("a/r") || searchableText.includes("collections")) {
+    return "Cleaner follow-up priorities and faster cash movement.";
+  }
+
+  if (searchableText.includes("eob") || searchableText.includes("patient billing")) {
+    return "Clearer patient conversations and fewer balance disputes.";
+  }
+
+  if (searchableText.includes("schedule") || searchableText.includes("no-show") || searchableText.includes("cancellation")) {
+    return "Recovered chair time and fewer preventable schedule gaps.";
+  }
+
+  if (searchableText.includes("case acceptance") || searchableText.includes("large case")) {
+    return "Better treatment follow-up and stronger case acceptance.";
+  }
+
+  if (searchableText.includes("training") || searchableText.includes("onboarding") || searchableText.includes("huddle")) {
+    return "More consistent team execution without owner bottlenecks.";
+  }
+
+  if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
+    return "Cleaner documentation and lower avoidable compliance risk.";
+  }
+
+  if (searchableText.includes("ppo") || searchableText.includes("write-off")) {
+    return "Clearer payer decisions and less profit leakage.";
+  }
+
+  if (searchableText.includes("profit") || searchableText.includes("fee") || searchableText.includes("tax")) {
+    return "Better decisions with clearer financial tradeoffs.";
+  }
+
+  return "A clearer next step your team can act on.";
+}
+
+function getDisplayScenarioTitle(title) {
+  return title.replace(/\s*\([^)]*\)/g, "").trim();
 }
 
 function createCoachPrompt(scenario) {
@@ -445,12 +529,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
           Pick a real problem. Get a clear next step.
         </h2>
         <p className="scenario-matrix__intro-text">
-          Structured recommendations based on your numbers, workflows, and
-          constraints.
-        </p>
-        <p className="scenario-matrix__intro-text">
-          Instead of searching for answers, get a clear next step for your
-          specific situation.
+          Get a clear next step based on your actual situation.
         </p>
         {selectedChallengeLabel && (
           <p className="scenario-matrix__challenge-label">
@@ -511,7 +590,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                   }}
                   className="scenario-matrix__scenario-button"
                 >
-                  {scenario.scenarioTitle}
+                  {getDisplayScenarioTitle(scenario.scenarioTitle)}
                 </button>
               );
             })}
@@ -524,7 +603,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
               {selectedScenario.coach}
             </p>
             <h3 className="scenario-matrix__scenario-title">
-              {selectedScenario.scenarioTitle}
+              {getDisplayScenarioTitle(selectedScenario.scenarioTitle)}
             </h3>
 
             <dl className="scenario-matrix__detail-list">
@@ -547,6 +626,9 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                         </li>
                       ))}
                     </ul>
+                    <p className="scenario-matrix__outcome">
+                      <span>Outcome:</span> {getScenarioOutcome(selectedScenario)}
+                    </p>
                   </dd>
                 </div>
               )}
@@ -566,7 +648,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
               aria-expanded={isDetailsOpen}
               onClick={() => setIsDetailsOpen((isOpen) => !isOpen)}
             >
-              {isDetailsOpen ? "Show less" : "More details"}
+              {isDetailsOpen ? "Show less" : "See full workflow"}
             </button>
 
             {isDetailsOpen && (

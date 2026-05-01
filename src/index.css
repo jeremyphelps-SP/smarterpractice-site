@@ -335,6 +335,18 @@ code {
   font-weight: 500;
 }
 
+.scenario-matrix__outcome {
+  margin: 12px 0 0;
+  color: #1d4ed8;
+  font-size: 0.96rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.scenario-matrix__outcome span {
+  font-weight: 800;
+}
+
 .scenario-matrix__execution {
   display: grid;
   gap: 10px;
