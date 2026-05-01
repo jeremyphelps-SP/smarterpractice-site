@@ -40,7 +40,7 @@ export default function Hero() {
               className="homepage-hero__button homepage-hero__button--secondary"
               href="#trial"
             >
-              Try it with your practice
+              Start 15-day trial
             </a>
           </div>
           <p className="homepage-hero__disclaimer">
@@ -58,8 +58,8 @@ export default function Hero() {
           <div className="homepage-hero__outcome">
             <strong>From blank page to next step</strong>
             <p>
-              Turn common practice problems into clearer scripts, checklists,
-              follow-up plans, and team-ready recommendations.
+              Turn messy, day-to-day practice problems into clear next steps
+              your team can actually use.
             </p>
           </div>
         </aside>

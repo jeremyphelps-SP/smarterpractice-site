@@ -15,8 +15,8 @@ export const scenarios = [
 - Appeal narrative:
   - Tooth #19 presented with recurrent decay beneath a failing MOD restoration, visible crack lines, and pain on chewing. Remaining tooth structure was compromised. Full coverage was necessary to restore function and prevent fracture progression.
 - What to do next:
-  - Submit within 48 hours.
-  - Call payer 3 business days later and log the reference number.
+  - Resubmit within 48 hours with corrected narrative and attachments.
+  - Call the payer within 3 business days, confirm receipt, and log the reference number.
   - Hold patient billing until the payer response date is known.`,
     recommendedNextStep: {
       direction: "Do not send another patient statement yet. This is an appeal-quality problem, not a patient-collection problem.",
@@ -27,8 +27,8 @@ export const scenarios = [
         "Tooth #19 presented with recurrent decay beneath a failing MOD restoration, visible crack lines, and pain on chewing. Remaining tooth structure was compromised. Full coverage was necessary to restore function and prevent fracture progression."
       ],
       nextStep: [
-        "Submit within 48 hours.",
-        "Call payer 3 business days later and log the reference number.",
+        "Resubmit within 48 hours with corrected narrative and attachments.",
+        "Call the payer within 3 business days, confirm receipt, and log the reference number.",
         "Hold patient billing until the payer response date is known."
       ],
     },

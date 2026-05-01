@@ -52,7 +52,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
           </h2>
           <p>Start your 15-day trial.</p>
           <p>
-            Send a quick note and I&apos;ll set up your trial with the right
+            Fill this out and I&rsquo;ll set up your trial with the right
             starting workflow.
           </p>
 

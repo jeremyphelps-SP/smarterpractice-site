@@ -193,8 +193,7 @@ export default function AIImageStudio() {
       </div>
 
       <p className="ai-studio__bridge">
-        Patients don&rsquo;t buy treatment plans. They buy outcomes they can
-        picture.
+        Patients move forward when they can clearly picture the result.
       </p>
 
       <div className="ai-studio__values">

@@ -622,9 +622,6 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
         <h2 className="scenario-matrix__title">
           Pick a real problem. Get a clear next step.
         </h2>
-        <p className="scenario-matrix__intro-text">
-          Get a clear next step based on your actual situation.
-        </p>
         {selectedChallengeLabel && (
           <p className="scenario-matrix__challenge-label">
             Examples focused on: {selectedChallengeLabel}
@@ -722,6 +719,11 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                     </ul>
                     <p className="scenario-matrix__outcome">
                       <span>Outcome:</span> {getScenarioOutcome(selectedScenario)}
+                    </p>
+                    <p className="scenario-matrix__outcome">
+                      <a href="#trial">
+                        Want this for your practice? Start a 15-day trial &rarr;
+                      </a>
                     </p>
                   </dd>
                 </div>
