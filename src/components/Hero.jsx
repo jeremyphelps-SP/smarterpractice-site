@@ -13,13 +13,27 @@ const practiceAreas = [
 
 export default function Hero() {
   return (
-    <header className="homepage-hero" aria-labelledby="homepage-hero-title">
-      <div className="homepage-hero__inner">
-        <div className="homepage-hero__content">
-          <p className="homepage-hero__brand">
+    <header
+      className="homepage-hero"
+      id="top"
+      aria-labelledby="homepage-hero-title"
+    >
+      <div className="homepage-hero__brand-bar">
+        <a
+          className="homepage-hero__wordmark"
+          href="#top"
+          aria-label="Smarter Practice AI home"
+        >
+          <span className="homepage-hero__mark">SP</span>
+          <span>
             <span className="brand-primary">Smarter Practice</span>
             <span className="brand-secondary">AI</span>
-          </p>
+          </span>
+        </a>
+      </div>
+
+      <div className="homepage-hero__inner">
+        <div className="homepage-hero__content">
           <h1 id="homepage-hero-title">
             ChatGPT, structured for smarter dental practice ownership.
           </h1>
