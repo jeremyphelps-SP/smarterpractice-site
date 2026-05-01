@@ -40,7 +40,7 @@ export default function Hero() {
               className="homepage-hero__button homepage-hero__button--secondary"
               href="#trial"
             >
-              Request a 15-day trial
+              Try it with your practice
             </a>
           </div>
           <p className="homepage-hero__disclaimer">

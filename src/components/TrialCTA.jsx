@@ -123,17 +123,14 @@ export default function TrialCTA({
                 </label>
 
                 <label className="trial-cta__field trial-cta__field--full">
-                  <span>Biggest Workflow Challenge</span>
+                  <span>
+                    Biggest workflow challenge or anything else we should know
+                  </span>
                   <textarea
                     name="biggestWorkflowChallenge"
                     rows="4"
                     required
                   />
-                </label>
-
-                <label className="trial-cta__field trial-cta__field--full">
-                  <span>Anything else we should know</span>
-                  <textarea name="anythingElse" rows="3" />
                 </label>
 
                 {status === "error" && (

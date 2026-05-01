@@ -301,9 +301,9 @@ export default function QuickWinsSection({
       <div className="quick-wins__inner">
         <div className="quick-wins__header">
           <h2 id="quick-wins-title">
-            Try one of these in your practice today
+            Try this in under 3 minutes
           </h2>
-          <p>Start with one of these.</p>
+          <p>These are real workflows your team can use immediately.</p>
           {selectedChallengeLabel && (
             <p className="quick-wins__context">
               Focused on: {selectedChallengeLabel}

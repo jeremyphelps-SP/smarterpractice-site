@@ -117,20 +117,16 @@ export default function AIImageStudio() {
               fontWeight: 800,
             }}
           >
-            Another way Smarter Practice AI helps your team:
+            One example: improving case acceptance
           </p>
           <h2 id="ai-studio-title">
             Make treatment real before patients say yes
           </h2>
-          <p className="ai-studio__subheadline">
-            Turn real patient photos into personalized visuals that improve case
-            acceptance.
-          </p>
         </div>
         <p className="ai-studio__body">
-          Create polished, branded smile makeover concepts, promotional flyers,
-          and patient-specific visuals that help patients understand the value
-          of treatment.
+          Here&rsquo;s how Smarter Practice AI helps your team turn authorized
+          patient photos into personalized, branded visuals that make treatment
+          easier to understand.
         </p>
         <a className="ai-studio__cta" href="#ai-studio-workflow">
           See the workflow
