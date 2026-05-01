@@ -24,15 +24,25 @@
 }
 
 .homepage-hero__brand {
-  margin: 0 0 18px;
-  color: #1f5eff;
-  font-size: 0.96rem;
-  font-weight: 850;
+  margin: 0 0 10px;
+  color: #102a43;
+  font-size: 1.2rem;
+  font-weight: 900;
   line-height: 1.35;
 }
 
+.brand-primary {
+  font-weight: 900;
+}
+
+.brand-secondary {
+  margin-left: 6px;
+  color: #1f5eff;
+  font-weight: 700;
+}
+
 .homepage-hero h1 {
-  margin: 0;
+  margin: 6px 0 0;
   color: #071f3d;
   font-size: clamp(2.35rem, 5vw, 4.25rem);
   font-weight: 700;
