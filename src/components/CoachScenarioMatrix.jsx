@@ -115,6 +115,18 @@ const actionTermRules = [
   [["training"], "Train"],
 ];
 
+const conciseScenarioTitles = {
+  "What Am I Missing in A/R Over 90?": "A/R Over 90",
+  "Tomorrow Morning Crown Cancellation Recovery": "Crown Cancellation Recovery",
+  "What Are We Missing in Large Case Follow-Up?": "Large Case Follow-Up",
+  "Should We Offer Financing Earlier or Wait for Objection?": "Financing Timing",
+  "Owner-Level Referral Strategy Instead of Another Discount Campaign": "Referral Strategy",
+  "Owner-Level Team Capacity Review Before Growth Push": "Team Capacity Review",
+  "Owner Distribution Guardrails During Cash Swings": "Owner Distribution Guardrails",
+  "Owner-Level Compliance Risk Map Before Adding Software": "Compliance Risk Map",
+  "Owner-Level Choice: Pay Down Debt or Preserve Cash?": "Pay Down Debt or Preserve Cash",
+};
+
 function groupScenariosByCategory(scenarios) {
   return scenarios.reduce((groups, scenario) => {
     const category = scenario.category || "Uncategorized";
@@ -175,11 +187,91 @@ function chooseActionVerb(text, fallback = "Fix") {
   return rule ? rule[1] : fallback;
 }
 
+function getPrecisionRewrite(text, sectionKey) {
+  const lowerText = text.toLowerCase();
+
+  if (sectionKey === "nextStep") {
+    if (lowerText.includes("internal documentation today")) {
+      return "Document the incident in your internal compliance log today.";
+    }
+
+    if (lowerText.includes("review autocomplete and attachment workflow")) {
+      return "Audit autocomplete and attachment handling before sending another patient message.";
+    }
+
+    if (lowerText.includes("train team on double-check rule before sending estimates")) {
+      return "Train the team to verify recipients before sending estimates.";
+    }
+
+    if (lowerText.includes("reimbursement and write-off gap")) {
+      return "Calculate the reimbursement and write-off gap before changing payer strategy.";
+    }
+  }
+
+  if (sectionKey === "whatToChange") {
+    if (lowerText.includes("registration receipt")) {
+      return "Collect the registration receipt.";
+    }
+
+    if (lowerText.includes("certificate")) {
+      return "Collect the CE certificate.";
+    }
+
+    if (lowerText.includes("airfare receipt")) {
+      return "Collect the airfare receipt.";
+    }
+
+    if (lowerText.includes("hotel folio split by dates")) {
+      return "Collect the hotel folio with business and personal dates separated.";
+    }
+
+    if (lowerText.includes("meal receipts with business purpose")) {
+      return "Collect meal receipts with the business purpose noted.";
+    }
+
+    if (lowerText.includes("spouse costs")) {
+      return "Separate spouse costs from practice travel expenses.";
+    }
+
+    if (lowerText.includes("personal extra day")) {
+      return "Separate the personal extra day from business travel.";
+    }
+
+    if (lowerText.includes("non-course entertainment")) {
+      return "Separate non-course entertainment from CE expenses.";
+    }
+
+    if (lowerText.includes("lab fee treatment")) {
+      return "Define how lab fees affect compensation.";
+    }
+
+    if (lowerText.includes("remake policy")) {
+      return "Define the remake policy in the compensation agreement.";
+    }
+
+    if (lowerText.includes("write-off handling")) {
+      return "Define how write-offs affect compensation.";
+    }
+
+    if (lowerText.includes("timing of payment")) {
+      return "Define when compensation is paid.";
+    }
+  }
+
+  return "";
+}
+
 function formatInstructionItem(item, sectionKey) {
   const text = stripFillerStart(String(item).trim());
 
   if (!text) {
     return "";
+  }
+
+  const precisionRewrite = getPrecisionRewrite(text, sectionKey);
+
+  if (precisionRewrite) {
+    return precisionRewrite;
   }
 
   const normalized = sentenceCase(text);
@@ -281,39 +373,39 @@ function getScenarioTrigger(scenario) {
     .toLowerCase();
 
   if (searchableText.includes("crown denial") || searchableText.includes("d2740")) {
-    return "A crown claim is denied and the appeal needs stronger documentation.";
+    return "A D2740 crown claim is denied and the appeal needs stronger clinical documentation.";
   }
 
   if (searchableText.includes("a/r") || searchableText.includes("accounts receivable")) {
-    return "A/R is aging and the team needs to prioritize the work by failure type.";
+    return "Insurance A/R over 90 is growing and the team needs to prioritize by failure type.";
   }
 
   if (searchableText.includes("eob") || searchableText.includes("benefits")) {
-    return "An EOB or benefits response creates patient confusion or a payer follow-up task.";
+    return "An EOB changes the patient balance and the team needs a clear explanation.";
   }
 
   if (searchableText.includes("no-show") || searchableText.includes("cancellation")) {
-    return "Open time, no-shows, or cancellations are creating production gaps.";
+    return "Open chair time or broken appointments are leaving production unfilled.";
   }
 
   if (searchableText.includes("case acceptance") || searchableText.includes("large case")) {
-    return "A patient understands treatment but has not committed to the next step.";
+    return "A diagnosed case is unscheduled and the patient needs a clear next conversation.";
   }
 
   if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
-    return "A privacy, consent, or vendor issue needs documented follow-through.";
+    return "A privacy, consent, or vendor issue needs documented containment and follow-up.";
   }
 
   if (searchableText.includes("ppo") || searchableText.includes("write-off")) {
-    return "PPO drag or write-offs are affecting collections and profit.";
+    return "PPO write-offs or leased-network fees are reducing collections.";
   }
 
   if (searchableText.includes("fee") || searchableText.includes("pricing")) {
-    return "Fee or pricing decisions need clearer financial tradeoffs.";
+    return "Fee or pricing decisions need specific margin and patient-impact tradeoffs.";
   }
 
   if (searchableText.includes("huddle") || searchableText.includes("training") || searchableText.includes("onboarding")) {
-    return "A team behavior, training, or handoff issue needs a repeatable process.";
+    return "A recurring team handoff or training issue is slowing daily execution.";
   }
 
   if (
@@ -359,46 +451,48 @@ function getScenarioOutcome(scenario) {
     .toLowerCase();
 
   if (searchableText.includes("crown denial") || searchableText.includes("appeal")) {
-    return "Faster appeal resolution and fewer repeat denials.";
+    return "Faster appeal turnaround, stronger documentation, and fewer repeat denials.";
   }
 
   if (searchableText.includes("a/r") || searchableText.includes("collections")) {
-    return "Cleaner follow-up priorities and faster cash movement.";
+    return "Lower aging balances, clearer ownership, and faster insurance cash movement.";
   }
 
   if (searchableText.includes("eob") || searchableText.includes("patient billing")) {
-    return "Clearer patient conversations and fewer balance disputes.";
+    return "Fewer balance disputes and more confident patient billing conversations.";
   }
 
   if (searchableText.includes("schedule") || searchableText.includes("no-show") || searchableText.includes("cancellation")) {
-    return "Recovered chair time and fewer preventable schedule gaps.";
+    return "Recovered chair time, fewer unfilled openings, and steadier production.";
   }
 
   if (searchableText.includes("case acceptance") || searchableText.includes("large case")) {
-    return "Better treatment follow-up and stronger case acceptance.";
+    return "More scheduled treatment, clearer follow-up, and fewer stalled cases.";
   }
 
   if (searchableText.includes("training") || searchableText.includes("onboarding") || searchableText.includes("huddle")) {
-    return "More consistent team execution without owner bottlenecks.";
+    return "Less rework, fewer interruptions, and more consistent team execution.";
   }
 
   if (searchableText.includes("hipaa") || searchableText.includes("compliance")) {
-    return "Cleaner documentation and lower avoidable compliance risk.";
+    return "Cleaner records, faster containment, and lower avoidable compliance risk.";
   }
 
   if (searchableText.includes("ppo") || searchableText.includes("write-off")) {
-    return "Clearer payer decisions and less profit leakage.";
+    return "Clearer payer decisions, reduced write-off leakage, and better margin control.";
   }
 
   if (searchableText.includes("profit") || searchableText.includes("fee") || searchableText.includes("tax")) {
-    return "Better decisions with clearer financial tradeoffs.";
+    return "Better cash decisions, cleaner tradeoffs, and less financial guesswork.";
   }
 
   return "A clearer next step your team can act on.";
 }
 
 function getDisplayScenarioTitle(title) {
-  return title.replace(/\s*\([^)]*\)/g, "").trim();
+  const strippedTitle = title.replace(/\s*\([^)]*\)/g, "").trim();
+
+  return conciseScenarioTitles[strippedTitle] || strippedTitle;
 }
 
 function createCoachPrompt(scenario) {
