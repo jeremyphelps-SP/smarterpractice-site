@@ -17,8 +17,83 @@ const challengeLabels = {
 const recommendationSectionOrder = [
   ["direction", "Direction"],
   ["whatIsHappening", "What's happening"],
-  ["whatToChange", "What to change"],
+  ["whatToChange", "What to fix"],
   ["nextStep", "Next step"],
+];
+
+const actionStarts = [
+  "add",
+  "align",
+  "appeal",
+  "approve",
+  "ask",
+  "assign",
+  "attach",
+  "audit",
+  "batch",
+  "build",
+  "call",
+  "calibrate",
+  "check",
+  "collect",
+  "complete",
+  "confirm",
+  "create",
+  "delay",
+  "define",
+  "document",
+  "do",
+  "escalate",
+  "explain",
+  "fix",
+  "focus",
+  "follow",
+  "hold",
+  "include",
+  "label",
+  "lead",
+  "make",
+  "map",
+  "model",
+  "move",
+  "name",
+  "offer",
+  "prepare",
+  "prove",
+  "raise",
+  "reassess",
+  "remove",
+  "reserve",
+  "review",
+  "schedule",
+  "separate",
+  "set",
+  "spend",
+  "start",
+  "stop",
+  "submit",
+  "summarize",
+  "test",
+  "track",
+  "train",
+  "treat",
+  "turn",
+  "update",
+  "use",
+  "verify",
+  "write",
+];
+
+const collectionTerms = [
+  "agenda",
+  "certificate",
+  "chart",
+  "folio",
+  "note",
+  "photo",
+  "receipt",
+  "registration",
+  "treatment plan",
 ];
 
 function groupScenariosByCategory(scenarios) {
@@ -40,6 +115,69 @@ function asList(value) {
   return Array.isArray(value) ? value.filter(Boolean) : [value];
 }
 
+function sentenceCase(value) {
+  const text = String(value).trim();
+
+  if (!text) {
+    return "";
+  }
+
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function hasActionStart(value) {
+  const text = value.toLowerCase();
+
+  return actionStarts.some(
+    (verb) => text === verb || text.startsWith(`${verb} `),
+  );
+}
+
+function ensurePeriod(value) {
+  return /[.!?]$/.test(value) ? value : `${value}.`;
+}
+
+function formatInstructionItem(item, sectionKey) {
+  const text = String(item).trim();
+
+  if (!text) {
+    return "";
+  }
+
+  const normalized = sentenceCase(text);
+
+  if (text.endsWith("?")) {
+    return ensurePeriod(`Answer this question: ${text}`);
+  }
+
+  if (/^(if|when)\b/i.test(normalized)) {
+    return ensurePeriod(`Apply this rule: ${text}`);
+  }
+
+  if (hasActionStart(normalized)) {
+    return ensurePeriod(normalized);
+  }
+
+  if (sectionKey === "whatIsHappening") {
+    return ensurePeriod(`Identify ${text}`);
+  }
+
+  if (sectionKey === "whatToChange") {
+    const lowerText = text.toLowerCase();
+    const prefix = collectionTerms.some((term) => lowerText.includes(term))
+      ? "Collect"
+      : "Fix";
+
+    return ensurePeriod(`${prefix} ${text}`);
+  }
+
+  if (sectionKey === "nextStep") {
+    return ensurePeriod(`Complete ${text}`);
+  }
+
+  return ensurePeriod(normalized);
+}
+
 function getRecommendationSections(scenario) {
   const recommendation = scenario.recommendedNextStep || {};
 
@@ -52,14 +190,72 @@ function getRecommendationSections(scenario) {
     .filter((section) => section.items.length);
 }
 
+function getScenarioSpecificInstruction(scenario) {
+  const category = scenario.category || "";
+  const searchableText = [
+    category,
+    scenario.coach,
+    scenario.scenarioTitle,
+    ...(scenario.tags || []),
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  if (
+    searchableText.includes("claim") ||
+    searchableText.includes("denial") ||
+    searchableText.includes("appeal") ||
+    searchableText.includes("payer") ||
+    searchableText.includes("ppo") ||
+    searchableText.includes("billing")
+  ) {
+    return "Create the appeal or follow-up plan.";
+  }
+
+  if (category === "Avoid Compliance Mistakes" || searchableText.includes("hipaa")) {
+    return "Identify the documentation and notification steps.";
+  }
+
+  if (category === "Fix the Schedule" || searchableText.includes("schedule")) {
+    return "Create the recovery plan.";
+  }
+
+  if (
+    category === "Help Patients Say Yes" ||
+    category === "Grow New Patients" ||
+    searchableText.includes("patient communication") ||
+    searchableText.includes("case acceptance")
+  ) {
+    return "Write what the team should say.";
+  }
+
+  return "Identify the decision factors.";
+}
+
+function createCoachPrompt(scenario) {
+  return `You are my ${scenario.coach}.
+
+Review this situation and respond with:
+1. The most important next step
+2. What needs to change
+3. Any key risks or mistakes to avoid
+4. ${getScenarioSpecificInstruction(scenario)}
+
+Context:
+[Paste details]`;
+}
+
 function getExecutionExample(scenario) {
   if (scenario.executionExample) {
-    return scenario.executionExample;
+    return {
+      ...scenario.executionExample,
+      prompt: createCoachPrompt(scenario),
+    };
   }
 
   return {
     intro: "Paste the relevant note, report, patient message, or workflow detail and say:",
-    prompt: `Help me handle this ${scenario.scenarioTitle.toLowerCase()} scenario.\nGive me the clearest next step, what to say, and what to document.`,
+    prompt: createCoachPrompt(scenario),
     outputLabel: "You'll get:",
     outputs: [
       "A practical draft your team can use",
@@ -285,7 +481,9 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                           }}
                         >
                           {section.items.map((item) => (
-                            <li key={item}>{item}</li>
+                            <li key={item}>
+                              {formatInstructionItem(item, section.key)}
+                            </li>
                           ))}
                         </ul>
                       )}
