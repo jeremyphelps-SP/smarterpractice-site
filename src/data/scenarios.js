@@ -33,7 +33,7 @@ export const scenarios = [
       ],
     },
     executionExample: {
-      intro: "Paste your EOB or denial note and say:",
+      intro: "Drop in the real situation:",
       outputLabel: "You'll get:",
       outputs: [
         "A complete appeal narrative",
