@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AboutSection from "./components/AboutSection";
 import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
@@ -91,12 +91,24 @@ function HomePage() {
 }
 
 export default function App() {
-  const hash = window.location.hash;
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
   let page = <HomePage />;
 
-  if (hash === "#/terms") {
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
+  if (currentHash === "#/terms") {
     page = <TermsPage />;
-  } else if (hash === "#/privacy") {
+  } else if (currentHash === "#/privacy") {
     page = <PrivacyPage />;
   }
 
