@@ -48,27 +48,38 @@ export default function TrialCTA({ selectedChallenge = null }) {
       <div className="trial-cta__inner">
         <div>
           <h2 id="trial-cta-title">
-            Start with one real workflow from your practice.
+            Start with one real problem in your practice&mdash;and fix it this
+            week.
           </h2>
-          <p>Start your 15-day trial.</p>
           <p>
-            Fill this out and I&rsquo;ll set up your trial with the right
-            starting workflow.
+            Start your 15-day trial with a real workflow your team is dealing
+            with right now.
+          </p>
+          <p>
+            You&rsquo;ll get a structured setup so your team knows exactly how to
+            use it from day one.
           </p>
 
           <div className="trial-cta__pricing" aria-label="Pricing">
             <p className="trial-cta__pricing-label">Pricing</p>
+            <strong>Free 15-day trial</strong>
             <p>
-              Free 15-day trial.
+              $60/month for your first account
               <br />
-              <br />
-              $60/month for the first account
-              <br />
-              $45/month for each additional team member
+              $45/month per additional team member
               <br />
               <br />
               No contracts. Cancel anytime.
             </p>
+          </div>
+
+          <div className="trial-cta__next-steps">
+            <p className="trial-cta__next-steps-label">What happens next</p>
+            <ul>
+              <li>You submit this form</li>
+              <li>Your trial is set up with a real workflow</li>
+              <li>Your team gets access and can start immediately</li>
+            </ul>
           </div>
         </div>
 
@@ -134,8 +145,8 @@ export default function TrialCTA({ selectedChallenge = null }) {
                 )}
 
                 <p className="trial-cta__microcopy">
-                  This goes directly to Jeremy &mdash; you&rsquo;ll get a
-                  response with your setup.
+                  This goes directly to Jeremy. You&rsquo;ll get your setup and
+                  next steps.
                 </p>
 
                 <button
@@ -145,7 +156,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
                 >
                   {status === "submitting"
                     ? "Sending..."
-                    : "Start 15-day trial"}
+                    : "Start my 15-day trial"}
                 </button>
               </form>
 
