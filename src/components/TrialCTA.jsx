@@ -50,7 +50,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
           <h2 id="trial-cta-title">
             Start with one real workflow from your practice.
           </h2>
-          <p>Request a 15-day trial.</p>
+          <p>Start your 15-day trial.</p>
           <p>
             Send a quick note and I&apos;ll set up your trial with the right
             starting workflow.
