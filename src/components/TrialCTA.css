@@ -192,11 +192,16 @@
   width: 100%;
   height: 48px;
   margin-top: 6px;
-  border: 1px solid #1f5eff;
-  background: #1f5eff;
+  border: none;
+  background: #f97316;
   color: #ffffff;
   font-size: 1rem;
-  box-shadow: 0 10px 24px rgba(31, 94, 255, 0.16);
+  box-shadow: 0 10px 24px rgba(249, 115, 22, 0.18);
+}
+
+.trial-cta__button--primary:hover,
+.trial-cta__button--primary:focus-visible {
+  background: #ea580c;
 }
 
 .trial-cta__button--secondary {
