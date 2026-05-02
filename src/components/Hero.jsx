@@ -49,15 +49,15 @@ export default function Hero() {
           <div className="homepage-hero__actions" aria-label="Homepage actions">
             <a
               className="homepage-hero__button homepage-hero__button--primary"
-              href="#scenario-matrix"
-            >
-              Explore practice examples
-            </a>
-            <a
-              className="homepage-hero__button homepage-hero__button--secondary"
               href="#trial"
             >
               Start 15-day trial
+            </a>
+            <a
+              className="homepage-hero__button homepage-hero__button--secondary"
+              href="#scenario-matrix"
+            >
+              Explore practice examples
             </a>
           </div>
           <p className="homepage-hero__disclaimer">
