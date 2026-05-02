@@ -447,3 +447,46 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .ai-studio {
+    background: #111318;
+    color: #e5e7eb;
+  }
+
+  .ai-studio__photo-card,
+  .ai-studio__workflow,
+  .ai-studio__value-card,
+  .ai-studio__prompt-card {
+    background: #1a1d24;
+    border-color: #2e303a;
+  }
+
+  .ai-studio__workflow-steps li,
+  .ai-studio__prompt-structure,
+  .ai-studio__thumbnails {
+    background: #1f222a;
+    border-color: #2e303a;
+    color: #e5e7eb;
+  }
+
+  .ai-studio__heading-group h2,
+  .ai-studio__bridge {
+    color: #f9fafb;
+  }
+
+  .ai-studio__body,
+  .ai-studio__subheadline,
+  .ai-studio__workflow-subtext,
+  .ai-studio__value-card p {
+    color: #d1d5db;
+  }
+
+  .ai-studio__workflow-label,
+  .ai-studio__value-card h3,
+  .ai-studio__card-label strong,
+  .ai-studio__prompt-card blockquote,
+  .ai-studio__prompt-structure {
+    color: #f3f4f6;
+  }
+}
