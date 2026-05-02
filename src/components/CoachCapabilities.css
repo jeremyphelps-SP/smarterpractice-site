@@ -253,3 +253,51 @@
     padding: 20px;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .coach-capabilities {
+    color: #e5e7eb;
+  }
+
+  .coach-capabilities__selector,
+  .coach-capabilities__detail,
+  .coach-capabilities__category-button,
+  .coach-capabilities__detail-section {
+    background: #1a1d24;
+    border-color: #2e303a;
+  }
+
+  .coach-capabilities__category-button:hover,
+  .coach-capabilities__category-button:focus-visible {
+    background: #1f222a;
+  }
+
+  .coach-capabilities__category-button[aria-pressed="true"] {
+    background: #1e293b;
+  }
+
+  .coach-capabilities__intro h2,
+  .coach-capabilities__detail-header h3 {
+    color: #f9fafb;
+  }
+
+  .coach-capabilities__intro p,
+  .coach-capabilities__detail-header p,
+  .coach-capabilities__category-button small {
+    color: #d1d5db;
+  }
+
+  .coach-capabilities__category-button span {
+    color: #f3f4f6;
+  }
+
+  .coach-capabilities__coach-list li {
+    background: #111318;
+    color: #f3f4f6;
+  }
+
+  .coach-capabilities__outcome,
+  .coach-capabilities__task-list li {
+    color: #e5e7eb;
+  }
+}

@@ -293,3 +293,48 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .homepage-hero {
+    background: #111318;
+    color: #e5e7eb;
+  }
+
+  .homepage-hero h1 {
+    color: #f9fafb;
+  }
+
+  .homepage-hero__brand-bar {
+    border-color: #2e303a;
+  }
+
+  .homepage-hero__wordmark,
+  .brand-primary,
+  .homepage-hero__outcome strong {
+    color: #f9fafb;
+  }
+
+  .homepage-hero__lead,
+  .homepage-hero__support,
+  .homepage-hero__outcome p,
+  .homepage-hero__disclaimer {
+    color: #d1d5db;
+  }
+
+  .homepage-hero__button--secondary {
+    background: #1a1d24;
+    border-color: #2e303a;
+    color: #f3f4f6;
+  }
+
+  .homepage-hero__panel {
+    background: #1a1d24;
+    border-color: #2e303a;
+  }
+
+  .homepage-hero__area-grid span {
+    background: #1f222a;
+    border-color: #2e303a;
+    color: #e5e7eb;
+  }
+}
