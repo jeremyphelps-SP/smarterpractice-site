@@ -53,113 +53,6 @@
     filter: invert(1) brightness(2);
   }
 
-  .proof-strip {
-    background: #111318;
-    color: #e5e7eb;
-  }
-
-  .proof-strip__inner {
-    background: #1a1d24;
-    border-color: #2e303a;
-  }
-
-  .proof-strip p {
-    color: #f3f4f6;
-  }
-
-  .proof-strip li {
-    background: #1f222a;
-    color: #e5e7eb;
-  }
-
-  .scenario-matrix {
-    color: #e5e7eb;
-  }
-
-  .scenario-matrix__title,
-  .scenario-matrix__list-title,
-  .scenario-matrix__scenario-title,
-  .scenario-matrix__label {
-    color: #f9fafb;
-  }
-
-  .scenario-matrix__intro-text,
-  .scenario-matrix__coach,
-  .scenario-matrix__body,
-  .scenario-matrix__recommendation,
-  .scenario-matrix__execution {
-    color: #d1d5db;
-  }
-
-  .scenario-matrix__challenge-label,
-  .scenario-matrix__category-button {
-    background: #1a1d24;
-    border: 1px solid #2e303a;
-    color: #e5e7eb;
-  }
-
-  .scenario-matrix__category-button[aria-pressed="true"] {
-    background: #2563eb;
-    border-color: #3b82f6;
-    color: #ffffff;
-  }
-
-  .scenario-matrix__detail-card {
-    background: #1a1d24;
-    border-color: #2e303a;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
-  }
-
-  .scenario-matrix__list-title,
-  .scenario-matrix__details-panel {
-    border-color: #2e303a;
-  }
-
-  .scenario-matrix__scenario-button {
-    color: #e5e7eb;
-  }
-
-  .scenario-matrix__scenario-button[aria-pressed="true"] {
-    background: #1e293b;
-    color: #f9fafb;
-  }
-
-  .scenario-matrix__action-block {
-    background: #172554;
-    border-color: #3b82f6;
-  }
-
-  .scenario-matrix__action-block .scenario-matrix__label,
-  .scenario-matrix__outcome,
-  .scenario-matrix__outcome span {
-    color: #bfdbfe;
-  }
-
-  .scenario-matrix__action-block .scenario-matrix__recommendation {
-    color: #f3f4f6;
-  }
-
-  .scenario-matrix__execution {
-    background: #1f222a;
-    border-color: #2e303a;
-  }
-
-  .scenario-matrix__execution blockquote {
-    background: #111318;
-    color: #f3f4f6;
-  }
-
-  .scenario-matrix__execution-label,
-  .scenario-matrix__recommendation-label {
-    color: #e5e7eb;
-  }
-
-  .scenario-matrix__tags span,
-  .scenario-matrix__details-toggle {
-    background: #1f222a;
-    border-color: #2e303a;
-    color: #e5e7eb;
-  }
 }
 
 body {
@@ -580,5 +473,115 @@ code {
 
   .scenario-matrix__title {
     letter-spacing: -0.4px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .proof-strip {
+    background: #111318;
+    color: #e5e7eb;
+  }
+
+  .proof-strip__inner {
+    background: #1a1d24;
+    border-color: #2e303a;
+  }
+
+  .proof-strip p {
+    color: #f3f4f6;
+  }
+
+  .proof-strip li {
+    background: #1f222a;
+    color: #e5e7eb;
+  }
+
+  .scenario-matrix {
+    color: #e5e7eb;
+  }
+
+  .scenario-matrix__title,
+  .scenario-matrix__list-title,
+  .scenario-matrix__scenario-title,
+  .scenario-matrix__label {
+    color: #f9fafb;
+  }
+
+  .scenario-matrix__intro-text,
+  .scenario-matrix__coach,
+  .scenario-matrix__body,
+  .scenario-matrix__recommendation,
+  .scenario-matrix__execution {
+    color: #d1d5db;
+  }
+
+  .scenario-matrix__challenge-label,
+  .scenario-matrix__category-button {
+    border: 1px solid #2e303a;
+    background: #1a1d24;
+    color: #e5e7eb;
+  }
+
+  .scenario-matrix__category-button[aria-pressed="true"] {
+    background: #2563eb;
+    border-color: #3b82f6;
+    color: #ffffff;
+  }
+
+  .scenario-matrix__detail-card {
+    background: #1a1d24;
+    border-color: #2e303a;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  }
+
+  .scenario-matrix__list-title,
+  .scenario-matrix__details-panel {
+    border-color: #2e303a;
+  }
+
+  .scenario-matrix__scenario-button {
+    color: #e5e7eb;
+  }
+
+  .scenario-matrix__scenario-button[aria-pressed="true"] {
+    background: #1e293b;
+    color: #f9fafb;
+  }
+
+  .scenario-matrix__action-block {
+    background: #172554;
+    border-color: #3b82f6;
+  }
+
+  .scenario-matrix__action-block .scenario-matrix__label,
+  .scenario-matrix__outcome,
+  .scenario-matrix__outcome span {
+    color: #bfdbfe;
+  }
+
+  .scenario-matrix__action-block .scenario-matrix__recommendation {
+    color: #f3f4f6;
+  }
+
+  .scenario-matrix__execution {
+    background: #1f222a;
+    border-color: #2e303a;
+  }
+
+  .scenario-matrix__execution blockquote {
+    background: #111318;
+    color: #f3f4f6;
+  }
+
+  .scenario-matrix__execution-label,
+  .scenario-matrix__recommendation-label {
+    color: #e5e7eb;
+  }
+
+  .scenario-matrix__tags span,
+  .scenario-matrix__details-toggle {
+    background: #1f222a;
+    border-color: #2e303a;
+    color: #e5e7eb;
   }
 }
