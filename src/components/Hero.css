@@ -14,15 +14,17 @@
   align-items: center;
   justify-content: flex-start;
   max-width: 1120px;
-  margin: 0 auto 36px;
+  margin: 0 auto 32px;
+  padding: 14px 0 18px;
+  border-bottom: 1px solid #d9e2ec;
 }
 
 .homepage-hero__wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: #102a43;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 900;
   line-height: 1.2;
   text-decoration: none;
@@ -30,11 +32,11 @@
 
 .homepage-hero__mark {
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   place-items: center;
-  border-radius: 10px;
-  background: #102a43;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #102a43, #1f5eff);
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 900;
@@ -62,16 +64,16 @@
 .brand-secondary {
   margin-left: 6px;
   color: #1f5eff;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .homepage-hero h1 {
   margin: 6px 0 0;
   color: #071f3d;
-  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 0.98;
+  line-height: 1.02;
 }
 
 .homepage-hero__lead {
