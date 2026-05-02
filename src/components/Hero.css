@@ -31,16 +31,29 @@
 }
 
 .homepage-hero__mark {
+  position: relative;
   display: grid;
   width: 40px;
   height: 40px;
   place-items: center;
+  overflow: hidden;
   border-radius: 8px;
-  background: linear-gradient(135deg, #102a43, #1f5eff);
+  background: #102a43;
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 900;
   letter-spacing: -0.04em;
+}
+
+.homepage-hero__mark::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  border-top-left-radius: 8px;
+  background: #f97316;
 }
 
 .homepage-hero__inner {
@@ -58,13 +71,14 @@
 }
 
 .brand-primary {
+  color: #102a43;
   font-weight: 900;
 }
 
 .brand-secondary {
   margin-left: 6px;
-  color: #1f5eff;
-  font-weight: 900;
+  color: #f97316;
+  font-weight: 800;
 }
 
 .homepage-hero h1 {
@@ -118,10 +132,10 @@
 }
 
 .homepage-hero__button--primary {
-  border: 1px solid #1f5eff;
-  background: #1f5eff;
+  border: none;
+  background: #f97316;
   color: #ffffff;
-  box-shadow: 0 12px 28px rgba(31, 94, 255, 0.18);
+  box-shadow: 0 12px 28px rgba(249, 115, 22, 0.2);
 }
 
 .homepage-hero__button--secondary {
@@ -137,7 +151,8 @@
 
 .homepage-hero__button--primary:hover,
 .homepage-hero__button--primary:focus-visible {
-  box-shadow: 0 16px 34px rgba(31, 94, 255, 0.22);
+  background: #ea580c;
+  box-shadow: 0 16px 34px rgba(234, 88, 12, 0.22);
 }
 
 .homepage-hero__button:focus-visible {
