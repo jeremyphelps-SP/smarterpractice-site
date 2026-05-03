@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { scenarios } from "../data/scenarios";
 
 const buttonResetStyle = {
@@ -553,7 +553,10 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
   const activeCategory = categories.includes(selectedCategory)
     ? selectedCategory
     : categories[0] || "";
-  const selectedScenarios = scenariosByCategory[activeCategory] || [];
+  const selectedScenarios = useMemo(
+    () => scenariosByCategory[activeCategory] || [],
+    [activeCategory, scenariosByCategory],
+  );
   const [selectedScenarioId, setSelectedScenarioId] = useState(
     selectedScenarios[0]?.id || "",
   );
@@ -578,29 +581,16 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
     ? challengeLabels[selectedChallenge]
     : "";
 
-  useEffect(() => {
-    if (activeCategory !== selectedCategory) {
-      setSelectedCategory(activeCategory);
-      setSelectedScenarioId(selectedScenarios[0]?.id || "");
-      return;
-    }
-
-    if (
-      selectedScenarios.length &&
-      !selectedScenarios.some((scenario) => scenario.id === selectedScenarioId)
-    ) {
-      setSelectedScenarioId(selectedScenarios[0].id);
-    }
-  }, [activeCategory, selectedCategory, selectedScenarioId, selectedScenarios]);
-
-  useEffect(() => {
-    setIsDetailsOpen(false);
-  }, [selectedScenarioId]);
-
   const handleCategorySelect = (category) => {
     const nextScenarios = scenariosByCategory[category] || [];
     setSelectedCategory(category);
     setSelectedScenarioId(nextScenarios[0]?.id || "");
+    setIsDetailsOpen(false);
+  };
+
+  const handleScenarioSelect = (scenarioId) => {
+    setSelectedScenarioId(scenarioId);
+    setIsDetailsOpen(false);
   };
 
   if (!categories.length) {
@@ -670,7 +660,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                 <button
                   key={scenario.id}
                   type="button"
-                  onClick={() => setSelectedScenarioId(scenario.id)}
+                  onClick={() => handleScenarioSelect(scenario.id)}
                   aria-pressed={isSelected}
                   style={buttonResetStyle}
                   className="scenario-matrix__scenario-button"

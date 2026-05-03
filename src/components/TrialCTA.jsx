@@ -35,7 +35,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
 
       setStatus("success");
       event.currentTarget.reset();
-    } catch (error) {
+    } catch {
       setStatus("error");
       setErrorMessage(
         "Something went wrong. Please try again or email jeremy@smarterpractice.ai.",
