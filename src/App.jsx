@@ -8,28 +8,6 @@ import TrialCTA from "./components/TrialCTA";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 
-const proofItems = [
-  "Reduce claim friction",
-  "Improve case acceptance",
-  "Fix scheduling gaps",
-  "Standardize patient communication",
-];
-
-function ProofStrip() {
-  return (
-    <section className="proof-strip" aria-label="Practice value proof">
-      <div className="proof-strip__inner">
-        <p>Used by dental teams to:</p>
-        <ul>
-          {proofItems.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 function HomePage() {
   const selectedChallenge = null;
   const [selectedCoachCategory, setSelectedCoachCategory] =
@@ -38,7 +16,6 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <ProofStrip />
 
       <CoachCapabilities
         selectedCategoryName={selectedCoachCategory}

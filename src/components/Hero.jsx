@@ -146,9 +146,20 @@ export default function Hero() {
               Explore practice examples
             </a>
           </div>
-          <p className="homepage-hero__disclaimer">
-            Smarter Practice AI is not affiliated with or endorsed by OpenAI.
-          </p>
+          <div
+            className="homepage-hero__trust-block"
+            aria-label="Smarter Practice AI trust and differentiation"
+          >
+            <p className="homepage-hero__trust-note">
+              Built on ChatGPT — structured for real dental workflows, with
+              HIPAA-ready safeguards.
+            </p>
+            <ul className="homepage-hero__trust-list">
+              <li>No prompt guessing</li>
+              <li>No inconsistent team use</li>
+              <li>No unmanaged PHI copy/paste workflows</li>
+            </ul>
+          </div>
         </div>
 
         <aside className="homepage-hero__panel" aria-label="Practice areas">
