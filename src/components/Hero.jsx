@@ -129,8 +129,8 @@ export default function Hero() {
             practice operations.
           </p>
           <p className="homepage-hero__support">
-            Give each role a clearer way to draft, decide, document, and follow
-            through without relying on random prompts or one-off answers.
+            Give each role a clear, repeatable way to use AI &mdash; without
+            relying on random prompts or one-off answers.
           </p>
           <div className="homepage-hero__actions" aria-label="Homepage actions">
             <a
@@ -162,6 +162,10 @@ export default function Hero() {
                 accounts
               </li>
             </ul>
+            <p className="homepage-hero__trust-footnote">
+              Use within your practice&rsquo;s policies and patient
+              authorization.
+            </p>
           </div>
         </div>
 

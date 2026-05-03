@@ -48,7 +48,8 @@ export default function TrialCTA({ selectedChallenge = null }) {
       <div className="trial-cta__inner">
         <div>
           <h2 id="trial-cta-title">
-            Fix one real problem in your practice this week.
+            Fix a real problem in your practice this week &mdash; with your
+            team actually using it.
           </h2>
           <p>
             Start your 15-day trial with a real workflow your team is dealing
