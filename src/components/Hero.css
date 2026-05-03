@@ -217,6 +217,13 @@
   line-height: 1.25;
 }
 
+.homepage-hero__trust-footnote {
+  margin: -2px 0 0;
+  color: #627d98;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
 .homepage-hero__panel {
   border: 1px solid #d9e2ec;
   border-radius: 8px;
@@ -373,7 +380,8 @@
 
   .homepage-hero__lead,
   .homepage-hero__support,
-  .homepage-hero__outcome p {
+  .homepage-hero__outcome p,
+  .homepage-hero__trust-footnote {
     color: #d1d5db;
   }
 

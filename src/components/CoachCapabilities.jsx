@@ -15,11 +15,11 @@ export default function CoachCapabilities({
       <div className="coach-capabilities__intro">
         <p className="coach-capabilities__eyebrow">PRACTICE-READY AI SUPPORT</p>
         <h2 id="coach-capabilities-title">
-          Here&rsquo;s how your team uses it
+          Where do you need help right now?
         </h2>
         <p>
-          Your team uses this to handle real situations like claims, scheduling
-          gaps, and case presentation.
+          Choose the area causing the most friction, then see how Smarter
+          Practice AI turns it into a clear next step.
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function CoachCapabilities({
           aria-label="Practice capability categories"
         >
           <p className="coach-capabilities__selector-label">
-            Where do you need help right now?
+            Pick your biggest current problem:
           </p>
           <div className="coach-capabilities__selector-list">
             {coachCapabilityCategories.map((category) => {
