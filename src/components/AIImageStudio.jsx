@@ -150,8 +150,8 @@ export default function AIImageStudio() {
       <div className="ai-studio__image-area" id="ai-studio-workflow">
         <article className="ai-studio__photo-card ai-studio__photo-card--original">
           <div className="ai-studio__card-label">
-            <span>Authorized photo</span>
-            <strong>Original</strong>
+            <span>Original authorized photo</span>
+            <strong>Before</strong>
           </div>
           <img
             src={studioImages.original}
@@ -161,8 +161,8 @@ export default function AIImageStudio() {
 
         <article className="ai-studio__photo-card ai-studio__photo-card--output">
           <div className="ai-studio__card-label">
-            <span>Generated presentation</span>
-            <strong>Output concepts</strong>
+            <span>Generated presentation concept</span>
+            <strong>{selectedImage.styleName}</strong>
           </div>
           <div className="ai-studio__featured-image-frame">
             <img

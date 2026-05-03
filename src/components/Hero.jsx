@@ -146,14 +146,17 @@ export default function Hero() {
               Explore practice examples
             </a>
           </div>
+        </div>
+
+        <aside className="homepage-hero__panel" aria-label="Practice areas">
+          <div className="homepage-hero__panel-header">
+            <p className="homepage-hero__panel-label">Practice AI workspace</p>
+            <strong>Built on ChatGPT. Structured for dental workflows.</strong>
+          </div>
           <div
             className="homepage-hero__trust-block"
             aria-label="Smarter Practice AI trust and differentiation"
           >
-            <p className="homepage-hero__trust-note">
-              Built on ChatGPT &mdash; structured for real dental workflows,
-              with HIPAA-ready safeguards.
-            </p>
             <ul className="homepage-hero__trust-list">
               <li>No prompt guessing</li>
               <li>Consistent answers across your team</li>
@@ -167,10 +170,6 @@ export default function Hero() {
               authorization.
             </p>
           </div>
-        </div>
-
-        <aside className="homepage-hero__panel" aria-label="Practice areas">
-          <p className="homepage-hero__panel-label">Built for the business side</p>
           <div className="homepage-hero__area-grid">
             {practiceAreas.map((area) => (
               <div className="homepage-hero__area-item" key={area.label}>

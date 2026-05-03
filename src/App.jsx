@@ -4,6 +4,7 @@ import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
 import AIImageStudio from "./components/AIImageStudio";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+import ProofStrip from "./components/ProofStrip";
 import TrialCTA from "./components/TrialCTA";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
@@ -16,6 +17,8 @@ function HomePage() {
   return (
     <>
       <Hero />
+
+      <ProofStrip />
 
       <CoachCapabilities
         selectedCategoryName={selectedCoachCategory}
