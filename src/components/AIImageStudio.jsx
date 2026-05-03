@@ -104,7 +104,7 @@ export default function AIImageStudio() {
   return (
     <section className="ai-studio" aria-labelledby="ai-studio-title">
       <p className="ai-studio__section-bridge">
-        Here&rsquo;s what this looks like inside a real practice
+        Here&rsquo;s one way practices are already using this
       </p>
       <div className="ai-studio__intro">
         <p className="ai-studio__eyebrow">REAL PRACTICE EXAMPLE</p>
