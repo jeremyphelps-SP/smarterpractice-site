@@ -151,13 +151,16 @@ export default function Hero() {
             aria-label="Smarter Practice AI trust and differentiation"
           >
             <p className="homepage-hero__trust-note">
-              Built on ChatGPT — structured for real dental workflows, with
-              HIPAA-ready safeguards.
+              Built on ChatGPT &mdash; structured for real dental workflows,
+              with HIPAA-ready safeguards.
             </p>
             <ul className="homepage-hero__trust-list">
               <li>No prompt guessing</li>
-              <li>No inconsistent team use</li>
-              <li>No unmanaged PHI copy/paste workflows</li>
+              <li>Consistent answers across your team</li>
+              <li>
+                Handle patient information here &mdash; not in personal ChatGPT
+                accounts
+              </li>
             </ul>
           </div>
         </div>

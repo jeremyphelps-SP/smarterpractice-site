@@ -130,6 +130,13 @@ code {
   text-align: left;
 }
 
+.scenario-matrix__bridge {
+  margin: 0 0 8px;
+  color: #52606d;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
 .scenario-matrix__title {
   max-width: 900px;
   margin: 0 0 12px;
@@ -170,11 +177,20 @@ code {
 }
 
 .scenario-matrix__category-button {
+  border: 1px solid #bcccdc;
   border-radius: 999px;
+  background: #ffffff;
+  color: #243b53;
   padding: 8px 12px;
   font-size: 0.92rem;
   font-weight: 700;
   line-height: 1.25;
+}
+
+.scenario-matrix__category-button[aria-pressed="true"] {
+  border-color: #1f5eff;
+  background: #1f5eff;
+  color: #ffffff;
 }
 
 .scenario-matrix__layout {
@@ -208,6 +224,12 @@ code {
   line-height: 1.3;
 }
 
+.scenario-matrix__scenario-list-items {
+  display: grid;
+  gap: 1px;
+  background: #edf2f7;
+}
+
 .scenario-matrix__scenario-button {
   width: 100%;
   padding: 14px 16px;
@@ -218,6 +240,12 @@ code {
   line-height: 1.35;
   text-align: left;
   cursor: pointer;
+  font-weight: 600;
+}
+
+.scenario-matrix__scenario-button[aria-pressed="true"] {
+  background: #e0ecff;
+  font-weight: 800;
 }
 
 .scenario-matrix__detail-card {
@@ -428,6 +456,7 @@ code {
   }
 
   .scenario-matrix__intro-text,
+  .scenario-matrix__bridge,
   .scenario-matrix__coach,
   .scenario-matrix__body,
   .scenario-matrix__recommendation,
@@ -455,17 +484,22 @@ code {
   }
 
   .scenario-matrix__list-title,
+  .scenario-matrix__scenario-list-items,
   .scenario-matrix__details-panel {
     border-color: #2e303a;
   }
 
+  .scenario-matrix__scenario-list-items {
+    background: #2e303a;
+  }
+
   .scenario-matrix__scenario-button {
-    background: transparent;
+    background: #1a1d24;
     color: #e5e7eb;
   }
 
   .scenario-matrix__scenario-button[aria-pressed="true"] {
-    background: #1e293b;
+    background: #172554;
     color: #f9fafb;
   }
 

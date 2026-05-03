@@ -619,6 +619,9 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
   return (
     <main className="scenario-matrix">
       <section className="scenario-matrix__intro">
+        <p className="scenario-matrix__bridge">
+          Start with a real situation from your practice:
+        </p>
         <h2 className="scenario-matrix__title">
           Pick a real problem. Get a clear next step.
         </h2>
@@ -643,12 +646,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
               onClick={() => handleCategorySelect(category)}
               aria-pressed={isSelected}
               className="scenario-matrix__category-button"
-              style={{
-                ...buttonResetStyle,
-                border: isSelected ? "1px solid #1f5eff" : "1px solid #bcccdc",
-                background: isSelected ? "#1f5eff" : "#ffffff",
-                color: isSelected ? "#ffffff" : "#243b53",
-              }}
+              style={buttonResetStyle}
             >
               {category}
             </button>
@@ -664,7 +662,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
           <h3 className="scenario-matrix__list-title">
             {activeCategory}
           </h3>
-          <div style={{ display: "grid", gap: "1px", background: "#edf2f7" }}>
+          <div className="scenario-matrix__scenario-list-items">
             {selectedScenarios.map((scenario) => {
               const isSelected = scenario.id === selectedScenario?.id;
 
@@ -673,12 +671,8 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                   key={scenario.id}
                   type="button"
                   onClick={() => setSelectedScenarioId(scenario.id)}
-                  style={{
-                    ...buttonResetStyle,
-                    border: 0,
-                    background: isSelected ? "#e0ecff" : "#ffffff",
-                    fontWeight: isSelected ? 800 : 600,
-                  }}
+                  aria-pressed={isSelected}
+                  style={buttonResetStyle}
                   className="scenario-matrix__scenario-button"
                 >
                   {getDisplayScenarioTitle(scenario.scenarioTitle)}
