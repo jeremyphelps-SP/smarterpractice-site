@@ -104,20 +104,6 @@ export default function Hero() {
       id="top"
       aria-labelledby="homepage-hero-title"
     >
-      <div className="homepage-hero__brand-bar">
-        <a
-          className="homepage-hero__wordmark"
-          href="#top"
-          aria-label="Smarter Practice AI home"
-        >
-          <span className="homepage-hero__mark">SP</span>
-          <span>
-            <span className="brand-primary">Smarter Practice</span>
-            <span className="brand-secondary">AI</span>
-          </span>
-        </a>
-      </div>
-
       <div className="homepage-hero__inner">
         <div className="homepage-hero__content">
           <h1 id="homepage-hero-title">
@@ -144,12 +130,6 @@ export default function Hero() {
               href="#scenario-matrix"
             >
               Explore practice examples
-            </a>
-            <a
-              className="homepage-hero__how-link"
-              href={`${import.meta.env.BASE_URL}#/how-it-works`}
-            >
-              How it works
             </a>
           </div>
         </div>

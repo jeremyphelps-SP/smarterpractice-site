@@ -5,6 +5,7 @@ import AIImageStudio from "./components/AIImageStudio";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import ProofStrip from "./components/ProofStrip";
+import SiteNav from "./components/SiteNav";
 import TrialCTA from "./components/TrialCTA";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import PrivacyPage from "./pages/PrivacyPage";
@@ -82,6 +83,7 @@ export default function App() {
 
   return (
     <>
+      <SiteNav currentHash={currentHash} />
       {page}
       <Footer />
     </>
