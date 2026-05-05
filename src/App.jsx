@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import ProofStrip from "./components/ProofStrip";
 import TrialCTA from "./components/TrialCTA";
+import HowItWorksPage from "./pages/HowItWorksPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 
@@ -52,10 +53,31 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!currentHash) {
+      return;
+    }
+
+    if (currentHash.startsWith("#/")) {
+      window.scrollTo({ top: 0 });
+      return;
+    }
+
+    const targetId = currentHash.slice(1);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById(targetId)?.scrollIntoView();
+      });
+    });
+  }, [currentHash]);
+
   if (currentHash === "#/terms") {
     page = <TermsPage />;
   } else if (currentHash === "#/privacy") {
     page = <PrivacyPage />;
+  } else if (currentHash === "#/how-it-works") {
+    page = <HowItWorksPage />;
   }
 
   return (

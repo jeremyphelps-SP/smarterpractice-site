@@ -145,6 +145,12 @@ export default function Hero() {
             >
               Explore practice examples
             </a>
+            <a
+              className="homepage-hero__how-link"
+              href={`${import.meta.env.BASE_URL}#/how-it-works`}
+            >
+              How it works
+            </a>
           </div>
         </div>
 
