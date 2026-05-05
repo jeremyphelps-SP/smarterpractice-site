@@ -3,6 +3,7 @@ import { trackEvent } from "../utils/analytics";
 import "./TrialCTA.css";
 
 const formspreeEndpoint = "https://formspree.io/f/xjglvnno";
+const howItWorksUrl = `${import.meta.env.BASE_URL}#/how-it-works`;
 
 export default function TrialCTA({ selectedChallenge = null }) {
   const [status, setStatus] = useState("idle");
@@ -48,16 +49,11 @@ export default function TrialCTA({ selectedChallenge = null }) {
       <div className="trial-cta__inner">
         <div>
           <h2 id="trial-cta-title">
-            Fix a real problem in your practice this week &mdash; with your
-            team actually using it.
+            Fix a real problem in your practice this week.
           </h2>
           <p>
             Start your 15-day trial with a real workflow your team is dealing
-            with right now.
-          </p>
-          <p>
-            You&rsquo;ll get a structured setup so your team knows exactly how to
-            use it from day one.
+            with now.
           </p>
 
           <div className="trial-cta__pricing" aria-label="Pricing">
@@ -73,13 +69,17 @@ export default function TrialCTA({ selectedChallenge = null }) {
             </p>
           </div>
 
-          <div className="trial-cta__next-steps">
-            <p className="trial-cta__next-steps-label">What happens next</p>
-            <ul>
-              <li>You submit this form</li>
-              <li>Your trial is set up with a real workflow</li>
-              <li>Your team gets access and can start immediately</li>
-            </ul>
+          <div className="trial-cta__access-summary">
+            <p>
+              After setup, your team receives access to your Smarter Practice
+              AI workspace with dental-specific coaches inside the familiar
+              ChatGPT interface.
+            </p>
+            <p>
+              Handle patient information here &mdash; not in personal ChatGPT
+              accounts.
+            </p>
+            <a href={howItWorksUrl}>How access works &rarr;</a>
           </div>
         </div>
 
@@ -87,8 +87,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
           {status === "success" ? (
             <p className="trial-cta__success">
               You&apos;re all set. Jeremy will review your request and follow up
-              to set up your Smarter Practice AI workspace. Watch for an
-              invitation email from OpenAI once your workspace is ready.
+              to set up your Smarter Practice AI workspace.
             </p>
           ) : (
             <>
@@ -168,8 +167,8 @@ export default function TrialCTA({ selectedChallenge = null }) {
               </a>
 
               <p className="trial-cta__expectation">
-                After setup, your team will receive an invitation email from
-                OpenAI to join your Smarter Practice AI workspace.
+                After setup, your team receives access to your Smarter Practice
+                AI workspace.
               </p>
             </>
           )}

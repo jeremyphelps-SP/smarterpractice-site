@@ -1,6 +1,7 @@
 import "./Footer.css";
 
 export default function Footer() {
+  const howItWorksUrl = `${import.meta.env.BASE_URL}#/how-it-works`;
   const termsUrl = `${import.meta.env.BASE_URL}#/terms`;
   const privacyUrl = `${import.meta.env.BASE_URL}#/privacy`;
 
@@ -11,7 +12,8 @@ export default function Footer() {
           <strong>Smarter Practice AI</strong>
           <p>ChatGPT, structured for smarter dental practice ownership.</p>
         </div>
-        <nav className="site-footer__links" aria-label="Legal links">
+        <nav className="site-footer__links" aria-label="Footer links">
+          <a href={howItWorksUrl}>How It Works</a>
           <a href={termsUrl}>Terms of Use</a>
           <a href={privacyUrl}>Privacy Policy</a>
         </nav>
