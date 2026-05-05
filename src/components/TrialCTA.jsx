@@ -81,14 +81,50 @@ export default function TrialCTA({ selectedChallenge = null }) {
               <li>Your team gets access and can start immediately</li>
             </ul>
           </div>
+
+          <div className="trial-cta__access-card">
+            <h3>How access works</h3>
+            <ol>
+              <li>
+                <strong>Join your Smarter Practice AI workspace</strong>
+                <span>
+                  After setup, your team receives an invitation to join your
+                  Smarter Practice AI workspace.
+                </span>
+              </li>
+              <li>
+                <strong>Use the familiar ChatGPT interface</strong>
+                <span>
+                  If you have used ChatGPT before, this will feel familiar. You
+                  can type questions, paste text, upload files, and attach
+                  screenshots or reports.
+                </span>
+              </li>
+              <li>
+                <strong>Open the dental coaches</strong>
+                <span>
+                  The coaches are custom GPTs available inside your workspace.
+                  Choose the right coach for claims, scheduling, patient
+                  communication, compliance, growth, or practice operations.
+                </span>
+              </li>
+            </ol>
+            <p>
+              Smarter Practice AI gives your dental practice a HIPAA-compliant
+              enterprise ChatGPT workspace with dental-specific coaches and
+              workflows. Handle patient information here &mdash; not in personal
+              ChatGPT accounts.
+            </p>
+          </div>
         </div>
 
         <div className="trial-cta__actions">
           {status === "success" ? (
             <p className="trial-cta__success">
               You&apos;re all set. Jeremy will review your request and follow up
-              to set up your Smarter Practice AI workspace. Watch for an
-              invitation email from OpenAI once your workspace is ready.
+              to set up your Smarter Practice AI workspace. After setup, your
+              team receives an invitation to join your Smarter Practice AI
+              workspace.
             </p>
           ) : (
             <>
@@ -168,8 +204,8 @@ export default function TrialCTA({ selectedChallenge = null }) {
               </a>
 
               <p className="trial-cta__expectation">
-                After setup, your team will receive an invitation email from
-                OpenAI to join your Smarter Practice AI workspace.
+                After setup, your team receives an invitation to join your
+                Smarter Practice AI workspace.
               </p>
             </>
           )}
