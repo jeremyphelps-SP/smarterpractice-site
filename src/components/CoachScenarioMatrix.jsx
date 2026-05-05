@@ -24,10 +24,8 @@ const primarySections = [
 
 const expandedSections = [
   ["examplePracticeData", "Example practice data"],
-  ["dataReveals", "What the data reveals"],
-  ["decisionDrives", "Decision it drives"],
-  ["teamNext", "What your team can do next"],
-  ["whyItMatters", "Why it matters"],
+  ["deeperFinding", "Deeper finding"],
+  ["nextActions", "Next 3 actions"],
 ];
 
 function groupScenariosByCategory(scenarios) {
@@ -71,19 +69,26 @@ function renderSectionValue(value) {
   );
 }
 
-function ScenarioSection({ label, value, isDecision = false }) {
-  if (!value) {
+function ScenarioSection({
+  label,
+  value,
+  isDecision = false,
+  isUpload = false,
+}) {
+  if (!asList(value).length) {
     return null;
   }
 
+  const classNames = [
+    "scenario-matrix__analysis-section",
+    isUpload ? "scenario-matrix__analysis-section--upload" : "",
+    isDecision ? "scenario-matrix__analysis-section--decision" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div
-      className={
-        isDecision
-          ? "scenario-matrix__analysis-section scenario-matrix__analysis-section--decision"
-          : "scenario-matrix__analysis-section"
-      }
-    >
+    <div className={classNames}>
       <dt className="scenario-matrix__label">{label}</dt>
       <dd className="scenario-matrix__body">{renderSectionValue(value)}</dd>
     </div>
@@ -91,7 +96,23 @@ function ScenarioSection({ label, value, isDecision = false }) {
 }
 
 function getExpandedValue(scenario, key) {
-  return scenario.expanded?.[key];
+  const expanded = scenario.expanded || {};
+
+  if (key === "deeperFinding") {
+    return (
+      expanded.deeperFinding ||
+      [
+        ...asList(expanded.dataReveals).slice(0, 2),
+        expanded.whyItMatters,
+      ].filter(Boolean)
+    );
+  }
+
+  if (key === "nextActions") {
+    return expanded.nextActions || asList(expanded.teamNext).slice(0, 3);
+  }
+
+  return expanded[key];
 }
 
 export default function CoachScenarioMatrix({ selectedChallenge = null }) {
@@ -173,6 +194,10 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
           Practice AI connects the data, surfaces the hidden issue, and points
           to the operational decision.
         </p>
+        <p className="scenario-matrix__data-note">
+          Start with a report, screenshot, export, EOB, claim note, schedule,
+          bank CSV, or copied text.
+        </p>
         {selectedChallengeLabel && (
           <p className="scenario-matrix__challenge-label">
             Examples focused on: {selectedChallengeLabel}
@@ -244,6 +269,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                   key={key}
                   label={label}
                   value={selectedScenario[key]}
+                  isUpload={key === "uploadThis"}
                   isDecision={key === "decision"}
                 />
               ))}
@@ -251,7 +277,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
 
             <p className="scenario-matrix__outcome scenario-matrix__trial-link">
               <a href="#trial">
-                Want this for your practice? Start a 15-day trial &rarr;
+                Want this analysis on your own data? Start a 15-day trial &rarr;
               </a>
             </p>
 
@@ -274,14 +300,6 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
                       value={getExpandedValue(selectedScenario, key)}
                     />
                   ))}
-                  <div>
-                    <dt className="scenario-matrix__label">Tags</dt>
-                    <dd className="scenario-matrix__tags">
-                      {selectedScenario.tags.map((tag) => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </dd>
-                  </div>
                 </dl>
               </div>
             )}
