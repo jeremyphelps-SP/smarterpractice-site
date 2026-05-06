@@ -5,7 +5,16 @@ import "./TrialCTA.css";
 
 const cloudflareTrialEndpoint = "/api/trial";
 const formspreeEndpoint = "https://formspree.io/f/xjglvnno";
-const fallbackStatuses = new Set([404, 501, 502, 503]);
+const formUnavailableMessage =
+  "The form is temporarily unavailable. Please email jeremy@smarterpractice.ai.";
+const formValidationMessage = "Please check the required fields and try again.";
+
+class TrialFormError extends Error {
+  constructor(publicMessage) {
+    super(publicMessage);
+    this.publicMessage = publicMessage;
+  }
+}
 
 function formDataToPayload(formData) {
   return Object.fromEntries(formData.entries());
@@ -23,15 +32,25 @@ async function submitToCloudflareEndpoint(formData) {
 
   const contentType = response.headers.get("content-type") || "";
 
-  if (response.ok && contentType.includes("application/json")) {
-    return true;
-  }
-
-  if (!contentType.includes("application/json") || fallbackStatuses.has(response.status)) {
+  if (!contentType.includes("application/json")) {
     return false;
   }
 
-  throw new Error("Cloudflare form submission failed");
+  const result = await response.json();
+
+  if (response.ok && result.success !== false) {
+    return true;
+  }
+
+  if (response.status === 404) {
+    return false;
+  }
+
+  if (response.status >= 500 || result.code === "FORM_BACKEND_NOT_CONFIGURED") {
+    throw new TrialFormError(formUnavailableMessage);
+  }
+
+  throw new TrialFormError(result.error || formValidationMessage);
 }
 
 async function submitToFormspree(formData) {
@@ -73,10 +92,12 @@ export default function TrialCTA({ selectedChallenge = null }) {
 
       setStatus("success");
       event.currentTarget.reset();
-    } catch {
+    } catch (error) {
       setStatus("error");
       setErrorMessage(
-        "Something went wrong. Please try again or email jeremy@smarterpractice.ai.",
+        error instanceof TrialFormError
+          ? error.publicMessage
+          : "Something went wrong. Please try again or email jeremy@smarterpractice.ai.",
       );
     }
   };
