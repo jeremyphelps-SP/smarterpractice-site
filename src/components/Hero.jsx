@@ -11,6 +11,8 @@ const practiceAreas = [
   { label: "Practice operations", icon: "gear" },
 ];
 
+const workflowSteps = ["Real data in", "Coach analysis", "Decision out"];
+
 function CapabilityIcon({ type }) {
   const commonProps = {
     "aria-hidden": "true",
@@ -118,6 +120,9 @@ export default function Hero() {
             Give each role a clear, repeatable way to use AI &mdash; without
             relying on random prompts or one-off answers.
           </p>
+          <p className="homepage-hero__safety-line">
+            Handle patient information here; not in personal ChatGPT accounts.
+          </p>
           <div className="homepage-hero__actions" aria-label="Homepage actions">
             <a
               className="homepage-hero__button homepage-hero__button--primary"
@@ -136,9 +141,16 @@ export default function Hero() {
 
         <aside className="homepage-hero__panel" aria-label="Practice areas">
           <div className="homepage-hero__panel-header">
-            <p className="homepage-hero__panel-label">Practice AI workspace</p>
-            <strong>Built on ChatGPT. Structured for dental workflows.</strong>
+            <p className="homepage-hero__panel-label">
+              Practice intelligence layer
+            </p>
+            <strong>Built on ChatGPT. Structured for dental decisions.</strong>
           </div>
+          <ol className="homepage-hero__workflow" aria-label="Workflow">
+            {workflowSteps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
           <div
             className="homepage-hero__trust-block"
             aria-label="Smarter Practice AI trust and differentiation"

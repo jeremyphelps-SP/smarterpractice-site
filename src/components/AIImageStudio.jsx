@@ -112,7 +112,7 @@ export default function AIImageStudio() {
           <p
             style={{
               margin: "0 0 10px",
-              color: "#52606d",
+              color: "var(--text)",
               fontSize: "0.95rem",
               fontWeight: 800,
             }}
