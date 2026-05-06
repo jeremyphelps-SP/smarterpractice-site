@@ -79,7 +79,16 @@ export default function AIStudioPage() {
           </div>
         </div>
         <aside className="ai-studio-page__console" aria-label="AI Studio workflow summary">
-          <p>Practice creative workflow</p>
+          <div className="ai-studio-page__console-top">
+            <p>Practice creative workflow</p>
+            <span>Visual draft</span>
+          </div>
+          <div className="ai-studio-page__console-preview" aria-hidden="true">
+            <img
+              src={`${baseUrl}images/ai-studio/rolex.png`}
+              alt=""
+            />
+          </div>
           <ol>
             <li>Authorized inputs in</li>
             <li>Brand-aligned concepts drafted</li>
@@ -116,10 +125,34 @@ export default function AIStudioPage() {
         <AIImageStudio />
       </div>
 
+      <section className="ai-studio-page__cta" aria-labelledby="ai-studio-page-cta-title">
+        <div>
+          <p className="ai-studio-page__section-label">
+            Practice-approved creative workflows
+          </p>
+          <h2 id="ai-studio-page-cta-title">
+            Ready to create safer, practice-approved visual drafts?
+          </h2>
+          <p>
+            Start your 15-day trial and use Smarter Practice AI for patient-facing
+            creative work, case acceptance support, and practice marketing workflows.
+          </p>
+        </div>
+        <div className="ai-studio-page__cta-actions">
+          <a href={`${baseUrl}#trial`}>Start 15-day trial</a>
+          <a href={`${baseUrl}#scenario-matrix`}>Back to examples</a>
+        </div>
+      </section>
+
       <section className="ai-studio-page__guardrails" aria-label="Responsible AI Studio use">
         <div className="ai-studio-page__section-heading">
           <p className="ai-studio-page__section-label">Guardrails for responsible use</p>
           <h2>Visual drafting support, not clinical decision-making.</h2>
+          <p className="ai-studio-page__guardrail-note">
+            Use only appropriate patient authorization. Generated visuals are for
+            communication, education, and presentation support &mdash; not diagnosis,
+            treatment planning, clinical simulation, or guaranteed results.
+          </p>
         </div>
         <ItemList items={guardrails} />
       </section>

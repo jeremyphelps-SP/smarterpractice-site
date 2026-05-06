@@ -53,7 +53,7 @@ const studioImages = {
 const workflowSteps = [
   "Upload a real patient photo (with authorization)",
   "Describe the outcome and lifestyle context",
-  "Generate a personalized presentation in seconds",
+  "Draft a personalized presentation concept",
 ];
 
 const valueCards = [
@@ -119,7 +119,7 @@ export default function AIImageStudio() {
             One example: improving case acceptance
           </p>
           <h2 id="ai-studio-title">
-            Make treatment real before patients say yes
+            Help patients picture the value before they decide
           </h2>
         </div>
         <p className="ai-studio__body">
@@ -231,7 +231,7 @@ export default function AIImageStudio() {
 
       <p className="ai-studio__compliance">
         Use only with appropriate patient authorization. Generated visuals are
-        for communication, education, and presentation support&mdash;not diagnosis,
+        for communication, education, and presentation support &mdash; not diagnosis,
         treatment planning, clinical simulation, or guaranteed results.
       </p>
     </section>
