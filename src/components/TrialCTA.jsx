@@ -4,7 +4,6 @@ import { anchorHref, routeHref } from "../utils/routes";
 import "./TrialCTA.css";
 
 const cloudflareTrialEndpoint = "/api/trial";
-const formspreeEndpoint = "https://formspree.io/f/xjglvnno";
 const formUnavailableMessage =
   "The form is temporarily unavailable. Please email jeremy@smarterpractice.ai.";
 const formValidationMessage = "Please check the required fields and try again.";
@@ -33,7 +32,7 @@ async function submitToCloudflareEndpoint(formData) {
   const contentType = response.headers.get("content-type") || "";
 
   if (!contentType.includes("application/json")) {
-    return false;
+    throw new TrialFormError(formUnavailableMessage);
   }
 
   const result = await response.json();
@@ -42,29 +41,11 @@ async function submitToCloudflareEndpoint(formData) {
     return true;
   }
 
-  if (response.status === 404) {
-    return false;
-  }
-
   if (response.status >= 500 || result.code === "FORM_BACKEND_NOT_CONFIGURED") {
     throw new TrialFormError(formUnavailableMessage);
   }
 
   throw new TrialFormError(result.error || formValidationMessage);
-}
-
-async function submitToFormspree(formData) {
-  const response = await fetch(formspreeEndpoint, {
-    method: "POST",
-    body: formData,
-    headers: {
-      Accept: "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Form submission failed");
-  }
 }
 
 export default function TrialCTA({ selectedChallenge = null }) {
@@ -84,12 +65,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
     });
 
     try {
-      const handledByCloudflare = await submitToCloudflareEndpoint(formData);
-
-      if (!handledByCloudflare) {
-        await submitToFormspree(formData);
-      }
-
+      await submitToCloudflareEndpoint(formData);
       setStatus("success");
       event.currentTarget.reset();
     } catch (error) {
