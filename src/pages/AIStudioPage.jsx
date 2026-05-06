@@ -1,7 +1,6 @@
 import AIImageStudio from "../components/AIImageStudio";
+import { anchorHref, assetUrl } from "../utils/routes";
 import "./AIStudioPage.css";
-
-const baseUrl = import.meta.env.BASE_URL;
 
 const provideItems = [
   "Authorized patient photos",
@@ -72,7 +71,7 @@ export default function AIStudioPage() {
             patient information here; not in personal ChatGPT accounts.
           </p>
           <div className="ai-studio-page__actions">
-            <a href={`${baseUrl}#trial`}>Start 15-day trial</a>
+            <a href={anchorHref("trial")}>Start 15-day trial</a>
             <button onClick={handleDemoScroll} type="button">
               See the visual workflow
             </button>
@@ -85,7 +84,7 @@ export default function AIStudioPage() {
           </div>
           <div className="ai-studio-page__console-preview" aria-hidden="true">
             <img
-              src={`${baseUrl}images/ai-studio/rolex.png`}
+              src={assetUrl("images/ai-studio/rolex.png")}
               alt=""
             />
           </div>
@@ -139,8 +138,8 @@ export default function AIStudioPage() {
           </p>
         </div>
         <div className="ai-studio-page__cta-actions">
-          <a href={`${baseUrl}#trial`}>Start 15-day trial</a>
-          <a href={`${baseUrl}#scenario-matrix`}>Back to examples</a>
+          <a href={anchorHref("trial")}>Start 15-day trial</a>
+          <a href={anchorHref("scenario-matrix")}>Back to examples</a>
         </div>
       </section>
 

@@ -1,9 +1,52 @@
 import { useState } from "react";
 import { trackEvent } from "../utils/analytics";
+import { anchorHref, routeHref } from "../utils/routes";
 import "./TrialCTA.css";
 
+const cloudflareTrialEndpoint = "/api/trial";
 const formspreeEndpoint = "https://formspree.io/f/xjglvnno";
-const howItWorksUrl = `${import.meta.env.BASE_URL}#/how-it-works`;
+const fallbackStatuses = new Set([404, 501, 502, 503]);
+
+function formDataToPayload(formData) {
+  return Object.fromEntries(formData.entries());
+}
+
+async function submitToCloudflareEndpoint(formData) {
+  const response = await fetch(cloudflareTrialEndpoint, {
+    method: "POST",
+    body: JSON.stringify(formDataToPayload(formData)),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+
+  const contentType = response.headers.get("content-type") || "";
+
+  if (response.ok && contentType.includes("application/json")) {
+    return true;
+  }
+
+  if (!contentType.includes("application/json") || fallbackStatuses.has(response.status)) {
+    return false;
+  }
+
+  throw new Error("Cloudflare form submission failed");
+}
+
+async function submitToFormspree(formData) {
+  const response = await fetch(formspreeEndpoint, {
+    method: "POST",
+    body: formData,
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Form submission failed");
+  }
+}
 
 export default function TrialCTA({ selectedChallenge = null }) {
   const [status, setStatus] = useState("idle");
@@ -22,16 +65,10 @@ export default function TrialCTA({ selectedChallenge = null }) {
     });
 
     try {
-      const response = await fetch(formspreeEndpoint, {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
+      const handledByCloudflare = await submitToCloudflareEndpoint(formData);
 
-      if (!response.ok) {
-        throw new Error("Form submission failed");
+      if (!handledByCloudflare) {
+        await submitToFormspree(formData);
       }
 
       setStatus("success");
@@ -79,7 +116,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
               Handle patient information here &mdash; not in personal ChatGPT
               accounts.
             </p>
-            <a href={howItWorksUrl}>How access works &rarr;</a>
+            <a href={routeHref("howItWorks")}>How access works &rarr;</a>
           </div>
         </div>
 
@@ -161,7 +198,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
 
               <a
                 className="trial-cta__button trial-cta__button--secondary"
-                href="#scenario-matrix"
+                href={anchorHref("scenario-matrix")}
               >
                 Explore examples first
               </a>

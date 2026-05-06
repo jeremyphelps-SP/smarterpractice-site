@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { homepageScenarios } from "../data/homepageScenarios";
+import { anchorHref } from "../utils/routes";
 
 const buttonResetStyle = {
   font: "inherit",
@@ -276,7 +277,7 @@ export default function CoachScenarioMatrix({ selectedChallenge = null }) {
             </dl>
 
             <p className="scenario-matrix__outcome scenario-matrix__trial-link">
-              <a href="#trial">
+              <a href={anchorHref("trial")}>
                 Want this analysis on your own data? Start a 15-day trial &rarr;
               </a>
             </p>

@@ -1,6 +1,5 @@
 import "./AIStudioTeaser.css";
-
-const baseUrl = import.meta.env.BASE_URL;
+import { anchorHref, assetUrl, routeHref } from "../utils/routes";
 
 const bullets = [
   "Use authorized patient photos and approved offers",
@@ -27,10 +26,10 @@ export default function AIStudioTeaser() {
             ))}
           </ul>
           <div className="ai-studio-teaser__actions">
-            <a className="ai-studio-teaser__primary" href={`${baseUrl}#/ai-studio`}>
+            <a className="ai-studio-teaser__primary" href={routeHref("aiStudio")}>
               Explore AI Studio
             </a>
-            <a className="ai-studio-teaser__secondary" href={`${baseUrl}#trial`}>
+            <a className="ai-studio-teaser__secondary" href={anchorHref("trial")}>
               Start 15-day trial
             </a>
           </div>
@@ -43,7 +42,7 @@ export default function AIStudioTeaser() {
           </div>
           <div className="ai-studio-teaser__preview-body">
             <img
-              src={`${baseUrl}images/ai-studio/rolex.png`}
+              src={assetUrl("images/ai-studio/rolex.png")}
               alt=""
             />
           </div>

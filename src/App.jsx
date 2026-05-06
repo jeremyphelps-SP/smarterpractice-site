@@ -8,9 +8,12 @@ import ProofStrip from "./components/ProofStrip";
 import SiteNav from "./components/SiteNav";
 import TrialCTA from "./components/TrialCTA";
 import AIStudioPage from "./pages/AIStudioPage";
+import ContactPage from "./pages/ContactPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
+import { getRouteState } from "./utils/routes";
+import { applySeoMetadata } from "./utils/seo";
 
 function HomePage() {
   const selectedChallenge = null;
@@ -40,53 +43,60 @@ function HomePage() {
 }
 
 export default function App() {
-  const [currentHash, setCurrentHash] = useState(window.location.hash);
+  const [routeState, setRouteState] = useState(() =>
+    getRouteState(window.location),
+  );
   let page = <HomePage />;
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentHash(window.location.hash);
+    const syncRouteState = () => {
+      setRouteState(getRouteState(window.location));
     };
 
-    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("hashchange", syncRouteState);
+    window.addEventListener("popstate", syncRouteState);
 
     return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("hashchange", syncRouteState);
+      window.removeEventListener("popstate", syncRouteState);
     };
   }, []);
 
   useEffect(() => {
-    if (!currentHash) {
-      return;
-    }
+    applySeoMetadata(routeState.routeKey);
+  }, [routeState.routeKey]);
 
-    if (currentHash.startsWith("#/")) {
+  useEffect(() => {
+    if (!routeState.anchorId) {
       window.scrollTo({ top: 0 });
       return;
     }
 
-    const targetId = currentHash.slice(1);
-
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        document.getElementById(targetId)?.scrollIntoView();
+        document.getElementById(routeState.anchorId)?.scrollIntoView();
       });
     });
-  }, [currentHash]);
+  }, [routeState]);
 
-  if (currentHash === "#/terms") {
+  if (routeState.routeKey === "terms") {
     page = <TermsPage />;
-  } else if (currentHash === "#/privacy") {
+  } else if (routeState.routeKey === "privacy") {
     page = <PrivacyPage />;
-  } else if (currentHash === "#/how-it-works") {
+  } else if (routeState.routeKey === "howItWorks") {
     page = <HowItWorksPage />;
-  } else if (currentHash === "#/ai-studio") {
+  } else if (routeState.routeKey === "aiStudio") {
     page = <AIStudioPage />;
+  } else if (routeState.routeKey === "contact") {
+    page = <ContactPage />;
   }
 
   return (
     <>
-      <SiteNav currentHash={currentHash} />
+      <SiteNav
+        currentAnchor={routeState.anchorId}
+        currentRoute={routeState.routeKey}
+      />
       {page}
       <Footer />
     </>

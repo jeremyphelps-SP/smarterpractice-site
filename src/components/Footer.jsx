@@ -1,11 +1,7 @@
 import "./Footer.css";
+import { routeHref } from "../utils/routes";
 
 export default function Footer() {
-  const aiStudioUrl = `${import.meta.env.BASE_URL}#/ai-studio`;
-  const howItWorksUrl = `${import.meta.env.BASE_URL}#/how-it-works`;
-  const termsUrl = `${import.meta.env.BASE_URL}#/terms`;
-  const privacyUrl = `${import.meta.env.BASE_URL}#/privacy`;
-
   return (
     <footer className="site-footer" aria-label="Site footer">
       <div className="site-footer__inner">
@@ -14,10 +10,11 @@ export default function Footer() {
           <p>ChatGPT, structured for smarter dental practice ownership.</p>
         </div>
         <nav className="site-footer__links" aria-label="Footer links">
-          <a href={aiStudioUrl}>AI Studio</a>
-          <a href={howItWorksUrl}>How It Works</a>
-          <a href={termsUrl}>Terms of Use</a>
-          <a href={privacyUrl}>Privacy Policy</a>
+          <a href={routeHref("aiStudio")}>AI Studio</a>
+          <a href={routeHref("howItWorks")}>How It Works</a>
+          <a href={routeHref("contact")}>Contact</a>
+          <a href={routeHref("terms")}>Terms of Use</a>
+          <a href={routeHref("privacy")}>Privacy Policy</a>
         </nav>
         <div className="site-footer__legal">
           <p>Smarter Practice AI is not affiliated with or endorsed by OpenAI.</p>

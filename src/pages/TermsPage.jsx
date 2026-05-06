@@ -1,3 +1,4 @@
+import { anchorHref } from "../utils/routes";
 import "./TermsPage.css";
 
 const termsSections = [
@@ -43,7 +44,7 @@ export default function TermsPage() {
   return (
     <main className="terms-page" aria-labelledby="terms-page-title">
       <div className="terms-page__inner">
-        <a className="terms-page__back-link" href={import.meta.env.BASE_URL}>
+        <a className="terms-page__back-link" href={anchorHref("top")}>
           Back to home
         </a>
         <header className="terms-page__header">
