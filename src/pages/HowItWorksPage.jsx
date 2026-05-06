@@ -1,6 +1,5 @@
+import { anchorHref } from "../utils/routes";
 import "./HowItWorksPage.css";
-
-const baseUrl = import.meta.env.BASE_URL;
 
 const valueCards = [
   {
@@ -122,7 +121,7 @@ export default function HowItWorksPage() {
   return (
     <main className="how-it-works-page" aria-labelledby="how-it-works-title">
       <div className="how-it-works-page__inner">
-        <a className="how-it-works-page__back-link" href={baseUrl}>
+        <a className="how-it-works-page__back-link" href={anchorHref("top")}>
           Back to homepage
         </a>
 
@@ -275,8 +274,8 @@ export default function HowItWorksPage() {
             </h2>
           </div>
           <div className="how-it-works-page__cta-actions">
-            <a href={`${baseUrl}#trial`}>Start 15-day trial &rarr;</a>
-            <a href={`${baseUrl}#scenario-matrix`}>Explore practice examples</a>
+            <a href={anchorHref("trial")}>Start 15-day trial &rarr;</a>
+            <a href={anchorHref("scenario-matrix")}>Explore practice examples</a>
           </div>
         </section>
       </div>

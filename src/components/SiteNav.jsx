@@ -1,35 +1,34 @@
 import { useEffect, useState } from "react";
+import { anchorHref, routeHref } from "../utils/routes";
 import "./SiteNav.css";
 
-const baseUrl = import.meta.env.BASE_URL;
-
 const navLinks = [
-  { label: "Home", href: `${baseUrl}#top`, key: "home" },
-  { label: "Examples", href: `${baseUrl}#scenario-matrix`, key: "examples" },
-  { label: "AI Studio", href: `${baseUrl}#/ai-studio`, key: "studio" },
-  { label: "How It Works", href: `${baseUrl}#/how-it-works`, key: "how" },
+  { label: "Home", href: anchorHref("top"), key: "home" },
+  { label: "Examples", href: anchorHref("scenario-matrix"), key: "examples" },
+  { label: "AI Studio", href: routeHref("aiStudio"), key: "studio" },
+  { label: "How It Works", href: routeHref("howItWorks"), key: "how" },
 ];
 
-function getActiveKey(currentHash) {
-  if (currentHash === "#/ai-studio") {
+function getActiveKey(currentRoute, currentAnchor) {
+  if (currentRoute === "aiStudio") {
     return "studio";
   }
 
-  if (currentHash === "#/how-it-works") {
+  if (currentRoute === "howItWorks") {
     return "how";
   }
 
-  if (currentHash === "#scenario-matrix") {
+  if (currentAnchor === "scenario-matrix") {
     return "examples";
   }
 
   return "home";
 }
 
-export default function SiteNav({ currentHash = "" }) {
+export default function SiteNav({ currentAnchor = "", currentRoute = "home" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const activeKey = getActiveKey(currentHash);
-  const trialHref = `${baseUrl}#trial`;
+  const activeKey = getActiveKey(currentRoute, currentAnchor);
+  const trialHref = anchorHref("trial");
 
   useEffect(() => {
     const closeMenu = () => {
@@ -50,7 +49,7 @@ export default function SiteNav({ currentHash = "" }) {
   return (
     <header className="site-nav" aria-label="Site navigation">
       <div className="site-nav__inner">
-        <a className="site-nav__brand" href={`${baseUrl}#top`}>
+        <a className="site-nav__brand" href={anchorHref("top")}>
           <span className="site-nav__mark">SP</span>
           <span>
             <span className="site-nav__brand-primary">Smarter Practice</span>

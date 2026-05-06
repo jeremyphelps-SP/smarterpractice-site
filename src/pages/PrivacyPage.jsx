@@ -1,3 +1,4 @@
+import { anchorHref } from "../utils/routes";
 import "./PrivacyPage.css";
 
 const privacySections = [
@@ -47,7 +48,7 @@ export default function PrivacyPage() {
   return (
     <main className="privacy-page" aria-labelledby="privacy-page-title">
       <div className="privacy-page__inner">
-        <a className="privacy-page__back-link" href={import.meta.env.BASE_URL}>
+        <a className="privacy-page__back-link" href={anchorHref("top")}>
           Back to home
         </a>
         <header className="privacy-page__header">

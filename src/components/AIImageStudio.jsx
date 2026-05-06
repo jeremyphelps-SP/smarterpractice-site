@@ -1,45 +1,46 @@
 import { useEffect, useRef, useState } from "react";
+import { assetUrl } from "../utils/routes";
 import "./AIImageStudio.css";
 
 const generatedImages = [
   {
     id: "lululemon",
-    src: import.meta.env.BASE_URL + "images/ai-studio/lululemon.png",
+    src: assetUrl("images/ai-studio/lululemon.png"),
     styleName: "Fitness",
     inspiration: "Lululemon",
     alt: "Generated fitness lifestyle smile makeover presentation",
   },
   {
     id: "apple",
-    src: import.meta.env.BASE_URL + "images/ai-studio/apple.png",
+    src: assetUrl("images/ai-studio/apple.png"),
     styleName: "Tech Minimal",
     inspiration: "Apple",
     alt: "Generated tech minimalist smile makeover presentation",
   },
   {
     id: "peloton",
-    src: import.meta.env.BASE_URL + "images/ai-studio/peloton.png",
+    src: assetUrl("images/ai-studio/peloton.png"),
     styleName: "Sport Performance",
     inspiration: "Peloton",
     alt: "Generated sport performance smile makeover presentation",
   },
   {
     id: "rolex",
-    src: import.meta.env.BASE_URL + "images/ai-studio/rolex.png",
+    src: assetUrl("images/ai-studio/rolex.png"),
     styleName: "Luxury",
     inspiration: "Rolex",
     alt: "Generated luxury smile makeover presentation",
   },
   {
     id: "maldives",
-    src: import.meta.env.BASE_URL + "images/ai-studio/maldives.png",
+    src: assetUrl("images/ai-studio/maldives.png"),
     styleName: "Travel Lifestyle",
     inspiration: "Maldives",
     alt: "Generated travel lifestyle smile makeover presentation",
   },
   {
     id: "better-homes",
-    src: import.meta.env.BASE_URL + "images/ai-studio/better-homes.png",
+    src: assetUrl("images/ai-studio/better-homes.png"),
     styleName: "Home Lifestyle",
     inspiration: "Better Homes",
     alt: "Generated home lifestyle smile makeover presentation",
@@ -47,7 +48,7 @@ const generatedImages = [
 ];
 
 const studioImages = {
-  original: import.meta.env.BASE_URL + "images/ai-studio/original.jpg",
+  original: assetUrl("images/ai-studio/original.jpg"),
 };
 
 const workflowSteps = [

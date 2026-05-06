@@ -1,4 +1,5 @@
 import "./Hero.css";
+import { anchorHref } from "../utils/routes";
 
 const consoleFlow = [
   {
@@ -42,13 +43,13 @@ export default function Hero() {
           <div className="homepage-hero__actions" aria-label="Homepage actions">
             <a
               className="homepage-hero__button homepage-hero__button--primary"
-              href="#trial"
+              href={anchorHref("trial")}
             >
               Start 15-day trial
             </a>
             <a
               className="homepage-hero__button homepage-hero__button--secondary"
-              href="#scenario-matrix"
+              href={anchorHref("scenario-matrix")}
             >
               Explore practice examples
             </a>
