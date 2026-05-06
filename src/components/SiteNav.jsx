@@ -6,10 +6,15 @@ const baseUrl = import.meta.env.BASE_URL;
 const navLinks = [
   { label: "Home", href: `${baseUrl}#top`, key: "home" },
   { label: "Examples", href: `${baseUrl}#scenario-matrix`, key: "examples" },
+  { label: "AI Studio", href: `${baseUrl}#/ai-studio`, key: "studio" },
   { label: "How It Works", href: `${baseUrl}#/how-it-works`, key: "how" },
 ];
 
 function getActiveKey(currentHash) {
+  if (currentHash === "#/ai-studio") {
+    return "studio";
+  }
+
   if (currentHash === "#/how-it-works") {
     return "how";
   }

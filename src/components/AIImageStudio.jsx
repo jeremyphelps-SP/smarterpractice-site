@@ -53,7 +53,7 @@ const studioImages = {
 const workflowSteps = [
   "Upload a real patient photo (with authorization)",
   "Describe the outcome and lifestyle context",
-  "Generate a personalized presentation in seconds",
+  "Draft a personalized presentation concept",
 ];
 
 const valueCards = [
@@ -101,6 +101,12 @@ export default function AIImageStudio() {
     }, 120);
   };
 
+  const handleWorkflowClick = () => {
+    document
+      .getElementById("ai-studio-workflow")
+      ?.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
+
   return (
     <section className="ai-studio" aria-labelledby="ai-studio-title">
       <p className="ai-studio__section-bridge">
@@ -113,7 +119,7 @@ export default function AIImageStudio() {
             One example: improving case acceptance
           </p>
           <h2 id="ai-studio-title">
-            Make treatment real before patients say yes
+            Help patients picture the value before they decide
           </h2>
         </div>
         <p className="ai-studio__body">
@@ -121,16 +127,20 @@ export default function AIImageStudio() {
           patient photos into personalized, branded visuals that make treatment
           easier to understand.
         </p>
-        <a className="ai-studio__cta" href="#ai-studio-workflow">
+        <button
+          className="ai-studio__cta"
+          onClick={handleWorkflowClick}
+          type="button"
+        >
           See the workflow
-        </a>
+        </button>
       </div>
 
       <article className="ai-studio__workflow" aria-label="How AI Image Studio works">
         <div>
           <h3 className="ai-studio__workflow-label">How it works</h3>
           <p className="ai-studio__workflow-subtext">
-            No design work. No back-and-forth. No waiting.
+            Create a stronger first draft before your team reviews and refines it.
           </p>
         </div>
         <ol className="ai-studio__workflow-steps">
@@ -190,7 +200,7 @@ export default function AIImageStudio() {
       </div>
 
       <p className="ai-studio__bridge">
-        Patients move forward when they can clearly picture the result.
+        Patients make better decisions when they can clearly picture the value.
       </p>
 
       <div className="ai-studio__values">
@@ -221,7 +231,7 @@ export default function AIImageStudio() {
 
       <p className="ai-studio__compliance">
         Use only with appropriate patient authorization. Generated visuals are
-        for communication, education, and presentation support&mdash;not diagnosis,
+        for communication, education, and presentation support &mdash; not diagnosis,
         treatment planning, clinical simulation, or guaranteed results.
       </p>
     </section>

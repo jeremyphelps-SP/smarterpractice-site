@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import CoachCapabilities from "./components/CoachCapabilities";
 import CoachScenarioMatrix from "./components/CoachScenarioMatrix";
-import AIImageStudio from "./components/AIImageStudio";
+import AIStudioTeaser from "./components/AIStudioTeaser";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import ProofStrip from "./components/ProofStrip";
 import SiteNav from "./components/SiteNav";
 import TrialCTA from "./components/TrialCTA";
+import AIStudioPage from "./pages/AIStudioPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
@@ -31,7 +32,7 @@ function HomePage() {
         <CoachScenarioMatrix selectedChallenge={selectedChallenge} />
       </div>
 
-      <AIImageStudio />
+      <AIStudioTeaser />
 
       <TrialCTA selectedChallenge={selectedChallenge} />
     </>
@@ -79,6 +80,8 @@ export default function App() {
     page = <PrivacyPage />;
   } else if (currentHash === "#/how-it-works") {
     page = <HowItWorksPage />;
+  } else if (currentHash === "#/ai-studio") {
+    page = <AIStudioPage />;
   }
 
   return (
