@@ -140,7 +140,7 @@ export default function AIImageStudio() {
         <div>
           <h3 className="ai-studio__workflow-label">How it works</h3>
           <p className="ai-studio__workflow-subtext">
-            No design work. No back-and-forth. No waiting.
+            Create a stronger first draft before your team reviews and refines it.
           </p>
         </div>
         <ol className="ai-studio__workflow-steps">
@@ -200,7 +200,7 @@ export default function AIImageStudio() {
       </div>
 
       <p className="ai-studio__bridge">
-        Patients move forward when they can clearly picture the result.
+        Patients make better decisions when they can clearly picture the value.
       </p>
 
       <div className="ai-studio__values">

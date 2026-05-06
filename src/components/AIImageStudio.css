@@ -101,10 +101,10 @@
 
 .ai-studio__image-area {
   display: grid;
-  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(230px, 0.46fr) minmax(0, 0.9fr);
+  gap: 18px;
   align-items: start;
-  max-width: 980px;
+  max-width: 920px;
 }
 
 .ai-studio__photo-card,

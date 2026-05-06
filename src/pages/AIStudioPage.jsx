@@ -60,7 +60,7 @@ export default function AIStudioPage() {
         <div>
           <p className="ai-studio-page__eyebrow">AI Studio</p>
           <h1 id="ai-studio-page-title">
-            AI Studio for case acceptance and dental marketing visuals
+            AI Studio for dental case acceptance visuals
           </h1>
           <p className="ai-studio-page__subheadline">
             Use authorized patient photos, practice-approved offers, and brand
