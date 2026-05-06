@@ -101,6 +101,12 @@ export default function AIImageStudio() {
     }, 120);
   };
 
+  const handleWorkflowClick = () => {
+    document
+      .getElementById("ai-studio-workflow")
+      ?.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
+
   return (
     <section className="ai-studio" aria-labelledby="ai-studio-title">
       <p className="ai-studio__section-bridge">
@@ -121,9 +127,13 @@ export default function AIImageStudio() {
           patient photos into personalized, branded visuals that make treatment
           easier to understand.
         </p>
-        <a className="ai-studio__cta" href="#ai-studio-workflow">
+        <button
+          className="ai-studio__cta"
+          onClick={handleWorkflowClick}
+          type="button"
+        >
           See the workflow
-        </a>
+        </button>
       </div>
 
       <article className="ai-studio__workflow" aria-label="How AI Image Studio works">

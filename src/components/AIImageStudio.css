@@ -92,6 +92,8 @@
   border-radius: 10px;
   background: #ffffff;
   color: var(--navy-900);
+  cursor: pointer;
+  font: inherit;
   font-weight: 650;
   text-decoration: none;
   box-shadow: none;
