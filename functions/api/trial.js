@@ -5,6 +5,10 @@ const requiredFields = [
   "biggestWorkflowChallenge",
 ];
 
+const emailBindingName = "TRIAL_EMAIL";
+const trialRecipientEmail = "jeremy@smarterpractice.ai";
+const defaultSenderEmail = "forms@smarterpractice.ai";
+
 const jsonHeaders = {
   "Content-Type": "application/json; charset=utf-8",
 };
@@ -71,16 +75,98 @@ function validatePayload(payload) {
   return { valid: true };
 }
 
+function normalizedSubmission(payload) {
+  return {
+    source: cleanString(payload.source) || "Smarter Practice AI website",
+    formName: cleanString(payload.formName) || "15-day trial request",
+    name: cleanString(payload.name),
+    practiceName: cleanString(payload.practiceName),
+    practiceEmail: cleanString(payload.practiceEmail),
+    role: cleanString(payload.role) || "Not provided",
+    biggestWorkflowChallenge: cleanString(payload.biggestWorkflowChallenge),
+    submittedAt: new Date().toISOString(),
+  };
+}
+
+function buildTrialEmailText(submission) {
+  return [
+    "New Smarter Practice AI trial request",
+    "",
+    `Name: ${submission.name}`,
+    `Practice name: ${submission.practiceName}`,
+    `Practice email: ${submission.practiceEmail}`,
+    `Role: ${submission.role}`,
+    "",
+    "Biggest workflow challenge or notes:",
+    submission.biggestWorkflowChallenge,
+    "",
+    `Source: ${submission.source}`,
+    `Form: ${submission.formName}`,
+    `Submitted: ${submission.submittedAt}`,
+  ].join("\n");
+}
+
+function getEmailBinding(env = {}) {
+  const binding = env[emailBindingName];
+
+  return binding && typeof binding.send === "function" ? binding : null;
+}
+
+function getForwardUrl(env = {}) {
+  return env.TRIAL_FORM_FORWARD_URL || env.FORM_FORWARD_URL || "";
+}
+
+async function sendEmailPayload(payload, env = {}) {
+  const emailBinding = getEmailBinding(env);
+
+  if (!emailBinding) {
+    return { handled: false };
+  }
+
+  const submission = normalizedSubmission(payload);
+  const senderEmail = cleanString(env.TRIAL_EMAIL_FROM) || defaultSenderEmail;
+
+  try {
+    await emailBinding.send({
+      to: trialRecipientEmail,
+      from: {
+        email: senderEmail,
+        name: "Smarter Practice AI",
+      },
+      replyTo: submission.practiceEmail,
+      subject: "New Smarter Practice AI trial request",
+      text: buildTrialEmailText(submission),
+    });
+
+    return { handled: true, response: jsonResponse({ success: true }) };
+  } catch (error) {
+    console.error("Trial form email binding failed.", {
+      code: error?.code,
+      name: error?.name,
+    });
+
+    return {
+      handled: true,
+      response: jsonResponse(
+        {
+          success: false,
+          error: "Form email delivery failed.",
+          code: "FORM_EMAIL_PROVIDER_ERROR",
+        },
+        502,
+      ),
+    };
+  }
+}
+
 async function forwardPayload(payload, env = {}) {
-  const forwardUrl = env.TRIAL_FORM_FORWARD_URL || env.FORM_FORWARD_URL;
+  const forwardUrl = getForwardUrl(env);
 
   if (!forwardUrl) {
     console.warn(
-      "Trial form backend is missing TRIAL_FORM_FORWARD_URL or FORM_FORWARD_URL.",
+      "Trial form backend is missing TRIAL_EMAIL, TRIAL_FORM_FORWARD_URL, or FORM_FORWARD_URL.",
     );
 
-    // TODO: Configure TRIAL_FORM_FORWARD_URL in Cloudflare once the final
-    // email/forms provider is selected.
     return jsonResponse(
       {
         success: false,
@@ -91,22 +177,15 @@ async function forwardPayload(payload, env = {}) {
     );
   }
 
+  const submission = normalizedSubmission(payload);
+
   const response = await fetch(forwardUrl, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      source: "Smarter Practice AI website",
-      formName: "15-day trial request",
-      name: cleanString(payload.name),
-      practiceName: cleanString(payload.practiceName),
-      practiceEmail: cleanString(payload.practiceEmail),
-      role: cleanString(payload.role),
-      biggestWorkflowChallenge: cleanString(payload.biggestWorkflowChallenge),
-      submittedAt: new Date().toISOString(),
-    }),
+    body: JSON.stringify(submission),
   });
 
   if (!response.ok) {
@@ -125,6 +204,20 @@ async function forwardPayload(payload, env = {}) {
   }
 
   return jsonResponse({ success: true });
+}
+
+async function deliverPayload(payload, env = {}) {
+  const emailResult = await sendEmailPayload(payload, env);
+
+  if (emailResult.handled) {
+    if (emailResult.response.ok || !getForwardUrl(env)) {
+      return emailResult.response;
+    }
+
+    console.warn("Trial form email binding failed; trying forwarding URL.");
+  }
+
+  return forwardPayload(payload, env);
 }
 
 export async function onRequestOptions() {
@@ -157,7 +250,7 @@ export async function onRequestPost({ request, env = {} }) {
     return jsonResponse(validation.body, validation.status);
   }
 
-  return forwardPayload(payload, env);
+  return deliverPayload(payload, env);
 }
 
 export async function onRequest() {
