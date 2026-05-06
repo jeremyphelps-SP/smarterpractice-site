@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "smarterpractice-trial-email",
+  "main": "index.ts",
+  "compatibility_date": "2026-05-06",
+  "observability": {
+    "enabled": true
+  },
+  "send_email": [
+    {
+      "name": "SEND_EMAIL",
+      "destination_address": "jeremy@smarterpractice.ai"
+    }
+  ]
+}
