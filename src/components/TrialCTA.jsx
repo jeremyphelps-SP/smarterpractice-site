@@ -19,6 +19,20 @@ function formDataToPayload(formData) {
   return Object.fromEntries(formData.entries());
 }
 
+async function readJsonResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+
+  if (!contentType.includes("application/json")) {
+    return null;
+  }
+
+  try {
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
 async function submitToCloudflareEndpoint(formData) {
   const response = await fetch(cloudflareTrialEndpoint, {
     method: "POST",
@@ -29,23 +43,21 @@ async function submitToCloudflareEndpoint(formData) {
     },
   });
 
-  const contentType = response.headers.get("content-type") || "";
+  const result = await readJsonResponse(response);
 
-  if (!contentType.includes("application/json")) {
-    throw new TrialFormError(formUnavailableMessage);
-  }
+  if (response.ok) {
+    if (result?.success === false) {
+      throw new TrialFormError(result.error || formValidationMessage);
+    }
 
-  const result = await response.json();
-
-  if (response.ok && result.success !== false) {
     return true;
   }
 
-  if (response.status >= 500 || result.code === "FORM_BACKEND_NOT_CONFIGURED") {
+  if (response.status >= 500 || result?.code === "FORM_BACKEND_NOT_CONFIGURED") {
     throw new TrialFormError(formUnavailableMessage);
   }
 
-  throw new TrialFormError(result.error || formValidationMessage);
+  throw new TrialFormError(result?.error || formValidationMessage);
 }
 
 export default function TrialCTA({ selectedChallenge = null }) {
@@ -57,7 +69,8 @@ export default function TrialCTA({ selectedChallenge = null }) {
     setStatus("submitting");
     setErrorMessage("");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
 
     trackEvent("trial_form_submitted", {
       selectedChallenge,
@@ -67,7 +80,7 @@ export default function TrialCTA({ selectedChallenge = null }) {
     try {
       await submitToCloudflareEndpoint(formData);
       setStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch (error) {
       setStatus("error");
       setErrorMessage(

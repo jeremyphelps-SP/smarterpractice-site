@@ -15,6 +15,20 @@ email.
 
 Submitted form contents are never written to console logs.
 
+## Response Contract
+
+Successful submissions should return:
+
+- HTTP status: `200`
+- JSON body: `{ "success": true }`
+
+The Worker returns this only after `env.SEND_EMAIL.send(...)` succeeds. The
+Pages Function normalizes successful Worker/service responses to the same JSON
+body before responding to the browser. The browser treats any `2xx` response as
+successful unless a JSON response explicitly includes `{ "success": false }`;
+this prevents a delivered email from showing a false error if an intermediate
+Cloudflare layer returns a successful response with no JSON body.
+
 ## Backend Priority
 
 1. POST to the Pages Service binding named `TRIAL_FORM_SERVICE`.
