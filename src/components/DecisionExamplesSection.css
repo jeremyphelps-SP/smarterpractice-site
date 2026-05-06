@@ -1,6 +1,6 @@
 .decision-examples {
   padding: 52px 20px 44px;
-  color: #1f2933;
+  color: var(--navy-800);
   background: #ffffff;
   border-top: 1px solid #edf2f7;
   font-family:
@@ -21,16 +21,16 @@
 
 .decision-examples__header h2 {
   margin: 0;
-  color: #102a43;
+  color: var(--navy-900);
   font-size: clamp(1.9rem, 4vw, 3rem);
-  font-weight: 650;
+  font-weight: 760;
   line-height: 1.08;
   letter-spacing: 0;
 }
 
 .decision-examples__header p {
   margin: 14px 0 0;
-  color: #52606d;
+  color: var(--text);
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -46,7 +46,7 @@
   flex-direction: column;
   gap: 16px;
   padding: 22px;
-  border: 1px solid #d9e2ec;
+  border: 1px solid var(--border);
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
@@ -54,7 +54,7 @@
 
 .decision-examples__card h3 {
   margin: 0;
-  color: #102a43;
+  color: var(--navy-900);
   font-size: 1.2rem;
   line-height: 1.3;
 }
@@ -68,7 +68,7 @@
 .decision-examples__block h4,
 .decision-examples__decision h4 {
   margin: 0;
-  color: #334e68;
+  color: var(--navy-700);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -78,7 +78,7 @@
 .decision-examples__block p,
 .decision-examples__decision p {
   margin: 0;
-  color: #52606d;
+  color: var(--text);
   font-size: 0.95rem;
   line-height: 1.55;
 }
@@ -86,11 +86,11 @@
 .decision-examples__decision {
   padding: 14px;
   border-radius: 8px;
-  background: #e0ecff;
+  background: #fff7ed;
 }
 
 .decision-examples__decision p {
-  color: #243b53;
+  color: var(--navy-800);
   font-weight: 700;
 }
 
@@ -100,7 +100,7 @@
   gap: 6px;
   margin: 0;
   padding-left: 20px;
-  color: #52606d;
+  color: var(--text);
   font-size: 0.95rem;
   line-height: 1.5;
 }
