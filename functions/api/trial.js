@@ -5,7 +5,8 @@ const requiredFields = [
   "biggestWorkflowChallenge",
 ];
 
-const emailBindingName = "TRIAL_EMAIL";
+const trialFormServiceBindingName = "TRIAL_FORM_SERVICE";
+const directEmailBindingNames = ["TRIAL_EMAIL", "SEND_EMAIL"];
 const trialRecipientEmail = "jeremy@smarterpractice.ai";
 const defaultSenderEmail = "forms@smarterpractice.ai";
 
@@ -106,18 +107,87 @@ function buildTrialEmailText(submission) {
   ].join("\n");
 }
 
-function getEmailBinding(env = {}) {
-  const binding = env[emailBindingName];
+function getTrialFormService(env = {}) {
+  const binding = env[trialFormServiceBindingName];
 
-  return binding && typeof binding.send === "function" ? binding : null;
+  return binding && typeof binding.fetch === "function" ? binding : null;
+}
+
+function getDirectEmailBinding(env = {}) {
+  return (
+    directEmailBindingNames
+      .map((bindingName) => env[bindingName])
+      .find((binding) => binding && typeof binding.send === "function") || null
+  );
 }
 
 function getForwardUrl(env = {}) {
   return env.TRIAL_FORM_FORWARD_URL || env.FORM_FORWARD_URL || "";
 }
 
-async function sendEmailPayload(payload, env = {}) {
-  const emailBinding = getEmailBinding(env);
+async function sendToTrialFormService(payload, env = {}) {
+  const trialFormService = getTrialFormService(env);
+
+  if (!trialFormService) {
+    return { handled: false };
+  }
+
+  const submission = normalizedSubmission(payload);
+  let response;
+
+  try {
+    response = await trialFormService.fetch(
+      new Request("https://smarterpractice-trial-email/", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submission),
+      }),
+    );
+  } catch (error) {
+    console.error("Trial form service binding request failed.", {
+      code: error?.code,
+      name: error?.name,
+    });
+
+    return {
+      handled: true,
+      response: jsonResponse(
+        {
+          success: false,
+          error: "Form email delivery failed.",
+          code: "FORM_EMAIL_SERVICE_ERROR",
+        },
+        502,
+      ),
+    };
+  }
+
+  if (response.ok) {
+    return { handled: true, response: jsonResponse({ success: true }) };
+  }
+
+  console.error("Trial form service binding rejected request.", {
+    status: response.status,
+  });
+
+  return {
+    handled: true,
+    response: jsonResponse(
+      {
+        success: false,
+        error: "Form email delivery failed.",
+        code: "FORM_EMAIL_SERVICE_ERROR",
+      },
+      response.status >= 500 ? 502 : response.status,
+    ),
+  };
+}
+
+async function sendDirectEmailPayload(payload, env = {}) {
+  const emailBinding = getDirectEmailBinding(env);
 
   if (!emailBinding) {
     return { handled: false };
@@ -164,7 +234,7 @@ async function forwardPayload(payload, env = {}) {
 
   if (!forwardUrl) {
     console.warn(
-      "Trial form backend is missing TRIAL_EMAIL, TRIAL_FORM_FORWARD_URL, or FORM_FORWARD_URL.",
+      "Trial form backend is missing TRIAL_FORM_SERVICE, TRIAL_EMAIL, SEND_EMAIL, TRIAL_FORM_FORWARD_URL, or FORM_FORWARD_URL.",
     );
 
     return jsonResponse(
@@ -207,7 +277,13 @@ async function forwardPayload(payload, env = {}) {
 }
 
 async function deliverPayload(payload, env = {}) {
-  const emailResult = await sendEmailPayload(payload, env);
+  const serviceResult = await sendToTrialFormService(payload, env);
+
+  if (serviceResult.handled) {
+    return serviceResult.response;
+  }
+
+  const emailResult = await sendDirectEmailPayload(payload, env);
 
   if (emailResult.handled) {
     if (emailResult.response.ok || !getForwardUrl(env)) {

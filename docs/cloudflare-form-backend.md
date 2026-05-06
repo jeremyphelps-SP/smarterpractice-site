@@ -1,56 +1,108 @@
 # Cloudflare Form Backend
 
 The existing trial/contact form posts to `/api/trial`. The public form layout,
-fields, and user flow are unchanged. The Cloudflare Pages Function validates
-required fields server-side, then delivers the request through Cloudflare-native
-email sending when the binding is configured.
+fields, and user flow are unchanged.
 
-## Backend priority
+## Final Architecture
 
-1. Send through the Cloudflare Email Service binding named `TRIAL_EMAIL`.
-2. If no email binding is present, optionally forward to
-   `TRIAL_FORM_FORWARD_URL` or `FORM_FORWARD_URL`.
-3. If neither backend is configured, fail safely with
-   `FORM_BACKEND_NOT_CONFIGURED`.
+Contact form -> Pages Function `/api/trial` -> Pages Service binding
+`TRIAL_FORM_SERVICE` -> Worker `smarterpractice-trial-email` -> send-email
+binding `SEND_EMAIL` -> `jeremy@smarterpractice.ai`
+
+The `/api/trial` Pages Function still validates the required fields before it
+calls the Worker. The Worker validates the same fields again before sending
+email.
 
 Submitted form contents are never written to console logs.
 
-## Required Cloudflare Email setup
+## Backend Priority
 
-Configure these Cloudflare Pages settings for both Preview and Production:
+1. POST to the Pages Service binding named `TRIAL_FORM_SERVICE`.
+2. If no service binding is present, send through direct Pages email bindings
+   named `TRIAL_EMAIL` or `SEND_EMAIL` when available.
+3. If no email binding is present, optionally forward to
+   `TRIAL_FORM_FORWARD_URL` or `FORM_FORWARD_URL`.
+4. If no backend is configured, fail safely with
+   `FORM_BACKEND_NOT_CONFIGURED`.
 
-- Binding type: Cloudflare Email Service / Send Email
-- Binding name: `TRIAL_EMAIL`
-- Destination email address: `jeremy@smarterpractice.ai`
+The direct Pages email bindings and forwarding URLs are fallback paths only. The
+preferred production path is the dedicated Email Worker service binding.
 
-The function sends:
+## Email Worker
+
+Worker source:
+
+- `workers/trial-email-worker/index.ts`
+- `workers/trial-email-worker/wrangler.jsonc`
+
+The Worker uses a `fetch(request, env)` handler because the website sends an
+HTTP POST request. It does not use an `email(message, env, ctx)` handler, which
+is for incoming email events.
+
+The Worker sends:
 
 - To: `jeremy@smarterpractice.ai`
 - Subject: `New Smarter Practice AI trial request`
-- Plain-text body: submitted name, practice name, practice email, role, workflow
-  challenge, source, form name, and submission timestamp
+- Plain-text body: submitted name, practice name, practice email, role,
+  workflow challenge or message, source, form name, and timestamp
 - Reply-To: submitted practice email
 
-The default sender is `forms@smarterpractice.ai`. If Cloudflare Email Service
-requires a different verified sender, set this environment variable:
+The default sender is `forms@smarterpractice.ai`. If Cloudflare Email Sending
+requires a different verified sender, set this Worker variable:
 
 - `TRIAL_EMAIL_FROM`
 
-Do not commit sender credentials, API keys, webhook URLs, or private provider
-configuration to the repository.
+## Required Cloudflare Setup
 
-## Optional forwarding fallback
+Complete these steps for Preview and Production:
 
-The previous forwarding variables remain supported as a secondary fallback:
+1. Ensure Cloudflare Email Sending is enabled for `smarterpractice.ai`.
+2. Ensure `jeremy@smarterpractice.ai` is a verified or allowed destination if
+   Cloudflare requires verification for the account/domain setup.
+3. Deploy the Worker from `workers/trial-email-worker`:
+   `wrangler deploy`.
+4. Confirm the deployed Worker name is `smarterpractice-trial-email`.
+5. In the Cloudflare Pages project, add a Service binding:
+   - Binding name: `TRIAL_FORM_SERVICE`
+   - Service: `smarterpractice-trial-email`
+6. Add the `TRIAL_FORM_SERVICE` binding in both Preview and Production
+   environments.
+7. If required, add Worker variable `TRIAL_EMAIL_FROM` with a verified sender
+   address on `smarterpractice.ai`.
+8. Redeploy the Pages preview.
+9. Submit a safe test request through `/contact`.
+10. Confirm the form shows the existing success message.
+11. Confirm the email arrives at `jeremy@smarterpractice.ai`.
 
-- `TRIAL_FORM_FORWARD_URL` preferred
-- `FORM_FORWARD_URL` supported fallback
+## Worker Send Email Binding
 
-These are not required when `TRIAL_EMAIL` is configured.
+The Worker `wrangler.jsonc` defines this send-email binding:
 
-## Failure behavior
+- Binding type: Send Email
+- Binding name: `SEND_EMAIL`
+- Destination address: `jeremy@smarterpractice.ai`
 
-If no email binding or forwarding URL is present, `/api/trial` returns:
+No D1, KV, Queue, R2, Workers AI, Analytics Engine, external form service, CRM
+webhook, Zapier, Make, Airtable, or Formspree service is required.
+
+## Optional Fallbacks
+
+The previous forwarding variables remain supported as secondary fallback paths:
+
+- `TRIAL_FORM_FORWARD_URL`
+- `FORM_FORWARD_URL`
+
+These are not required when `TRIAL_FORM_SERVICE` is configured.
+
+Direct Pages email bindings also remain supported only as fallback paths:
+
+- `TRIAL_EMAIL`
+- `SEND_EMAIL`
+
+## Failure Behavior
+
+If no service binding, email binding, or forwarding URL is present,
+`/api/trial` returns:
 
 - HTTP status: `501`
 - JSON code: `FORM_BACKEND_NOT_CONFIGURED`
@@ -58,14 +110,3 @@ If no email binding or forwarding URL is present, `/api/trial` returns:
 The public form displays a simple temporary-unavailable message with Jeremy's
 email address. Cloudflare logs include only configuration/error codes, not the
 submitted form contents.
-
-## Testing steps
-
-1. In Cloudflare Pages Preview, add the `TRIAL_EMAIL` send-email binding.
-2. If needed, add `TRIAL_EMAIL_FROM` with a verified sender address on
-   `smarterpractice.ai`.
-3. Redeploy the preview.
-4. Submit the `/contact` form with a safe test request.
-5. Confirm the form shows the existing success message.
-6. Confirm the email arrives at `jeremy@smarterpractice.ai`.
-7. Repeat the same setup for Production before launch.
