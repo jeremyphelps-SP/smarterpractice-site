@@ -1,103 +1,19 @@
 import "./Hero.css";
 
-const practiceAreas = [
-  { label: "Insurance", icon: "shieldCheck" },
-  { label: "Billing", icon: "invoice" },
-  { label: "Scheduling", icon: "calendar" },
-  { label: "Patient communication", icon: "chat" },
-  { label: "Training", icon: "book" },
-  { label: "Compliance", icon: "shield", accent: true },
-  { label: "Profitability", icon: "chart", accent: true },
-  { label: "Practice operations", icon: "gear" },
+const consoleFlow = [
+  {
+    title: "Real practice data in",
+    body: "Reports, screenshots, EOBs, schedules, claim notes, bank CSVs, and copied text.",
+  },
+  {
+    title: "Dental-specific coach analysis",
+    body: "Claims, scheduling, case acceptance, profitability, training, and compliance context.",
+  },
+  {
+    title: "Clear next step out",
+    body: "A decision, script, checklist, appeal outline, SOP, or owner-ready summary.",
+  },
 ];
-
-const workflowSteps = ["Real data in", "Coach analysis", "Decision out"];
-
-function CapabilityIcon({ type }) {
-  const commonProps = {
-    "aria-hidden": "true",
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: "1.8",
-    viewBox: "0 0 24 24",
-  };
-
-  switch (type) {
-    case "shieldCheck":
-      return (
-        <svg {...commonProps}>
-          <path d="M12 3.5 19 6v5.4c0 4.2-2.7 7.4-7 9.1-4.3-1.7-7-4.9-7-9.1V6l7-2.5Z" />
-          <path d="m8.8 12 2.1 2.1 4.4-4.6" />
-        </svg>
-      );
-    case "invoice":
-      return (
-        <svg {...commonProps}>
-          <path d="M7 3.8h9.5L20 7.3V20H7V3.8Z" />
-          <path d="M16.5 3.8v3.5H20" />
-          <path d="M10 10.2h5.2" />
-          <path d="M10 14h3" />
-          <path d="M15.7 17.2c1.2 0 2.1-.5 2.1-1.4s-.7-1.2-2-1.4c-1-.2-1.7-.5-1.7-1.3s.8-1.3 1.9-1.3" />
-          <path d="M16 10.9v6.9" />
-        </svg>
-      );
-    case "calendar":
-      return (
-        <svg {...commonProps}>
-          <path d="M6 5h12a2 2 0 0 1 2 2v11.5H4V7a2 2 0 0 1 2-2Z" />
-          <path d="M8 3.5V7" />
-          <path d="M16 3.5V7" />
-          <path d="M4 9.5h16" />
-          <path d="M8 13h.1" />
-          <path d="M12 13h.1" />
-          <path d="M16 13h.1" />
-          <path d="M8 16h.1" />
-          <path d="M12 16h.1" />
-        </svg>
-      );
-    case "chat":
-      return (
-        <svg {...commonProps}>
-          <path d="M5 17.2c-1.3-1.2-2-2.8-2-4.6C3 8.3 7 5 12 5s9 3.3 9 7.6-4 7.6-9 7.6c-1 0-2-.1-2.9-.4L5 21v-3.8Z" />
-        </svg>
-      );
-    case "book":
-      return (
-        <svg {...commonProps}>
-          <path d="M5 5.5c2.6-.9 4.9-.6 7 1v13c-2.1-1.6-4.4-1.9-7-1V5.5Z" />
-          <path d="M19 5.5c-2.6-.9-4.9-.6-7 1v13c2.1-1.6 4.4-1.9 7-1V5.5Z" />
-        </svg>
-      );
-    case "shield":
-      return (
-        <svg {...commonProps}>
-          <path d="M12 3.5 19 6v5.4c0 4.2-2.7 7.4-7 9.1-4.3-1.7-7-4.9-7-9.1V6l7-2.5Z" />
-          <path d="M12 8.5v4.2" />
-          <path d="M12 16h.1" />
-        </svg>
-      );
-    case "chart":
-      return (
-        <svg {...commonProps}>
-          <path d="M5 19V9.5" />
-          <path d="M11 19V5" />
-          <path d="M17 19v-7.2" />
-          <path d="M3.8 19h16.4" />
-        </svg>
-      );
-    case "gear":
-      return (
-        <svg {...commonProps}>
-          <path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" />
-          <path d="m18.4 13.8 1.5 1.2-1.6 2.8-1.9-.7c-.5.4-1 .7-1.6.9l-.3 2h-3.2l-.3-2c-.6-.2-1.1-.5-1.6-.9l-1.9.7L6 15l1.5-1.2a6.6 6.6 0 0 1 0-1.8L6 10.8 7.6 8l1.9.7c.5-.4 1-.7 1.6-.9l.3-2h3.2l.3 2c.6.2 1.1.5 1.6.9l1.9-.7 1.6 2.8-1.5 1.2c.1.6.1 1.2-.1 1.8Z" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
 
 export default function Hero() {
   return (
@@ -139,54 +55,36 @@ export default function Hero() {
           </div>
         </div>
 
-        <aside className="homepage-hero__panel" aria-label="Practice areas">
+        <aside
+          className="homepage-hero__panel"
+          aria-label="Practice decision console"
+        >
           <div className="homepage-hero__panel-header">
             <p className="homepage-hero__panel-label">
-              Practice intelligence layer
+              Practice decision console
             </p>
-            <strong>Built on ChatGPT. Structured for dental decisions.</strong>
+            <strong>From messy practice input to an owner-ready next step.</strong>
           </div>
-          <ol className="homepage-hero__workflow" aria-label="Workflow">
-            {workflowSteps.map((step) => (
-              <li key={step}>{step}</li>
+
+          <div className="homepage-hero__console-status">
+            <span>Practice-owned workspace</span>
+            <span>Dental-specific coaches</span>
+          </div>
+
+          <ol className="homepage-hero__workflow" aria-label="Decision workflow">
+            {consoleFlow.map((step) => (
+              <li key={step.title}>
+                <strong>{step.title}</strong>
+                <span>{step.body}</span>
+              </li>
             ))}
           </ol>
-          <div
-            className="homepage-hero__trust-block"
-            aria-label="Smarter Practice AI trust and differentiation"
-          >
-            <ul className="homepage-hero__trust-list">
-              <li>No prompt guessing</li>
-              <li>Consistent answers across your team</li>
-              <li>
-                Handle patient information here &mdash; not in personal ChatGPT
-                accounts
-              </li>
-            </ul>
-            <p className="homepage-hero__trust-footnote">
-              Use within your practice&rsquo;s policies and patient
-              authorization.
-            </p>
-          </div>
-          <div className="homepage-hero__area-grid">
-            {practiceAreas.map((area) => (
-              <div className="homepage-hero__area-item" key={area.label}>
-                <span
-                  className={`homepage-hero__area-icon${
-                    area.accent ? " homepage-hero__area-icon--accent" : ""
-                  }`}
-                >
-                  <CapabilityIcon type={area.icon} />
-                </span>
-                <span>{area.label}</span>
-              </div>
-            ))}
-          </div>
-          <div className="homepage-hero__outcome">
-            <strong>From blank page to next step</strong>
+
+          <div className="homepage-hero__safety-card">
+            <strong>Handle patient information here.</strong>
             <p>
-              Turn messy, day-to-day practice problems into clear next steps
-              your team can actually use.
+              Not in personal ChatGPT accounts. Use within your
+              practice&rsquo;s policies and patient authorization.
             </p>
           </div>
         </aside>

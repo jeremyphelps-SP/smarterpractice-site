@@ -104,19 +104,12 @@ export default function AIImageStudio() {
   return (
     <section className="ai-studio" aria-labelledby="ai-studio-title">
       <p className="ai-studio__section-bridge">
-        Here&rsquo;s one way practices are already using this
+        One proof example inside the Smarter Practice AI workspace
       </p>
       <div className="ai-studio__intro">
-        <p className="ai-studio__eyebrow">REAL PRACTICE EXAMPLE</p>
+        <p className="ai-studio__eyebrow">Proof example</p>
         <div className="ai-studio__heading-group">
-          <p
-            style={{
-              margin: "0 0 10px",
-              color: "var(--text)",
-              fontSize: "0.95rem",
-              fontWeight: 800,
-            }}
-          >
+          <p className="ai-studio__example-label">
             One example: improving case acceptance
           </p>
           <h2 id="ai-studio-title">
