@@ -1,7 +1,7 @@
 .coach-capabilities {
   max-width: var(--section-max-width);
   margin: 0 auto;
-  padding: 82px 20px 76px;
+  padding: 68px 20px 58px;
   color: var(--navy-800);
   font-family: var(--sans);
   text-align: left;
@@ -9,23 +9,23 @@
 
 .coach-capabilities__intro {
   max-width: 880px;
-  margin-bottom: 32px;
+  margin-bottom: 26px;
 }
 
 .coach-capabilities__eyebrow {
   margin: 0 0 10px;
   color: var(--accent);
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 680;
   letter-spacing: 0.14em;
 }
 
 .coach-capabilities__intro h2 {
   margin: 0 0 14px;
   color: var(--navy-900);
-  font-size: clamp(1.8rem, 4vw, 2.75rem);
-  font-weight: 760;
-  line-height: 1.1;
+  font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+  font-weight: 680;
+  line-height: 1.14;
   letter-spacing: 0;
 }
 
@@ -41,13 +41,13 @@
   margin-top: 14px;
   color: var(--navy-800);
   font-size: 0.98rem;
-  font-weight: 700;
+  font-weight: 620;
 }
 
 .coach-capabilities__layout {
   display: grid;
   grid-template-columns: minmax(260px, 0.36fr) minmax(0, 1fr);
-  gap: 24px;
+  gap: 22px;
   align-items: start;
 }
 
@@ -56,12 +56,12 @@
   border: 1px solid var(--card-border);
   border-radius: var(--card-radius);
   background: var(--paper);
-  box-shadow: var(--card-shadow-soft);
+  box-shadow: none;
 }
 
 .coach-capabilities__selector {
-  padding: 16px;
-  background: #f8fafc;
+  padding: 14px;
+  background: transparent;
 }
 
 .coach-capabilities__selector-label,
@@ -70,7 +70,7 @@
   margin: 0;
   color: var(--navy-700);
   font-size: 0.76rem;
-  font-weight: 800;
+  font-weight: 650;
   letter-spacing: 0.11em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -78,7 +78,7 @@
 
 .coach-capabilities__selector-list {
   display: grid;
-  gap: 9px;
+  gap: 8px;
   margin-top: 14px;
 }
 
@@ -86,7 +86,7 @@
   display: grid;
   gap: 5px;
   width: 100%;
-  padding: 14px 15px;
+  padding: 13px 14px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: #ffffff;
@@ -104,7 +104,7 @@
 .coach-capabilities__category-button:hover,
 .coach-capabilities__category-button:focus-visible {
   border-color: rgba(7, 24, 44, 0.2);
-  background: #f8fafc;
+  background: #fbfcfe;
   transform: translateY(-1px);
 }
 
@@ -116,27 +116,27 @@
 .coach-capabilities__category-button[aria-pressed="true"] {
   border-color: var(--accent);
   background: var(--accent-soft);
-  box-shadow: inset 4px 0 0 var(--accent);
+  box-shadow: inset 2px 0 0 var(--accent);
 }
 
 .coach-capabilities__category-button span {
   color: var(--navy-900);
   font-size: 0.98rem;
-  font-weight: 800;
+  font-weight: 640;
   line-height: 1.3;
 }
 
 .coach-capabilities__category-button small {
   color: var(--text);
   font-size: 0.82rem;
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: 400;
+  line-height: 1.48;
 }
 
 .coach-capabilities__detail {
   display: grid;
-  gap: 22px;
-  padding: clamp(24px, 3vw, 32px);
+  gap: 20px;
+  padding: clamp(22px, 3vw, 28px);
 }
 
 .coach-capabilities__detail-header {
@@ -150,7 +150,7 @@
   margin: 0;
   color: var(--navy-900);
   font-size: clamp(1.45rem, 2.5vw, 2rem);
-  font-weight: 760;
+  font-weight: 660;
   line-height: 1.15;
 }
 
@@ -164,7 +164,7 @@
 .coach-capabilities__detail-header .coach-capabilities__used-by {
   color: var(--navy-700);
   font-size: 0.9rem;
-  font-weight: 800;
+  font-weight: 650;
 }
 
 .coach-capabilities__detail-grid {
@@ -200,7 +200,7 @@
   color: var(--navy-900);
   padding: 8px 11px;
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.3;
 }
 
@@ -208,8 +208,8 @@
   margin: 12px 0 0;
   color: var(--navy-900);
   font-size: 1.03rem;
-  font-weight: 500;
-  line-height: 1.5;
+  font-weight: 450;
+  line-height: 1.55;
 }
 
 .coach-capabilities__task-list li {

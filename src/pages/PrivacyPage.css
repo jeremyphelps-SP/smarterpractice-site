@@ -17,7 +17,7 @@
   margin: 0 0 28px;
   color: var(--navy-800);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 650;
   line-height: 1.35;
   text-decoration: none;
 }
@@ -39,14 +39,14 @@
   border: 1px solid var(--card-border);
   border-radius: var(--card-radius);
   background: #ffffff;
-  box-shadow: var(--card-shadow-soft);
+  box-shadow: 0 8px 22px rgba(7, 24, 44, 0.03);
 }
 
 .privacy-page__eyebrow {
   margin: 0 0 12px;
   color: var(--accent);
   font-size: 0.84rem;
-  font-weight: 850;
+  font-weight: 680;
   letter-spacing: 0.08em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -79,7 +79,7 @@
   margin: 0 0 8px;
   color: var(--navy-900);
   font-size: 1.18rem;
-  font-weight: 800;
+  font-weight: 660;
   letter-spacing: 0;
   line-height: 1.3;
 }

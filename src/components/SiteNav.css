@@ -29,7 +29,7 @@
   gap: 12px;
   color: var(--navy-900);
   font-size: 1.1rem;
-  font-weight: 900;
+  font-weight: 760;
   line-height: 1.15;
   text-decoration: none;
 }
@@ -46,9 +46,9 @@
   background: var(--navy-900);
   color: #ffffff;
   font-size: 0.86rem;
-  font-weight: 900;
+  font-weight: 760;
   letter-spacing: 0;
-  box-shadow: 0 8px 18px rgba(7, 24, 44, 0.18);
+  box-shadow: 0 8px 16px rgba(7, 24, 44, 0.14);
 }
 
 .site-nav__mark::after {
@@ -87,7 +87,7 @@
 .site-nav__mobile-panel a {
   color: var(--navy-700);
   font-size: 0.94rem;
-  font-weight: 800;
+  font-weight: 650;
   line-height: 1.2;
   text-decoration: none;
 }
@@ -151,7 +151,7 @@
   border-radius: 10px;
   padding: 0 12px;
   font-size: 0.88rem;
-  font-weight: 850;
+  font-weight: 650;
   line-height: 1.2;
   text-decoration: none;
 }

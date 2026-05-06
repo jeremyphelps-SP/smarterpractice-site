@@ -1,9 +1,14 @@
 .trial-cta {
-  padding: 90px 20px 96px;
+  padding: 84px 20px 92px;
   color: var(--navy-800);
   background: var(--navy-900);
   font-family: var(--sans);
   text-align: left;
+}
+
+.trial-cta,
+.trial-cta * {
+  box-sizing: border-box;
 }
 
 .trial-cta--final {
@@ -33,7 +38,7 @@
   margin: 0 0 10px;
   color: #ffffff;
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 760;
+  font-weight: 690;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -58,7 +63,7 @@
   margin-bottom: 6px;
   color: var(--accent);
   font-size: 0.75rem;
-  font-weight: 850;
+  font-weight: 680;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -96,14 +101,14 @@
 
 .trial-cta__access-summary p + p {
   color: #ffffff;
-  font-weight: 800;
+  font-weight: 680;
 }
 
 .trial-cta__access-summary a {
   width: fit-content;
   color: #ffb074;
   font-size: 0.92rem;
-  font-weight: 850;
+  font-weight: 680;
   text-decoration: none;
 }
 
@@ -124,7 +129,7 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--card-radius);
   background: #ffffff;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.14);
 }
 
 .trial-cta__actions p {
@@ -133,7 +138,7 @@
 
 .trial-cta__form-intro {
   color: var(--navy-900);
-  font-weight: 750;
+  font-weight: 650;
 }
 
 .trial-cta__form {
@@ -153,7 +158,7 @@
 .trial-cta__field span {
   color: var(--navy-700);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 650;
   letter-spacing: 0.03em;
 }
 
@@ -204,7 +209,7 @@
   min-height: 44px;
   padding: 0 16px;
   border-radius: 10px;
-  font-weight: 850;
+  font-weight: 720;
   text-decoration: none;
 }
 

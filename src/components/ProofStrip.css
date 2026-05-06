@@ -1,5 +1,5 @@
 .proof-strip {
-  padding: 0 20px 36px;
+  padding: 0 20px 28px;
   background: #ffffff;
   color: var(--navy-900);
   font-family: var(--sans);
@@ -8,42 +8,42 @@
 .proof-strip__inner {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
+  gap: 20px;
   max-width: var(--section-max-width);
   margin: 0 auto;
-  padding: 16px;
-  border: 1px solid var(--card-border);
-  border-radius: var(--card-radius);
-  background: #f8fafc;
-  box-shadow: var(--card-shadow-soft);
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  box-shadow: none;
 }
 
 .proof-strip__item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-height: 58px;
-  padding: 11px 12px;
-  border: 1px solid rgba(7, 31, 61, 0.1);
-  border-radius: var(--radius-md);
-  background: #ffffff;
+  gap: 9px;
+  min-height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .proof-strip__item span {
   flex: 0 0 9px;
-  width: 9px;
-  height: 9px;
+  width: 7px;
+  height: 7px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.1);
+  box-shadow: none;
 }
 
 .proof-strip__item p {
   margin: 0;
   color: var(--navy-800);
   font-size: 0.88rem;
-  font-weight: 800;
-  line-height: 1.25;
+  font-weight: 620;
+  line-height: 1.35;
   text-align: left;
 }
 
@@ -60,7 +60,8 @@
 
   .proof-strip__inner {
     grid-template-columns: 1fr;
-    padding: 12px;
+    gap: 14px;
+    padding: 16px 0;
   }
 }
 
