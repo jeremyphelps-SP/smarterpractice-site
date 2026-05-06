@@ -71,10 +71,14 @@ function validatePayload(payload) {
   return { valid: true };
 }
 
-async function forwardPayload(payload, env) {
+async function forwardPayload(payload, env = {}) {
   const forwardUrl = env.TRIAL_FORM_FORWARD_URL || env.FORM_FORWARD_URL;
 
   if (!forwardUrl) {
+    console.warn(
+      "Trial form backend is missing TRIAL_FORM_FORWARD_URL or FORM_FORWARD_URL.",
+    );
+
     // TODO: Configure TRIAL_FORM_FORWARD_URL in Cloudflare once the final
     // email/forms provider is selected.
     return jsonResponse(
@@ -106,6 +110,10 @@ async function forwardPayload(payload, env) {
   });
 
   if (!response.ok) {
+    console.error("Trial form provider rejected request.", {
+      status: response.status,
+    });
+
     return jsonResponse(
       {
         success: false,
@@ -128,7 +136,7 @@ export async function onRequestOptions() {
   });
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env = {} }) {
   let payload;
 
   try {
